@@ -9,7 +9,7 @@ from evaluate import evaluate
 
 BATCH_SIZE = 64
 LR         = 0.001
-EPOCHS     = 25
+EPOCHS     = 10
 
 def main():
     # Check whether GPU is available or not; if not, run using CPU
