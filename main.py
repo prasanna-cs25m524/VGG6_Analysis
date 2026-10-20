@@ -18,6 +18,7 @@ EPOCHS     = 10
 
 
 def main():
+    #check whether GPU is available or not if not run using CPU
     device = torch.device('cuda' if torch.cuda.is_available() else 'cpu')
     print(f"Using device: {device}")
 
