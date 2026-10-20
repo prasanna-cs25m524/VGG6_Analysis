@@ -1,12 +1,9 @@
-# train.py
-# Responsible for: one full training loop over all epochs
-
 import torch
 import torch.nn as nn
+import wandb
 from evaluate import evaluate
 
-
-def train(model, train_loader, test_loader, optimizer, device, epochs=10):
+def train(model, train_loader, test_loader, optimizer, device, epochs=25):
     criterion = nn.CrossEntropyLoss()
 
     for epoch in range(1, epochs + 1):
@@ -24,10 +21,18 @@ def train(model, train_loader, test_loader, optimizer, device, epochs=10):
 
             running_loss += loss.item()
 
-        # Compute accuracies after each epoch
+        # Compute epoch metrics
         train_acc = evaluate(model, train_loader, device)
         test_acc  = evaluate(model, test_loader,  device)
         avg_loss  = running_loss / len(train_loader)
+
+        # Log metrics automatically to W&B (generates live Loss & Accuracy curves)
+        wandb.log({
+            "epoch": epoch,
+            "train_loss": avg_loss,
+            "train_acc": train_acc,
+            "val_acc": test_acc
+        })
 
         print(f"Epoch [{epoch}/{epochs}]  Loss: {avg_loss:.4f}  "
               f"Train Acc: {train_acc:.2f}%  Test Acc: {test_acc:.2f}%")
