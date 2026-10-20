@@ -13,7 +13,7 @@ from evaluate import evaluate
 # ── Config ──────────────────────────────────
 BATCH_SIZE = 64
 LR         = 0.001
-EPOCHS     = 10
+EPOCHS     = 25
 # ────────────────────────────────────────────
 
 
