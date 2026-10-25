@@ -1,7 +1,30 @@
 import torch
 import torch.nn as nn
+import torch.optim as optim
 import wandb
 from evaluate import evaluate
+
+
+def get_optimizer(name, model, lr):
+    name = name.lower()
+    params = model.parameters()
+
+    if name == 'adam':
+        return optim.Adam(params, lr=lr)
+    elif name == 'sgd':
+        return optim.SGD(params, lr=lr)
+    elif name == 'nesterov_sgd':
+        return optim.SGD(params, lr=lr, momentum=0.9, nesterov=True)
+    elif name == 'adagrad':
+        return optim.Adagrad(params, lr=lr)
+    elif name == 'rmsprop':
+        return optim.RMSprop(params, lr=lr)
+    elif name == 'nadam':
+        return optim.NAdam(params, lr=lr)
+    else:
+        raise ValueError(f"You gave wrong optimizer i.e : '{name}'. "
+                         f"Supported ones are: ['sgd', 'nesterov_sgd', 'adam', 'adagrad', 'rmsprop', 'nadam']")
+
 
 def train(model, train_loader, test_loader, optimizer, device, epochs=25):
     criterion = nn.CrossEntropyLoss()
