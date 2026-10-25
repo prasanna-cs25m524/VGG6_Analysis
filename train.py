@@ -51,11 +51,11 @@ def train(model, train_loader, test_loader, optimizer, device, epochs=25):
 
         # Log metrics automatically to W&B (generates live Loss & Accuracy curves)
         wandb.log({
-            "epoch": epoch,
-            "train_loss": avg_loss,
-            "train_acc": train_acc,
-            "val_acc": test_acc
-        })
+            "epoch": int(epoch),
+            "train_loss": float(avg_loss),
+            "train_acc": float(train_acc),
+            "val_acc": float(test_acc)
+        }, commit=True)
 
         print(f"Epoch [{epoch}/{epochs}]  Loss: {avg_loss:.4f}  "
               f"Train Acc: {train_acc:.2f}%  Test Acc: {test_acc:.2f}%")
