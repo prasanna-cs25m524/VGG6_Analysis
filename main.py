@@ -1,48 +1,67 @@
+import sys
 import torch
-import torch.optim as optim
 import wandb
 
 from dataset  import get_dataloaders
 from model    import get_model
-from train    import train
+from train    import train, get_optimizer
 from evaluate import evaluate
 
+
+# Baseline Config (without --sweep option)
+ACTIVATION = 'relu'      # ['relu', 'sigmoid', 'tanh', 'silu', 'gelu']
+OPTIMIZER  = 'adam'      # ['sgd', 'nesterov_sgd', 'adam', 'adagrad', 'rmsprop', 'nadam']
 BATCH_SIZE = 64
 LR         = 0.001
 EPOCHS     = 10
 
-def main():
+# W&B Sweep Config (With --sweep option)
+sweep_config = {
+    'method': 'bayes',
+    'metric': {'name': 'val_acc', 'goal': 'maximize'},
+    'parameters': {
+        'activation': {'values': ['relu', 'sigmoid', 'tanh', 'silu', 'gelu']},
+        'optimizer':  {'values': ['sgd', 'nesterov_sgd', 'adam', 'adagrad', 'rmsprop', 'nadam']},
+        'lr':         {'values': [0.1, 0.01, 0.001, 0.0001]},
+        'batch_size': {'values': [32, 64, 128, 256]},
+        'epochs':     {'value': 10}
+    }
+}
+
+def run_experiment():
     # Check whether GPU is available or not; if not, run using CPU
     device = torch.device('cuda' if torch.cuda.is_available() else 'cpu')
-    print(f"Using device: {device}")
 
-    # Initialize Weights & Biases (W&B) run
-    wandb.init(
-        project="CS6886W-VGG6",
-        name="baseline_adam_relu",
-        config={
-            "architecture": "VGG-6",
-            "dataset": "CIFAR-10",
-            "activation": "ReLU",
-            "optimizer": "Adam",
-            "lr": LR,
-            "batch_size": BATCH_SIZE,
-            "epochs": EPOCHS
-        }
-    )
+    # If running inside a sweep, wandb has already initialized with sweep config
+	# else its baseline run so need to make config
+    if wandb.run is None:
+        wandb.init(
+            project="CS6886W-VGG6",
+            name=f"baseline_{OPTIMIZER}_{ACTIVATION}",
+            config={
+                "architecture": "VGG-6",
+                "dataset": "CIFAR-10",
+                "activation": ACTIVATION,
+                "optimizer": OPTIMIZER,
+                "lr": LR,
+                "batch_size": BATCH_SIZE,
+                "epochs": EPOCHS
+            }
+        )
+
+    cfg = wandb.config
 
     # Load data
-    train_loader, test_loader = get_dataloaders(batch_size=BATCH_SIZE)
+    train_loader, test_loader = get_dataloaders(batch_size=cfg.batch_size)
 
-    # Build model
-    model = get_model(num_classes=10).to(device)
-    print(model)
+    # Build model with configurable activation
+    model = get_model(num_classes=10, activation=cfg.activation).to(device)
 
-    # Optimizer
-    optimizer = optim.Adam(model.parameters(), lr=LR)
+    # Optimizer using factory function
+    optimizer = get_optimizer(cfg.optimizer, model, lr=cfg.lr)
 
-    # Train model (logs to W&B automatically after each epoch)
-    train(model, train_loader, test_loader, optimizer, device, epochs=EPOCHS)
+    # Train model
+    train(model, train_loader, test_loader, optimizer, device, epochs=cfg.epochs)
 
     # Final test accuracy
     final_acc = evaluate(model, test_loader, device)
@@ -52,6 +71,14 @@ def main():
     # Close W&B run
     wandb.finish()
 
+def main():
+    if '--sweep' in sys.argv:
+        sweep_id = wandb.sweep(sweep_config, project="CS6886W-VGG6")
+        print(f"\nStarting W&B Sweep with ID: {sweep_id}")
+        wandb.agent(sweep_id, function=run_experiment, count=20)
+    else:
+        # Single Baseline run
+        run_experiment()
 
 if __name__ == '__main__':
     main()
