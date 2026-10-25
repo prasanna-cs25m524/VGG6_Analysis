@@ -1,6 +1,9 @@
 import os
+import sys
+import random
 import argparse
 from datetime import datetime
+import numpy as np
 import torch
 import wandb
 
@@ -11,8 +14,9 @@ from evaluate import evaluate
 
 
 # Default Baseline Config
-DEFAULT_ACTIVATION = 'relu'      # ['relu', 'sigmoid', 'tanh', 'silu', 'gelu']
-DEFAULT_OPTIMIZER  = 'adam'      # ['sgd', 'nesterov_sgd', 'adam', 'adagrad', 'rmsprop', 'nadam']
+DEFAULT_SEED       = 42
+DEFAULT_ACTIVATION = 'relu'
+DEFAULT_OPTIMIZER  = 'adam'
 DEFAULT_BATCH_SIZE = 64
 DEFAULT_LR         = 0.001
 DEFAULT_EPOCHS     = 10
@@ -30,14 +34,25 @@ sweep_config = {
     }
 }
 
+# Set seed to reproduce the result
+def set_seed(seed=42):
+    random.seed(seed)
+    np.random.seed(seed)
+    torch.manual_seed(seed)
+    torch.cuda.manual_seed(seed)
+    torch.cuda.manual_seed_all(seed)
+    torch.backends.cudnn.deterministic = True
+    torch.backends.cudnn.benchmark = False
+    os.environ['PYTHONHASHSEED'] = str(seed)
+
 
 def run_experiment(manual_config=None):
-    # Check whether GPU is available or not; if not, run using CPU
     device = torch.device('cuda' if torch.cuda.is_available() else 'cpu')
 
     # If running as manual run (not inside a sweep), initialize W&B with manual config
     if wandb.run is None:
         cfg_dict = manual_config or {
+            "seed": DEFAULT_SEED,
             "activation": DEFAULT_ACTIVATION,
             "optimizer": DEFAULT_OPTIMIZER,
             "lr": DEFAULT_LR,
@@ -73,7 +88,7 @@ def run_experiment(manual_config=None):
     test_acc  = evaluate(model, test_loader, device)
     print(f"\nFinal Train Accuracy: {train_acc:.2f}% | Final Test Accuracy: {test_acc:.2f}%")
 
-    # Save Model inside data/trained_models/ folder
+    # Save Model Checkpoint in data/trained_models/
     checkpoint_dir = 'data/trained_models'
     os.makedirs(checkpoint_dir, exist_ok=True)
 
@@ -88,18 +103,21 @@ def run_experiment(manual_config=None):
     )
     save_path = os.path.join(checkpoint_dir, model_filename)
     torch.save(model.state_dict(), save_path)
-    print(f"Model saved: {save_path}")
+    print(f"✓ Model checkpoint saved: {save_path}")
 
+    # Log summary metrics to W&B
     if wandb.run:
         wandb.summary["final_train_acc"]  = train_acc
         wandb.summary["final_test_acc"]   = test_acc
         wandb.summary["model_checkpoint"] = model_filename
         wandb.finish()
 
+
 def main():
     parser = argparse.ArgumentParser(description="VGG-6 on CIFAR-10 Training & Sweeps")
     parser.add_argument('--sweep', action='store_true', help='Launch W&B automated sweep')
-    parser.add_argument('--count', type=int, default=20, help='No of sweep trials (default: 20)')
+    parser.add_argument('--count', type=int, default=20, help='Number of sweep trials (default: 20)')
+    parser.add_argument('--seed', type=int, default=DEFAULT_SEED, help=f'Random seed (default: {DEFAULT_SEED})')
 
     # Custom manual run arguments (ignored if --sweep is provided)
     parser.add_argument('--activation', type=str, default=DEFAULT_ACTIVATION,
@@ -117,7 +135,10 @@ def main():
 
     args = parser.parse_args()
 
-    # Automated W&B Login
+    # 1. Fix random seed for exact reproducibility across runs
+    set_seed(args.seed)
+
+    # 2. Automated W&B Login
     api_key = os.environ.get("WANDB_API_KEY", "YOUR_WANDB_API_KEY_HERE")
     if api_key and api_key != "YOUR_WANDB_API_KEY_HERE":
         wandb.login(key=api_key)
@@ -131,6 +152,7 @@ def main():
     else:
         # Manual run using CLI arguments (or defaults if not specified)
         manual_config = {
+            "seed": args.seed,
             "activation": args.activation,
             "optimizer": args.optimizer,
             "lr": args.lr,
