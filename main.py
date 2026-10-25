@@ -1,3 +1,4 @@
+import os
 import sys
 import torch
 import wandb
@@ -28,12 +29,13 @@ sweep_config = {
     }
 }
 
+
 def run_experiment():
     # Check whether GPU is available or not; if not, run using CPU
     device = torch.device('cuda' if torch.cuda.is_available() else 'cpu')
 
     # If running inside a sweep, wandb has already initialized with sweep config
-	# else its baseline run so need to make config
+    # else its baseline run so need to make config
     if wandb.run is None:
         wandb.init(
             project="CS6886W-VGG6",
@@ -71,7 +73,15 @@ def run_experiment():
     # Close W&B run
     wandb.finish()
 
+
 def main():
+    # Automated W&B Login
+    api_key = os.environ.get("WANDB_API_KEY", "YOUR_WANDB_API_KEY_HERE")
+    if api_key and api_key != "YOUR_WANDB_API_KEY_HERE":
+        wandb.login(key=api_key)
+    else:
+        wandb.login()
+
     if '--sweep' in sys.argv:
         sweep_id = wandb.sweep(sweep_config, project="CS6886W-VGG6")
         print(f"\nStarting W&B Sweep with ID: {sweep_id}")
@@ -79,6 +89,7 @@ def main():
     else:
         # Single Baseline run
         run_experiment()
+
 
 if __name__ == '__main__':
     main()
