@@ -48,6 +48,7 @@ def set_seed(seed=42):
 
 def run_experiment(manual_config=None):
     device = torch.device('cuda' if torch.cuda.is_available() else 'cpu')
+    print(f"Using device: {device}")
 
     # If running as manual run (not inside a sweep), initialize W&B with manual config
     if wandb.run is None:
@@ -76,9 +77,20 @@ def run_experiment(manual_config=None):
 
     # Build model with configurable activation
     model = get_model(num_classes=10, activation=cfg.activation).to(device)
+    print(model)
 
     # Optimizer using factory function
     optimizer = get_optimizer(cfg.optimizer, model, lr=cfg.lr)
+
+    # Print active experiment parameters before starting training
+    print(f"\n{'='*60}")
+    print(f"Starting Run Configuration:")
+    print(f"  • Activation   : {cfg.activation}")
+    print(f"  • Optimizer    : {cfg.optimizer}")
+    print(f"  • Learning Rate: {cfg.lr}")
+    print(f"  • Batch Size   : {cfg.batch_size}")
+    print(f"  • Epochs       : {cfg.epochs}")
+    print(f"{'='*60}\n")
 
     # Train model
     train(model, train_loader, test_loader, optimizer, device, epochs=cfg.epochs)
