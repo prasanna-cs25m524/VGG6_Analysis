@@ -54,7 +54,7 @@ You can also pass a custom seed via CLI: `--seed <int>` (default: `42`).
 ### 1.5 How to Run
 
 #### Option A: Baseline Training (Default Configuration)
-Runs the baseline model (Adam, ReLU, batch size 64, lr 0.001, epochs 10, seed 42) and logs loss/accuracy curves to W&B:
+Runs the baseline model (Adam, ReLU, batch size 64, lr 0.001, epochs 30, seed 42) and logs loss/accuracy curves to W&B:
 ```bash
 python3 main.py
 ```
@@ -62,21 +62,26 @@ python3 main.py
 #### Option B: Manual Training with Custom Parameters
 You can override any parameter directly via command-line arguments without editing code:
 ```bash
-python3 main.py --activation gelu --optimizer nesterov_sgd --lr 0.01 --batch_size 128 --epochs 25 --seed 42
+python3 main.py --activation gelu --optimizer nesterov_sgd --lr 0.01 --batch_size 128 --epochs 30 --seed 42 --project CS6886W-VGG6
 ```
 Available CLI options:
 - `--activation`: `relu`, `sigmoid`, `tanh`, `silu`, `gelu` (default: `relu`)
 - `--optimizer`: `sgd`, `nesterov_sgd`, `adam`, `adagrad`, `rmsprop`, `nadam` (default: `adam`)
 - `--lr`: float learning rate (default: `0.001`)
 - `--batch_size`: batch size (default: `64`)
-- `--epochs`: number of epochs (default: `10`)
+- `--epochs`: number of epochs (default: `30`)
 - `--seed`: random seed (default: `42`)
+- `--project`: W&B project name to group and superimpose runs (default: `CS6886W-VGG6`)
 
 #### Option C: Automated Hyperparameter Sweep
 Launches an automated Bayesian optimization sweep using W&B across 5 activations, 6 optimizers, 4 learning rates, and 4 batch sizes:
 ```bash
-python3 main.py --sweep
+python3 main.py --sweep --count 20 --project CS6886W-VGG6
 ```
+Sweep CLI options:
+- `--sweep`: flag to enable automated sweep agent mode
+- `--count`: maximum number of trials/runs to execute (default: `20`)
+- `--project`: target W&B project for the sweep (default: `CS6886W-VGG6`)
 
 ### 1.6 Model Checkpoints & W&B Mapping
 After each training trial, the trained model weights (`.pth`) are automatically saved into `data/trained_models/` with the filename structured as:
