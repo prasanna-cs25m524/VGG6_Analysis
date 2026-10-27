@@ -2,11 +2,11 @@ import os
 import sys
 import random
 import argparse
-from datetime import datetime
 import numpy as np
 import torch
 import wandb
 
+from datetime import datetime
 from dataset  import get_dataloaders
 from model    import get_model
 from train    import train, get_optimizer
@@ -14,12 +14,13 @@ from evaluate import evaluate
 
 
 # Default Baseline Config
+DEFAULT_PROJECT    = 'CS6886W-VGG6'
 DEFAULT_SEED       = 42
 DEFAULT_ACTIVATION = 'relu'
 DEFAULT_OPTIMIZER  = 'adam'
 DEFAULT_BATCH_SIZE = 64
 DEFAULT_LR         = 0.001
-DEFAULT_EPOCHS     = 10
+DEFAULT_EPOCHS     = 30
 
 # W&B Sweep Config (used only when --sweep is passed)
 sweep_config = {
@@ -30,11 +31,11 @@ sweep_config = {
         'optimizer':  {'values': ['sgd', 'nesterov_sgd', 'adam', 'adagrad', 'rmsprop', 'nadam']},
         'lr':         {'values': [0.1, 0.01, 0.001, 0.0001]},
         'batch_size': {'values': [32, 64, 128, 256]},
-        'epochs':     {'value': 10}
+        'epochs':     {'value': 30}
     }
 }
 
-# Set seed to reproduce the result
+# Set seed to reproduce the result later
 def set_seed(seed=42):
     random.seed(seed)
     np.random.seed(seed)
@@ -46,11 +47,12 @@ def set_seed(seed=42):
     os.environ['PYTHONHASHSEED'] = str(seed)
 
 
-def run_experiment(manual_config=None):
+def run_experiment(manual_config=None, project=DEFAULT_PROJECT):
+	#Checking and settig device whether gpu available or not
     device = torch.device('cuda' if torch.cuda.is_available() else 'cpu')
     print(f"Using device: {device}")
 
-    # If running as manual run (not inside a sweep), initialize W&B with manual config
+    # If running as manual run (i.e not inside a sweep), initialize W&B with manual config
     if wandb.run is None:
         cfg_dict = manual_config or {
             "seed": DEFAULT_SEED,
@@ -60,9 +62,10 @@ def run_experiment(manual_config=None):
             "batch_size": DEFAULT_BATCH_SIZE,
             "epochs": DEFAULT_EPOCHS
         }
+        run_name = f"{cfg_dict['optimizer']}_{cfg_dict['activation']}_lr{cfg_dict['lr']}_bs{cfg_dict['batch_size']}"
         wandb.init(
-            project="CS6886W-VGG6",
-            name=f"manual_{cfg_dict['optimizer']}_{cfg_dict['activation']}",
+            project=project,
+            name=run_name,
             config={
                 "architecture": "VGG-6",
                 "dataset": "CIFAR-10",
@@ -72,6 +75,11 @@ def run_experiment(manual_config=None):
 
     cfg = wandb.config
 
+    # Explicitly set dynamic run name so W&B dashboard always displays active config
+    run_name = f"{cfg.optimizer}_{cfg.activation}_lr{cfg.lr}_bs{cfg.batch_size}"
+    if wandb.run:
+        wandb.run.name = run_name
+
     # Load data
     train_loader, test_loader = get_dataloaders(batch_size=cfg.batch_size)
 
@@ -79,7 +87,7 @@ def run_experiment(manual_config=None):
     model = get_model(num_classes=10, activation=cfg.activation).to(device)
     print(model)
 
-    # Optimizer using factory function
+    # Configure Optimizer
     optimizer = get_optimizer(cfg.optimizer, model, lr=cfg.lr)
 
     # Print active experiment parameters before starting training
@@ -95,7 +103,7 @@ def run_experiment(manual_config=None):
     # Train model
     train(model, train_loader, test_loader, optimizer, device, epochs=cfg.epochs)
 
-    # Evaluation
+    # Evaluation of accuracy
     train_acc = evaluate(model, train_loader, device)
     test_acc  = evaluate(model, test_loader, device)
     print(f"\nFinal Train Accuracy: {train_acc:.2f}% | Final Test Accuracy: {test_acc:.2f}%")
@@ -126,10 +134,17 @@ def run_experiment(manual_config=None):
 
 
 def main():
+	# Support for several user input so that we can run the analysys in 
+	# Sweep mode or manual mode with config or manual mode with default values
     parser = argparse.ArgumentParser(description="VGG-6 on CIFAR-10 Training & Sweeps")
-    parser.add_argument('--sweep', action='store_true', help='Launch W&B automated sweep')
-    parser.add_argument('--count', type=int, default=20, help='Number of sweep trials (default: 20)')
-    parser.add_argument('--seed', type=int, default=DEFAULT_SEED, help=f'Random seed (default: {DEFAULT_SEED})')
+    parser.add_argument('--sweep', action='store_true',
+						help='Launch W&B automated sweep')
+    parser.add_argument('--count', type=int, default=20,
+						help='Number of sweep trials (default: 20)')
+    parser.add_argument('--seed', type=int, default=DEFAULT_SEED,
+						help=f'Random seed (default: {DEFAULT_SEED})')
+    parser.add_argument('--project', type=str, default=DEFAULT_PROJECT,
+						help=f'W&B project name (default: {DEFAULT_PROJECT})')
 
     # Custom manual run arguments (ignored if --sweep is provided)
     parser.add_argument('--activation', type=str, default=DEFAULT_ACTIVATION,
@@ -147,10 +162,10 @@ def main():
 
     args = parser.parse_args()
 
-    # 1. Fix random seed for exact reproducibility across runs
+    # Add random seed for exact reproducibility across runs
     set_seed(args.seed)
 
-    # 2. Automated W&B Login
+    # Automated W&B Login for ease :p
     api_key = os.environ.get("WANDB_API_KEY", "YOUR_WANDB_API_KEY_HERE")
     if api_key and api_key != "YOUR_WANDB_API_KEY_HERE":
         wandb.login(key=api_key)
@@ -158,8 +173,8 @@ def main():
         wandb.login()
 
     if args.sweep:
-        sweep_id = wandb.sweep(sweep_config, project="CS6886W-VGG6")
-        print(f"\nStarting W&B Sweep with ID: {sweep_id}")
+        sweep_id = wandb.sweep(sweep_config, project=args.project)
+        print(f"\nStarting W&B Sweep with ID: {sweep_id} in project: {args.project}")
         wandb.agent(sweep_id, function=run_experiment, count=args.count)
     else:
         # Manual run using CLI arguments (or defaults if not specified)
@@ -171,7 +186,7 @@ def main():
             "batch_size": args.batch_size,
             "epochs": args.epochs
         }
-        run_experiment(manual_config=manual_config)
+        run_experiment(manual_config=manual_config, project=args.project)
 
 
 if __name__ == '__main__':

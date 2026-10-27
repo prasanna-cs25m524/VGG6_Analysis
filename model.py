@@ -6,7 +6,7 @@ import torch.nn.functional as F
 # VGG6 layer config
 cfg_vgg6 = [64, 64, 'M', 128, 128, 'M']
 
-
+#Config activation func based on user config
 def get_activation(name='relu'):
     name = name.lower()
     if name == 'relu':
@@ -21,8 +21,8 @@ def get_activation(name='relu'):
         return nn.GELU()
     else:
         raise ValueError(f"You gave wrong activation function i.e '{name}'. "
-                         f"Supported ones are : ['relu', 'sigmoid', 'tanh', 'silu', 'gelu']")
-
+                         f"Supported ones are : ['relu', 'sigmoid', 'tanh', "
+						 f"'silu', 'gelu']")
 
 def make_layers(cfg, activation='relu'):
     layers = []

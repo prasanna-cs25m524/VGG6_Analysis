@@ -4,7 +4,7 @@ import torch.optim as optim
 import wandb
 from evaluate import evaluate
 
-
+#config optimizer depend on the configuration
 def get_optimizer(name, model, lr):
     name = name.lower()
     params = model.parameters()
@@ -23,7 +23,8 @@ def get_optimizer(name, model, lr):
         return optim.NAdam(params, lr=lr)
     else:
         raise ValueError(f"You gave wrong optimizer i.e : '{name}'. "
-                         f"Supported ones are: ['sgd', 'nesterov_sgd', 'adam', 'adagrad', 'rmsprop', 'nadam']")
+                         f"Supported ones are: ['sgd', 'nesterov_sgd',"
+						 f"'adam', 'adagrad', 'rmsprop', 'nadam']")
 
 
 def train(model, train_loader, test_loader, optimizer, device, epochs=25):

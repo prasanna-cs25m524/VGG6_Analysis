@@ -105,3 +105,61 @@ After each training trial, the trained model weights (`.pth`) are automatically 
 ## Section 3: Analysis
 
 > **[TODO]**: To be added.
+
+---
+
+## Section 4: Experimental Results & Benchmarks
+
+This section tracks the systematic benchmarking of VGG-6 on CIFAR-10 across different architectural components and hyperparameter settings. All runs are logged via Weights & Biases with saved model checkpoints in `data/trained_models/`.
+
+### 4.1 Varying Optimizers
+In this set of experiments, the activation function (`relu`), batch size (`64`), learning rate (`0.001`), and training duration (`30` epochs) are kept constant while evaluating different optimization algorithms.
+
+| Run # | Optimizer | Learning Rate | Batch Size | Epochs | Train Acc (%) | Test Acc (%) | Comments / Observations |
+| :---: | :--- | :---: | :---: | :---: | :---: | :---: | :--- |
+| 1 | `adam` (Baseline) | 0.001 | 64 | 30 | — | — | Standard baseline adaptive moment estimation |
+| 2 | `sgd` | 0.001 | 64 | 30 | — | — | Standard stochastic gradient descent |
+| 3 | `nesterov_sgd` | 0.001 | 64 | 30 | — | — | SGD with momentum=0.9 and Nesterov acceleration |
+| 4 | `adagrad` | 0.001 | 64 | 30 | — | — | Adaptive subgradient with parameter-wise learning rates |
+| 5 | `rmsprop` | 0.001 | 64 | 30 | — | — | Root Mean Square Propagation (alpha=0.99) |
+| 6 | `nadam` | 0.001 | 64 | 30 | — | — | Nesterov-accelerated Adaptive Moment Estimation |
+
+---
+
+### 4.2 Varying Activation Functions
+In this set of experiments, the optimizer (`adam`), learning rate (`0.001`), batch size (`64`), and training duration (`30` epochs) are held constant while evaluating different non-linear activation functions across all convolutional and linear layers.
+
+| Run # | Activation | Optimizer | Learning Rate | Batch Size | Epochs | Train Acc (%) | Test Acc (%) | Comments / Observations |
+| :---: | :--- | :--- | :---: | :---: | :---: | :---: | :--- |
+| 1 | `relu` (Baseline) | adam | 0.001 | 64 | 30 | — | — | Standard non-saturating piecewise linear activation |
+| 2 | `sigmoid` | adam | 0.001 | 64 | 30 | — | — | Saturating activation; sensitive to vanishing gradients |
+| 3 | `tanh` | adam | 0.001 | 64 | 30 | — | — | Zero-centered saturating non-linearity |
+| 4 | `silu` (Swish) | adam | 0.001 | 64 | 30 | — | — | Smooth non-monotonic gating function |
+| 5 | `gelu` | adam | 0.001 | 64 | 30 | — | — | Gaussian Error Linear Unit non-linearity |
+
+---
+
+### 4.3 Varying Learning Rate and Epochs
+In this set of experiments, we test sensitivity to learning rate values, mini-batch sizes, and training duration on the baseline architecture.
+
+| Run # | Learning Rate | Batch Size | Epochs | Optimizer | Activation | Train Acc (%) | Test Acc (%) | Comments / Observations |
+| :---: | :---: | :---: | :---: | :--- | :--- | :---: | :---: | :--- |
+| 1 | 0.1 | 64 | 30 | adam | relu | — | — | High learning rate trial |
+| 2 | 0.01 | 64 | 30 | adam | relu | — | — | Moderate learning rate trial |
+| 3 | 0.001 (Baseline) | 64 | 30 | adam | relu | — | — | Default baseline learning rate |
+| 4 | 0.0001 | 64 | 30 | adam | relu | — | — | Lower learning rate; slower convergence |
+| 5 | 0.001 | 32 | 30 | adam | relu | — | — | Small batch size (frequent updates) |
+| 6 | 0.001 | 128 | 30 | adam | relu | — | — | Moderate batch size |
+| 7 | 0.001 | 256 | 30 | adam | relu | — | — | Large batch size (smoother gradients) |
+| 8 | 0.001 | 64 | 10 | adam | relu | — | — | Short training horizon (10 epochs) |
+| 9 | 0.001 | 64 | 40 | adam | relu | — | — | Extended training horizon (40 epochs) |
+
+---
+
+### 4.4 Optimal Model Run
+> **[TODO]**: To be finalized after analyzing comparative runs from Sections 4.1 to 4.3 and automated sweep outputs. The best-performing combination of activation, optimizer, learning rate, and batch size will be evaluated here for peak accuracy.
+
+| Run # | Configuration (Activation + Optimizer + LR + BS) | Epochs | Train Acc (%) | Test Acc (%) | Comments / Key Findings |
+| :---: | :--- | :---: | :---: | :---: | :--- |
+| Best | *TBD (e.g., gelu / silu + adam / nadam, lr=..., bs=...)* | 40 | — | — | Selected best hyperparameter configuration |
+
