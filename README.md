@@ -54,7 +54,7 @@ You can also pass a custom seed via CLI: `--seed <int>` (default: `42`).
 ### 1.5 How to Run
 
 #### Option A: Baseline Training (Default Configuration)
-Runs the baseline model (Adam, ReLU, batch size 64, lr 0.001, epochs 10, seed 42) and logs loss/accuracy curves to W&B:
+Runs the baseline model (Adam, ReLU, batch size 64, lr 0.001, epochs 30, seed 42) and logs loss/accuracy curves to W&B:
 ```bash
 python3 main.py
 ```
@@ -62,21 +62,26 @@ python3 main.py
 #### Option B: Manual Training with Custom Parameters
 You can override any parameter directly via command-line arguments without editing code:
 ```bash
-python3 main.py --activation gelu --optimizer nesterov_sgd --lr 0.01 --batch_size 128 --epochs 25 --seed 42
+python3 main.py --activation gelu --optimizer nesterov_sgd --lr 0.01 --batch_size 128 --epochs 30 --seed 42 --project CS6886W-VGG6
 ```
 Available CLI options:
 - `--activation`: `relu`, `sigmoid`, `tanh`, `silu`, `gelu` (default: `relu`)
 - `--optimizer`: `sgd`, `nesterov_sgd`, `adam`, `adagrad`, `rmsprop`, `nadam` (default: `adam`)
 - `--lr`: float learning rate (default: `0.001`)
 - `--batch_size`: batch size (default: `64`)
-- `--epochs`: number of epochs (default: `10`)
+- `--epochs`: number of epochs (default: `30`)
 - `--seed`: random seed (default: `42`)
+- `--project`: W&B project name to group and superimpose runs (default: `CS6886W-VGG6`)
 
 #### Option C: Automated Hyperparameter Sweep
 Launches an automated Bayesian optimization sweep using W&B across 5 activations, 6 optimizers, 4 learning rates, and 4 batch sizes:
 ```bash
-python3 main.py --sweep
+python3 main.py --sweep --count 20 --project CS6886W-VGG6
 ```
+Sweep CLI options:
+- `--sweep`: flag to enable automated sweep agent mode
+- `--count`: maximum number of trials/runs to execute (default: `20`)
+- `--project`: target W&B project for the sweep (default: `CS6886W-VGG6`)
 
 ### 1.6 Model Checkpoints & W&B Mapping
 After each training trial, the trained model weights (`.pth`) are automatically saved into `data/trained_models/` with the filename structured as:
@@ -115,14 +120,14 @@ This section tracks the systematic benchmarking of VGG-6 on CIFAR-10 across diff
 ### 4.1 Varying Optimizers
 In this set of experiments, the activation function (`relu`), batch size (`64`), learning rate (`0.001`), and training duration (`30` epochs) are kept constant while evaluating different optimization algorithms.
 
-| Run # | Optimizer | Learning Rate | Batch Size | Epochs | Train Acc (%) | Test Acc (%) | Comments / Observations |
-| :---: | :--- | :---: | :---: | :---: | :---: | :---: | :--- |
-| 1 | `adam` (Baseline) | 0.001 | 64 | 30 | — | — | Standard baseline adaptive moment estimation |
-| 2 | `sgd` | 0.001 | 64 | 30 | — | — | Standard stochastic gradient descent |
-| 3 | `nesterov_sgd` | 0.001 | 64 | 30 | — | — | SGD with momentum=0.9 and Nesterov acceleration |
-| 4 | `adagrad` | 0.001 | 64 | 30 | — | — | Adaptive subgradient with parameter-wise learning rates |
-| 5 | `rmsprop` | 0.001 | 64 | 30 | — | — | Root Mean Square Propagation (alpha=0.99) |
-| 6 | `nadam` | 0.001 | 64 | 30 | — | — | Nesterov-accelerated Adaptive Moment Estimation |
+| Run # | Optimizer | Activation | Learning Rate | Batch Size | Epochs | Train Acc (%) | Test Acc (%) | Comments / Observations |
+| :---: | :--- | :--- | :---: | :---: | :---: | :---: | :---: | :--- |
+| 1 | `adam` (Baseline) | relu | 0.001 | 64 | 30 | — | — | Standard baseline adaptive moment estimation |
+| 2 | `sgd` | relu | 0.001 | 64 | 30 | — | — | Standard stochastic gradient descent |
+| 3 | `nesterov_sgd` | relu | 0.001 | 64 | 30 | — | — | SGD with momentum=0.9 and Nesterov acceleration |
+| 4 | `adagrad` | relu | 0.001 | 64 | 30 | — | — | Adaptive subgradient with parameter-wise learning rates |
+| 5 | `rmsprop` | relu | 0.001 | 64 | 30 | — | — | Root Mean Square Propagation (alpha=0.99) |
+| 6 | `nadam` | relu | 0.001 | 64 | 30 | — | — | Nesterov-accelerated Adaptive Moment Estimation |
 
 ---
 
@@ -130,7 +135,7 @@ In this set of experiments, the activation function (`relu`), batch size (`64`),
 In this set of experiments, the optimizer (`adam`), learning rate (`0.001`), batch size (`64`), and training duration (`30` epochs) are held constant while evaluating different non-linear activation functions across all convolutional and linear layers.
 
 | Run # | Activation | Optimizer | Learning Rate | Batch Size | Epochs | Train Acc (%) | Test Acc (%) | Comments / Observations |
-| :---: | :--- | :--- | :---: | :---: | :---: | :---: | :--- |
+| :---: | :--- | :--- | :---: | :---: | :---: | :---: | :---: | :--- |
 | 1 | `relu` (Baseline) | adam | 0.001 | 64 | 30 | — | — | Standard non-saturating piecewise linear activation |
 | 2 | `sigmoid` | adam | 0.001 | 64 | 30 | — | — | Saturating activation; sensitive to vanishing gradients |
 | 3 | `tanh` | adam | 0.001 | 64 | 30 | — | — | Zero-centered saturating non-linearity |
