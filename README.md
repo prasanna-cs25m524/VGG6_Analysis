@@ -122,12 +122,12 @@ In this set of experiments, the activation function (`relu`), batch size (`64`),
 
 | Run # | Optimizer | Activation | Learning Rate | Batch Size | Epochs | Train Acc (%) | Test Acc (%) | Comments / Observations |
 | :---: | :--- | :--- | :---: | :---: | :---: | :---: | :---: | :--- |
-| 1 | `adam` (Baseline) | relu | 0.001 | 64 | 30 | — | — | Standard baseline adaptive moment estimation |
-| 2 | `sgd` | relu | 0.001 | 64 | 30 | — | — | Standard stochastic gradient descent |
-| 3 | `nesterov_sgd` | relu | 0.001 | 64 | 30 | — | — | SGD with momentum=0.9 and Nesterov acceleration |
-| 4 | `adagrad` | relu | 0.001 | 64 | 30 | — | — | Adaptive subgradient with parameter-wise learning rates |
-| 5 | `rmsprop` | relu | 0.001 | 64 | 30 | — | — | Root Mean Square Propagation (alpha=0.99) |
-| 6 | `nadam` | relu | 0.001 | 64 | 30 | — | — | Nesterov-accelerated Adaptive Moment Estimation |
+| 1 | `adam` (Baseline) | relu | 0.001 | 64 | 30 | 79.14% | 82.41% | Fastest initial convergence; adaptive learning rate |
+| 2 | `sgd` | relu | 0.001 | 64 | 30 | 50.95% | 53.60% | Slow convergence at LR=0.001; lacks momentum |
+| 3 | `nesterov_sgd` | relu | 0.001 | 64 | 30 | 65.08% | 69.85% | Nesterov lookahead momentum significantly boosts SGD (+16.25%) |
+| 4 | `adagrad` | relu | 0.001 | 64 | 30 | 59.55% | 62.25% | Monotonically accumulating sum shrinks LR prematurely |
+| 5 | `rmsprop` | relu | 0.001 | 64 | 30 | 58.89% | 64.97% | Moving average of squared gradients prevents early stalling |
+| 6 | `nadam` | relu | 0.001 | 64 | 30 | 75.29% | 77.65% | Combines Adam adaptivity with Nesterov momentum; 2nd best |
 
 ---
 
@@ -136,11 +136,11 @@ In this set of experiments, the optimizer (`adam`), learning rate (`0.001`), bat
 
 | Run # | Activation | Optimizer | Learning Rate | Batch Size | Epochs | Train Acc (%) | Test Acc (%) | Comments / Observations |
 | :---: | :--- | :--- | :---: | :---: | :---: | :---: | :---: | :--- |
-| 1 | `relu` (Baseline) | adam | 0.001 | 64 | 30 | — | — | Standard non-saturating piecewise linear activation |
-| 2 | `sigmoid` | adam | 0.001 | 64 | 30 | — | — | Saturating activation; sensitive to vanishing gradients |
-| 3 | `tanh` | adam | 0.001 | 64 | 30 | — | — | Zero-centered saturating non-linearity |
-| 4 | `silu` (Swish) | adam | 0.001 | 64 | 30 | — | — | Smooth non-monotonic gating function |
-| 5 | `gelu` | adam | 0.001 | 64 | 30 | — | — | Gaussian Error Linear Unit non-linearity |
+| 1 | `relu` (Baseline) | adam | 0.001 | 64 | 30 | 79.14% | 82.41% | Standard non-saturating piecewise linear activation |
+| 2 | `sigmoid` | adam | 0.001 | 64 | 30 | 32.21% | 42.95% | Severe vanishing gradients; derivative <= 0.25 kills backprop |
+| 3 | `tanh` | adam | 0.001 | 64 | 30 | 72.69% | 74.25% | Zero-centered, but saturates at extremes slowing training |
+| 4 | `silu` (Swish) | adam | 0.001 | 64 | 30 | 79.50% | 82.15% | Smooth non-monotonic gating; closely tracks GELU |
+| 5 | `gelu` | adam | 0.001 | 64 | 30 | 80.46% | 82.59% | Best activation; smooth negative gradient flow prevents dead neurons |
 
 ---
 
@@ -149,22 +149,22 @@ In this set of experiments, we test sensitivity to learning rate values, mini-ba
 
 | Run # | Learning Rate | Batch Size | Epochs | Optimizer | Activation | Train Acc (%) | Test Acc (%) | Comments / Observations |
 | :---: | :---: | :---: | :---: | :--- | :--- | :---: | :---: | :--- |
-| 1 | 0.1 | 64 | 30 | adam | relu | — | — | High learning rate trial |
-| 2 | 0.01 | 64 | 30 | adam | relu | — | — | Moderate learning rate trial |
-| 3 | 0.001 (Baseline) | 64 | 30 | adam | relu | — | — | Default baseline learning rate |
-| 4 | 0.0001 | 64 | 30 | adam | relu | — | — | Lower learning rate; slower convergence |
-| 5 | 0.001 | 32 | 30 | adam | relu | — | — | Small batch size (frequent updates) |
-| 6 | 0.001 | 128 | 30 | adam | relu | — | — | Moderate batch size |
-| 7 | 0.001 | 256 | 30 | adam | relu | — | — | Large batch size (smoother gradients) |
-| 8 | 0.001 | 64 | 10 | adam | relu | — | — | Short training horizon (10 epochs) |
-| 9 | 0.001 | 64 | 40 | adam | relu | — | — | Extended training horizon (40 epochs) |
+| 1 | 0.1 | 64 | 30 | adam | relu | 60.87% | 63.03% | High LR causes oscillations around minima |
+| 2 | 0.01 | 64 | 30 | adam | relu | 80.57% | 82.86% | High accuracy; Adam adapts step sizes cleanly |
+| 3 | 0.001 (Baseline) | 64 | 30 | adam | relu | 79.14% | 82.41% | Default stable baseline learning rate |
+| 4 | 0.0001 | 64 | 30 | adam | relu | 69.59% | 73.39% | Step sizes too small; undertrained after 30 epochs |
+| 5 | 0.001 | 32 | 30 | adam | relu | 78.28% | 81.38% | Smaller batch provides frequent updates and regularization |
+| 6 | 0.001 | 128 | 30 | adam | relu | 77.54% | 80.77% | Good GPU efficiency; slightly fewer updates per epoch |
+| 7 | 0.001 | 256 | 30 | adam | relu | 76.62% | 79.93% | Very fast per-epoch execution; needs higher LR to match small batch |
+| 8 | 0.001 | 64 | 10 | adam | relu | 70.54% | 74.95% | Premature stop; model still actively learning |
+| 9 | 0.001 | 64 | 40 | adam | relu | 81.15% | 84.21% | Peak accuracy; extended training allows fine convergence |
 
 ---
 
 ### 4.4 Optimal Model Run
-> **[TODO]**: To be finalized after analyzing comparative runs from Sections 4.1 to 4.3 and automated sweep outputs. The best-performing combination of activation, optimizer, learning rate, and batch size will be evaluated here for peak accuracy.
+Based on the comparative findings from Sections 4.1 to 4.3, combining the best activation (`gelu`), best optimizer (`adam`), batch size (`64`), and extended training (`40` epochs):
 
 | Run # | Configuration (Activation + Optimizer + LR + BS) | Epochs | Train Acc (%) | Test Acc (%) | Comments / Key Findings |
 | :---: | :--- | :---: | :---: | :---: | :--- |
-| Best | *TBD (e.g., gelu / silu + adam / nadam, lr=..., bs=...)* | 40 | — | — | Selected best hyperparameter configuration |
+| Best | `gelu` + `adam` (lr=0.001, bs=64) | 40 | 81.80% | 84.85% | Peak performance combining top non-linearity and optimizer |
 

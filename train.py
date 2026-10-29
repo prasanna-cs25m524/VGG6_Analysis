@@ -50,13 +50,24 @@ def train(model, train_loader, test_loader, optimizer, device, epochs=25):
         test_acc  = evaluate(model, test_loader,  device)
         avg_loss  = running_loss / len(train_loader)
 
+        # Compute validation loss
+        model.eval()
+        val_loss_sum = 0.0
+        with torch.no_grad():
+            for v_images, v_labels in test_loader:
+                v_images, v_labels = v_images.to(device), v_labels.to(device)
+                v_outputs = model(v_images)
+                val_loss_sum += criterion(v_outputs, v_labels).item()
+        val_loss = val_loss_sum / len(test_loader)
+
         # Log metrics automatically to W&B (generates live Loss & Accuracy curves)
         wandb.log({
             "epoch": int(epoch),
             "train_loss": float(avg_loss),
+            "val_loss": float(val_loss),
             "train_acc": float(train_acc),
             "val_acc": float(test_acc)
         }, commit=True)
 
-        print(f"Epoch [{epoch}/{epochs}]  Loss: {avg_loss:.4f}  "
+        print(f"Epoch [{epoch}/{epochs}]  Loss: {avg_loss:.4f}  Val Loss: {val_loss:.4f}  "
               f"Train Acc: {train_acc:.2f}%  Test Acc: {test_acc:.2f}%")
