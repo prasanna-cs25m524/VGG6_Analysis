@@ -62,21 +62,44 @@ def run_experiment(manual_config=None, project=DEFAULT_PROJECT):
             "batch_size": DEFAULT_BATCH_SIZE,
             "epochs": DEFAULT_EPOCHS
         }
-        run_name = f"{cfg_dict['optimizer']}_{cfg_dict['activation']}_lr{cfg_dict['lr']}_bs{cfg_dict['batch_size']}"
+        opt_name = cfg_dict['optimizer'].lower()
+        momentum_val = 0.9 if opt_name in ['nesterov_sgd', 'adam', 'nadam'] else 0.0
+        nesterov_val = True if opt_name in ['nesterov_sgd', 'nadam'] else False
+
+        run_name = (
+            f"act_{cfg_dict['activation']}_opt_{cfg_dict['optimizer']}_"
+            f"lr_{cfg_dict['lr']}_bs_{cfg_dict['batch_size']}_ep_{cfg_dict['epochs']}"
+        )
         wandb.init(
             project=project,
             name=run_name,
             config={
                 "architecture": "VGG-6",
                 "dataset": "CIFAR-10",
-                **cfg_dict
+                "activation": cfg_dict['activation'],
+                "optimizer": cfg_dict['optimizer'],
+                "lr": cfg_dict['lr'],
+                "batch_size": cfg_dict['batch_size'],
+                "epochs": cfg_dict['epochs'],
+                "momentum": momentum_val,
+                "nesterov": nesterov_val,
+                "weight_decay": 0.0,
+                "batch_norm": True,
+                "seed": cfg_dict.get("seed", DEFAULT_SEED)
             }
         )
 
     cfg = wandb.config
 
     # Explicitly set dynamic run name so W&B dashboard always displays active config
-    run_name = f"{cfg.optimizer}_{cfg.activation}_lr{cfg.lr}_bs{cfg.batch_size}"
+    opt_name = cfg.optimizer.lower()
+    momentum_val = 0.9 if opt_name in ['nesterov_sgd', 'adam', 'nadam'] else 0.0
+    nesterov_val = True if opt_name in ['nesterov_sgd', 'nadam'] else False
+
+    run_name = (
+        f"act_{cfg.activation}_opt_{cfg.optimizer}_"
+        f"lr_{cfg.lr}_bs_{cfg.batch_size}_ep_{cfg.epochs}"
+    )
     if wandb.run:
         wandb.run.name = run_name
 
@@ -95,13 +118,15 @@ def run_experiment(manual_config=None, project=DEFAULT_PROJECT):
     print(f"Starting Run Configuration:")
     print(f"  • Activation   : {cfg.activation}")
     print(f"  • Optimizer    : {cfg.optimizer}")
+    print(f"  • Momentum     : {momentum_val} (Nesterov: {nesterov_val})")
     print(f"  • Learning Rate: {cfg.lr}")
     print(f"  • Batch Size   : {cfg.batch_size}")
     print(f"  • Epochs       : {cfg.epochs}")
+    print(f"  • W&B Project  : {project}")
     print(f"{'='*60}\n")
 
     # Train model
-    train(model, train_loader, test_loader, optimizer, device, epochs=cfg.epochs)
+    final_train_loss, final_val_loss = train(model, train_loader, test_loader, optimizer, device, epochs=cfg.epochs)
 
     # Evaluation of accuracy
     train_acc = evaluate(model, train_loader, device)
@@ -123,12 +148,14 @@ def run_experiment(manual_config=None, project=DEFAULT_PROJECT):
     )
     save_path = os.path.join(checkpoint_dir, model_filename)
     torch.save(model.state_dict(), save_path)
-    print(f"✓ Model checkpoint saved: {save_path}")
+    print(f"Model saved at: {save_path}")
 
     # Log summary metrics to W&B
     if wandb.run:
         wandb.summary["final_train_acc"]  = train_acc
         wandb.summary["final_test_acc"]   = test_acc
+        wandb.summary["final_train_loss"] = final_train_loss
+        wandb.summary["final_val_loss"]   = final_val_loss
         wandb.summary["model_checkpoint"] = model_filename
         wandb.finish()
 
