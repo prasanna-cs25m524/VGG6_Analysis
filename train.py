@@ -71,3 +71,5 @@ def train(model, train_loader, test_loader, optimizer, device, epochs=25):
 
         print(f"Epoch [{epoch}/{epochs}]  Loss: {avg_loss:.4f}  Val Loss: {val_loss:.4f}  "
               f"Train Acc: {train_acc:.2f}%  Test Acc: {test_acc:.2f}%")
+
+    return avg_loss, val_loss
