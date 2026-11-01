@@ -1,0 +1,1953 @@
+Total experiments to run: 20
+
+
+######################################################################
+▶ EXECUTING RUN 1/20: adam | relu | lr=0.001 | bs=64 | epochs=30
+######################################################################
+
+Using device: cuda
+Tracking run with wandb version 0.28.1
+Run data is saved locally in /kaggle/working/wandb/run-20261029_161040-8rad4uj4
+Syncing run act_relu_opt_adam_lr_0.001_bs_64_ep_30 to Weights & Biases (docs)
+View project at https://wandb.ai/cs25m524-indian-institute-of-technology-madras/CS6886W-VGG6-Manual-final
+View run at https://wandb.ai/cs25m524-indian-institute-of-technology-madras/CS6886W-VGG6-Manual-final/runs/8rad4uj4
+100%|██████████| 170M/170M [20:11<00:00, 141kB/s]  
+
+============================================================
+Starting Run Configuration:
+  • Activation   : relu
+  • Optimizer    : adam
+  • Momentum     : 0.9 (Nesterov: False)
+  • Learning Rate: 0.001
+  • Batch Size   : 64
+  • Epochs       : 30
+  • W&B Project  : CS6886W-VGG6-Manual-final
+============================================================
+
+Epoch [1/30]  Loss: 1.5445  Val Loss: 1.5128  Train Acc: 44.34%  Test Acc: 46.22%
+Epoch [2/30]  Loss: 1.2578  Val Loss: 1.3613  Train Acc: 48.30%  Test Acc: 53.41%
+Epoch [3/30]  Loss: 1.1350  Val Loss: 1.0413  Train Acc: 59.35%  Test Acc: 63.93%
+Epoch [4/30]  Loss: 1.0506  Val Loss: 0.9664  Train Acc: 62.15%  Test Acc: 66.83%
+Epoch [5/30]  Loss: 0.9929  Val Loss: 1.1962  Train Acc: 55.06%  Test Acc: 62.32%
+Epoch [6/30]  Loss: 0.9484  Val Loss: 1.0637  Train Acc: 61.32%  Test Acc: 65.62%
+Epoch [7/30]  Loss: 0.9097  Val Loss: 0.8479  Train Acc: 65.30%  Test Acc: 71.83%
+Epoch [8/30]  Loss: 0.8746  Val Loss: 0.9717  Train Acc: 65.20%  Test Acc: 69.13%
+Epoch [9/30]  Loss: 0.8505  Val Loss: 0.7811  Train Acc: 69.29%  Test Acc: 73.74%
+Epoch [10/30]  Loss: 0.8233  Val Loss: 0.7796  Train Acc: 69.66%  Test Acc: 73.67%
+Epoch [11/30]  Loss: 0.8032  Val Loss: 0.7768  Train Acc: 68.90%  Test Acc: 74.71%
+Epoch [12/30]  Loss: 0.7855  Val Loss: 0.7587  Train Acc: 71.02%  Test Acc: 75.06%
+Epoch [13/30]  Loss: 0.7660  Val Loss: 0.8964  Train Acc: 67.84%  Test Acc: 71.87%
+Epoch [14/30]  Loss: 0.7555  Val Loss: 0.7227  Train Acc: 72.19%  Test Acc: 75.75%
+Epoch [15/30]  Loss: 0.7354  Val Loss: 0.6432  Train Acc: 74.03%  Test Acc: 78.44%
+Epoch [16/30]  Loss: 0.7257  Val Loss: 0.6730  Train Acc: 73.64%  Test Acc: 77.65%
+Epoch [17/30]  Loss: 0.7081  Val Loss: 0.6551  Train Acc: 74.56%  Test Acc: 78.78%
+Epoch [18/30]  Loss: 0.6990  Val Loss: 0.6310  Train Acc: 75.83%  Test Acc: 79.00%
+Epoch [19/30]  Loss: 0.6949  Val Loss: 0.6534  Train Acc: 75.46%  Test Acc: 78.37%
+Epoch [20/30]  Loss: 0.6882  Val Loss: 0.6531  Train Acc: 74.20%  Test Acc: 78.47%
+Epoch [21/30]  Loss: 0.6765  Val Loss: 0.6289  Train Acc: 75.56%  Test Acc: 79.70%
+Epoch [22/30]  Loss: 0.6642  Val Loss: 0.6264  Train Acc: 76.60%  Test Acc: 79.72%
+Epoch [23/30]  Loss: 0.6563  Val Loss: 0.6270  Train Acc: 76.47%  Test Acc: 79.43%
+Epoch [24/30]  Loss: 0.6454  Val Loss: 0.6178  Train Acc: 77.55%  Test Acc: 80.50%
+Epoch [25/30]  Loss: 0.6418  Val Loss: 0.5381  Train Acc: 79.04%  Test Acc: 82.10%
+Epoch [26/30]  Loss: 0.6350  Val Loss: 0.5926  Train Acc: 78.28%  Test Acc: 80.77%
+Epoch [27/30]  Loss: 0.6225  Val Loss: 0.5633  Train Acc: 78.84%  Test Acc: 81.84%
+Epoch [28/30]  Loss: 0.6284  Val Loss: 0.5797  Train Acc: 77.26%  Test Acc: 80.59%
+Epoch [29/30]  Loss: 0.6123  Val Loss: 0.5205  Train Acc: 79.80%  Test Acc: 82.39%
+Epoch [30/30]  Loss: 0.6099  Val Loss: 0.5709  Train Acc: 78.64%  Test Acc: 81.03%
+
+Final Train Accuracy: 78.79% | Final Test Accuracy: 81.03%
+Model saved: data/trained_models/8rad4uj4_20261029_165558_relu_adam_lr-0.001_bs-64_epochs-30_acc-train-78.79_acc-test-81.03.pth
+
+
+Run history:
+
+epoch	▁▁▁▂▂▂▂▃▃▃▃▄▄▄▄▅▅▅▅▆▆▆▆▇▇▇▇███
+train_acc	▁▂▄▅▃▄▅▅▆▆▆▆▆▆▇▇▇▇▇▇▇▇▇████▇██
+train_loss	█▆▅▄▄▄▃▃▃▃▂▂▂▂▂▂▂▂▂▂▁▁▁▁▁▁▁▁▁▁
+val_acc	▁▂▄▅▄▅▆▅▆▆▇▇▆▇▇▇▇▇▇▇▇▇▇███████
+val_loss	█▇▅▄▆▅▃▄▃▃▃▃▄▂▂▂▂▂▂▂▂▂▂▂▁▂▁▁▁▁
+
+Run summary:
+
+epoch	30
+final_test_acc	81.03
+final_train_acc	78.792
+final_train_loss	0.60988
+final_val_loss	0.57092
+model_checkpoint	8rad4uj4_20261029_16...
+train_acc	78.642
+train_loss	0.60988
+val_acc	81.03
+val_loss	0.57092
+
+View run act_relu_opt_adam_lr_0.001_bs_64_ep_30 at: https://wandb.ai/cs25m524-indian-institute-of-technology-madras/CS6886W-VGG6-Manual-final/runs/8rad4uj4
+View project at: https://wandb.ai/cs25m524-indian-institute-of-technology-madras/CS6886W-VGG6-Manual-final
+Synced 5 W&B file(s), 0 media file(s), 0 artifact file(s) and 0 other file(s)
+Find logs at: ./wandb/run-20261029_161040-8rad4uj4/logs
+
+######################################################################
+▶ EXECUTING RUN 2/20: sgd | relu | lr=0.001 | bs=64 | epochs=30
+######################################################################
+
+Using device: cuda
+Tracking run with wandb version 0.28.1
+Run data is saved locally in /kaggle/working/wandb/run-20261029_165600-vlmuhgxq
+Syncing run act_relu_opt_sgd_lr_0.001_bs_64_ep_30 to Weights & Biases (docs)
+View project at https://wandb.ai/cs25m524-indian-institute-of-technology-madras/CS6886W-VGG6-Manual-final
+View run at https://wandb.ai/cs25m524-indian-institute-of-technology-madras/CS6886W-VGG6-Manual-final/runs/vlmuhgxq
+
+============================================================
+Starting Run Configuration:
+  • Activation   : relu
+  • Optimizer    : sgd
+  • Momentum     : 0.0 (Nesterov: False)
+  • Learning Rate: 0.001
+  • Batch Size   : 64
+  • Epochs       : 30
+  • W&B Project  : CS6886W-VGG6-Manual-final
+============================================================
+
+Epoch [1/30]  Loss: 2.0980  Val Loss: 1.9460  Train Acc: 29.26%  Test Acc: 29.11%
+Epoch [2/30]  Loss: 1.9518  Val Loss: 1.8543  Train Acc: 31.87%  Test Acc: 31.78%
+Epoch [3/30]  Loss: 1.8748  Val Loss: 1.7791  Train Acc: 34.13%  Test Acc: 34.20%
+Epoch [4/30]  Loss: 1.8127  Val Loss: 1.7266  Train Acc: 35.74%  Test Acc: 34.97%
+Epoch [5/30]  Loss: 1.7641  Val Loss: 1.6568  Train Acc: 38.03%  Test Acc: 38.16%
+Epoch [6/30]  Loss: 1.7196  Val Loss: 1.6495  Train Acc: 38.68%  Test Acc: 38.37%
+Epoch [7/30]  Loss: 1.6802  Val Loss: 1.6005  Train Acc: 40.12%  Test Acc: 40.00%
+Epoch [8/30]  Loss: 1.6502  Val Loss: 1.5519  Train Acc: 41.38%  Test Acc: 42.63%
+Epoch [9/30]  Loss: 1.6169  Val Loss: 1.5417  Train Acc: 42.93%  Test Acc: 42.25%
+Epoch [10/30]  Loss: 1.5905  Val Loss: 1.5816  Train Acc: 42.12%  Test Acc: 42.48%
+Epoch [11/30]  Loss: 1.5617  Val Loss: 1.4653  Train Acc: 45.54%  Test Acc: 46.37%
+Epoch [12/30]  Loss: 1.5353  Val Loss: 1.4395  Train Acc: 44.92%  Test Acc: 47.05%
+Epoch [13/30]  Loss: 1.5157  Val Loss: 1.4270  Train Acc: 45.86%  Test Acc: 48.07%
+Epoch [14/30]  Loss: 1.4949  Val Loss: 1.4075  Train Acc: 46.58%  Test Acc: 49.44%
+Epoch [15/30]  Loss: 1.4728  Val Loss: 1.4631  Train Acc: 44.85%  Test Acc: 47.11%
+Epoch [16/30]  Loss: 1.4548  Val Loss: 1.3578  Train Acc: 47.76%  Test Acc: 50.69%
+Epoch [17/30]  Loss: 1.4382  Val Loss: 1.3370  Train Acc: 49.68%  Test Acc: 51.56%
+Epoch [18/30]  Loss: 1.4268  Val Loss: 1.3517  Train Acc: 49.30%  Test Acc: 51.42%
+Epoch [19/30]  Loss: 1.4074  Val Loss: 1.3620  Train Acc: 48.65%  Test Acc: 50.39%
+Epoch [20/30]  Loss: 1.4021  Val Loss: 1.4104  Train Acc: 48.96%  Test Acc: 50.21%
+Epoch [21/30]  Loss: 1.3870  Val Loss: 1.3346  Train Acc: 50.24%  Test Acc: 52.19%
+Epoch [22/30]  Loss: 1.3763  Val Loss: 1.3402  Train Acc: 50.71%  Test Acc: 51.71%
+Epoch [23/30]  Loss: 1.3650  Val Loss: 1.2761  Train Acc: 50.73%  Test Acc: 54.68%
+Epoch [24/30]  Loss: 1.3481  Val Loss: 1.3809  Train Acc: 46.61%  Test Acc: 50.50%
+Epoch [25/30]  Loss: 1.3401  Val Loss: 1.4147  Train Acc: 49.21%  Test Acc: 49.53%
+Epoch [26/30]  Loss: 1.3304  Val Loss: 1.2468  Train Acc: 51.71%  Test Acc: 55.31%
+Epoch [27/30]  Loss: 1.3183  Val Loss: 1.3008  Train Acc: 51.91%  Test Acc: 53.71%
+Epoch [28/30]  Loss: 1.3092  Val Loss: 1.4238  Train Acc: 46.25%  Test Acc: 49.63%
+Epoch [29/30]  Loss: 1.3007  Val Loss: 1.2982  Train Acc: 51.12%  Test Acc: 53.83%
+Epoch [30/30]  Loss: 1.2909  Val Loss: 1.2264  Train Acc: 53.69%  Test Acc: 56.90%
+
+Final Train Accuracy: 53.80% | Final Test Accuracy: 56.90%
+Model saved: data/trained_models/vlmuhgxq_20261029_172103_relu_sgd_lr-0.001_bs-64_epochs-30_acc-train-53.80_acc-test-56.90.pth
+
+
+Run history:
+
+epoch	▁▁▁▂▂▂▂▃▃▃▃▄▄▄▄▅▅▅▅▆▆▆▆▇▇▇▇███
+train_acc	▁▂▂▃▄▄▄▄▅▅▆▅▆▆▅▆▇▇▇▇▇▇▇▆▇▇▇▆▇█
+train_loss	█▇▆▆▅▅▄▄▄▄▃▃▃▃▃▂▂▂▂▂▂▂▂▁▁▁▁▁▁▁
+val_acc	▁▂▂▂▃▃▄▄▄▄▅▆▆▆▆▆▇▇▆▆▇▇▇▆▆█▇▆▇█
+val_loss	█▇▆▆▅▅▅▄▄▄▃▃▃▃▃▂▂▂▂▃▂▂▁▃▃▁▂▃▂▁
+
+Run summary:
+
+epoch	30
+final_test_acc	56.9
+final_train_acc	53.802
+final_train_loss	1.29086
+final_val_loss	1.22636
+model_checkpoint	vlmuhgxq_20261029_17...
+train_acc	53.686
+train_loss	1.29086
+val_acc	56.9
+val_loss	1.22636
+
+View run act_relu_opt_sgd_lr_0.001_bs_64_ep_30 at: https://wandb.ai/cs25m524-indian-institute-of-technology-madras/CS6886W-VGG6-Manual-final/runs/vlmuhgxq
+View project at: https://wandb.ai/cs25m524-indian-institute-of-technology-madras/CS6886W-VGG6-Manual-final
+Synced 5 W&B file(s), 0 media file(s), 0 artifact file(s) and 0 other file(s)
+Find logs at: ./wandb/run-20261029_165600-vlmuhgxq/logs
+
+######################################################################
+▶ EXECUTING RUN 3/20: nesterov_sgd | relu | lr=0.001 | bs=64 | epochs=30
+######################################################################
+
+Using device: cuda
+Tracking run with wandb version 0.28.1
+Run data is saved locally in /kaggle/working/wandb/run-20261029_172106-ekdnxarc
+Syncing run act_relu_opt_nesterov_sgd_lr_0.001_bs_64_ep_30 to Weights & Biases (docs)
+View project at https://wandb.ai/cs25m524-indian-institute-of-technology-madras/CS6886W-VGG6-Manual-final
+View run at https://wandb.ai/cs25m524-indian-institute-of-technology-madras/CS6886W-VGG6-Manual-final/runs/ekdnxarc
+
+============================================================
+Starting Run Configuration:
+  • Activation   : relu
+  • Optimizer    : nesterov_sgd
+  • Momentum     : 0.9 (Nesterov: True)
+  • Learning Rate: 0.001
+  • Batch Size   : 64
+  • Epochs       : 30
+  • W&B Project  : CS6886W-VGG6-Manual-final
+============================================================
+
+Epoch [1/30]  Loss: 1.8199  Val Loss: 1.6101  Train Acc: 39.90%  Test Acc: 39.94%
+Epoch [2/30]  Loss: 1.5509  Val Loss: 1.3746  Train Acc: 45.82%  Test Acc: 49.54%
+Epoch [3/30]  Loss: 1.4329  Val Loss: 1.3194  Train Acc: 49.43%  Test Acc: 52.12%
+Epoch [4/30]  Loss: 1.3572  Val Loss: 1.3878  Train Acc: 49.37%  Test Acc: 50.57%
+Epoch [5/30]  Loss: 1.3072  Val Loss: 1.3501  Train Acc: 49.01%  Test Acc: 52.90%
+Epoch [6/30]  Loss: 1.2583  Val Loss: 1.5523  Train Acc: 46.65%  Test Acc: 48.85%
+Epoch [7/30]  Loss: 1.2171  Val Loss: 1.2387  Train Acc: 52.04%  Test Acc: 56.62%
+Epoch [8/30]  Loss: 1.1865  Val Loss: 1.1640  Train Acc: 55.40%  Test Acc: 59.58%
+Epoch [9/30]  Loss: 1.1503  Val Loss: 1.0964  Train Acc: 57.02%  Test Acc: 61.82%
+Epoch [10/30]  Loss: 1.1252  Val Loss: 1.1501  Train Acc: 55.64%  Test Acc: 60.40%
+Epoch [11/30]  Loss: 1.0933  Val Loss: 1.0317  Train Acc: 59.33%  Test Acc: 63.63%
+Epoch [12/30]  Loss: 1.0692  Val Loss: 1.0968  Train Acc: 57.77%  Test Acc: 61.96%
+Epoch [13/30]  Loss: 1.0498  Val Loss: 1.1405  Train Acc: 56.97%  Test Acc: 61.91%
+Epoch [14/30]  Loss: 1.0346  Val Loss: 1.0436  Train Acc: 57.43%  Test Acc: 64.47%
+Epoch [15/30]  Loss: 1.0071  Val Loss: 1.0637  Train Acc: 59.45%  Test Acc: 64.18%
+Epoch [16/30]  Loss: 0.9927  Val Loss: 0.9099  Train Acc: 63.47%  Test Acc: 68.93%
+Epoch [17/30]  Loss: 0.9754  Val Loss: 0.9576  Train Acc: 62.65%  Test Acc: 66.69%
+Epoch [18/30]  Loss: 0.9613  Val Loss: 0.9675  Train Acc: 63.72%  Test Acc: 67.19%
+Epoch [19/30]  Loss: 0.9482  Val Loss: 0.8452  Train Acc: 66.84%  Test Acc: 70.23%
+Epoch [20/30]  Loss: 0.9423  Val Loss: 0.9236  Train Acc: 62.77%  Test Acc: 68.66%
+Epoch [21/30]  Loss: 0.9231  Val Loss: 0.9242  Train Acc: 62.91%  Test Acc: 68.39%
+Epoch [22/30]  Loss: 0.9101  Val Loss: 0.8388  Train Acc: 67.46%  Test Acc: 70.96%
+Epoch [23/30]  Loss: 0.8965  Val Loss: 0.9123  Train Acc: 64.45%  Test Acc: 69.90%
+Epoch [24/30]  Loss: 0.8868  Val Loss: 0.8596  Train Acc: 67.27%  Test Acc: 70.51%
+Epoch [25/30]  Loss: 0.8742  Val Loss: 0.8179  Train Acc: 68.62%  Test Acc: 71.67%
+Epoch [26/30]  Loss: 0.8672  Val Loss: 0.8231  Train Acc: 68.63%  Test Acc: 71.79%
+Epoch [27/30]  Loss: 0.8533  Val Loss: 0.7763  Train Acc: 68.59%  Test Acc: 73.61%
+Epoch [28/30]  Loss: 0.8530  Val Loss: 0.8855  Train Acc: 64.83%  Test Acc: 70.49%
+Epoch [29/30]  Loss: 0.8401  Val Loss: 0.8551  Train Acc: 65.14%  Test Acc: 71.65%
+Epoch [30/30]  Loss: 0.8347  Val Loss: 0.9091  Train Acc: 65.79%  Test Acc: 70.07%
+
+Final Train Accuracy: 66.18% | Final Test Accuracy: 70.07%
+Model saved: data/trained_models/ekdnxarc_20261029_174602_relu_nesterov_sgd_lr-0.001_bs-64_epochs-30_acc-train-66.18_acc-test-70.07.pth
+
+
+Run history:
+
+epoch	▁▁▁▂▂▂▂▃▃▃▃▄▄▄▄▅▅▅▅▆▆▆▆▇▇▇▇███
+train_acc	▁▂▃▃▃▃▄▅▅▅▆▅▅▅▆▇▇▇█▇▇█▇████▇▇▇
+train_loss	█▆▅▅▄▄▄▃▃▃▃▃▃▂▂▂▂▂▂▂▂▂▁▁▁▁▁▁▁▁
+val_acc	▁▃▄▃▄▃▄▅▆▅▆▆▆▆▆▇▇▇▇▇▇▇▇▇███▇█▇
+val_loss	█▆▆▆▆█▅▄▄▄▃▄▄▃▃▂▃▃▂▂▂▂▂▂▁▁▁▂▂▂
+
+Run summary:
+
+epoch	30
+final_test_acc	70.07
+final_train_acc	66.182
+final_train_loss	0.83474
+final_val_loss	0.90908
+model_checkpoint	ekdnxarc_20261029_17...
+train_acc	65.794
+train_loss	0.83474
+val_acc	70.07
+val_loss	0.90908
+
+View run act_relu_opt_nesterov_sgd_lr_0.001_bs_64_ep_30 at: https://wandb.ai/cs25m524-indian-institute-of-technology-madras/CS6886W-VGG6-Manual-final/runs/ekdnxarc
+View project at: https://wandb.ai/cs25m524-indian-institute-of-technology-madras/CS6886W-VGG6-Manual-final
+Synced 5 W&B file(s), 0 media file(s), 0 artifact file(s) and 0 other file(s)
+Find logs at: ./wandb/run-20261029_172106-ekdnxarc/logs
+
+######################################################################
+▶ EXECUTING RUN 4/20: adagrad | relu | lr=0.001 | bs=64 | epochs=30
+######################################################################
+
+Using device: cuda
+Tracking run with wandb version 0.28.1
+Run data is saved locally in /kaggle/working/wandb/run-20261029_174604-5s9014e9
+Syncing run act_relu_opt_adagrad_lr_0.001_bs_64_ep_30 to Weights & Biases (docs)
+View project at https://wandb.ai/cs25m524-indian-institute-of-technology-madras/CS6886W-VGG6-Manual-final
+View run at https://wandb.ai/cs25m524-indian-institute-of-technology-madras/CS6886W-VGG6-Manual-final/runs/5s9014e9
+
+============================================================
+Starting Run Configuration:
+  • Activation   : relu
+  • Optimizer    : adagrad
+  • Momentum     : 0.0 (Nesterov: False)
+  • Learning Rate: 0.001
+  • Batch Size   : 64
+  • Epochs       : 30
+  • W&B Project  : CS6886W-VGG6-Manual-final
+============================================================
+
+Epoch [1/30]  Loss: 1.7144  Val Loss: 1.5193  Train Acc: 43.96%  Test Acc: 43.97%
+Epoch [2/30]  Loss: 1.5495  Val Loss: 1.3826  Train Acc: 47.83%  Test Acc: 50.34%
+Epoch [3/30]  Loss: 1.4837  Val Loss: 1.3402  Train Acc: 49.52%  Test Acc: 51.81%
+Epoch [4/30]  Loss: 1.4402  Val Loss: 1.4025  Train Acc: 49.49%  Test Acc: 49.72%
+Epoch [5/30]  Loss: 1.4126  Val Loss: 1.2669  Train Acc: 52.10%  Test Acc: 54.79%
+Epoch [6/30]  Loss: 1.3871  Val Loss: 1.3029  Train Acc: 51.91%  Test Acc: 53.32%
+Epoch [7/30]  Loss: 1.3657  Val Loss: 1.2502  Train Acc: 51.57%  Test Acc: 54.71%
+Epoch [8/30]  Loss: 1.3529  Val Loss: 1.2166  Train Acc: 53.43%  Test Acc: 56.58%
+Epoch [9/30]  Loss: 1.3334  Val Loss: 1.2035  Train Acc: 54.16%  Test Acc: 56.80%
+Epoch [10/30]  Loss: 1.3231  Val Loss: 1.2261  Train Acc: 54.71%  Test Acc: 55.82%
+Epoch [11/30]  Loss: 1.3084  Val Loss: 1.1760  Train Acc: 55.14%  Test Acc: 58.34%
+Epoch [12/30]  Loss: 1.2961  Val Loss: 1.1913  Train Acc: 53.98%  Test Acc: 57.60%
+Epoch [13/30]  Loss: 1.2881  Val Loss: 1.1468  Train Acc: 56.01%  Test Acc: 59.56%
+Epoch [14/30]  Loss: 1.2806  Val Loss: 1.1429  Train Acc: 56.10%  Test Acc: 59.42%
+Epoch [15/30]  Loss: 1.2686  Val Loss: 1.1567  Train Acc: 56.57%  Test Acc: 59.09%
+Epoch [16/30]  Loss: 1.2596  Val Loss: 1.1350  Train Acc: 56.25%  Test Acc: 59.68%
+Epoch [17/30]  Loss: 1.2532  Val Loss: 1.1180  Train Acc: 57.66%  Test Acc: 60.47%
+Epoch [18/30]  Loss: 1.2490  Val Loss: 1.1277  Train Acc: 57.36%  Test Acc: 60.28%
+Epoch [19/30]  Loss: 1.2390  Val Loss: 1.1331  Train Acc: 57.14%  Test Acc: 59.91%
+Epoch [20/30]  Loss: 1.2415  Val Loss: 1.1156  Train Acc: 58.22%  Test Acc: 60.67%
+Epoch [21/30]  Loss: 1.2318  Val Loss: 1.1111  Train Acc: 57.90%  Test Acc: 60.77%
+Epoch [22/30]  Loss: 1.2280  Val Loss: 1.0990  Train Acc: 58.74%  Test Acc: 61.28%
+Epoch [23/30]  Loss: 1.2211  Val Loss: 1.0929  Train Acc: 58.64%  Test Acc: 61.54%
+Epoch [24/30]  Loss: 1.2118  Val Loss: 1.0780  Train Acc: 58.47%  Test Acc: 61.74%
+Epoch [25/30]  Loss: 1.2119  Val Loss: 1.1044  Train Acc: 58.51%  Test Acc: 60.62%
+Epoch [26/30]  Loss: 1.2057  Val Loss: 1.0707  Train Acc: 59.26%  Test Acc: 62.46%
+Epoch [27/30]  Loss: 1.2002  Val Loss: 1.0772  Train Acc: 58.61%  Test Acc: 61.96%
+Epoch [28/30]  Loss: 1.1966  Val Loss: 1.0935  Train Acc: 57.98%  Test Acc: 61.22%
+Epoch [29/30]  Loss: 1.1927  Val Loss: 1.0664  Train Acc: 59.72%  Test Acc: 62.27%
+Epoch [30/30]  Loss: 1.1880  Val Loss: 1.0585  Train Acc: 59.36%  Test Acc: 62.83%
+
+Final Train Accuracy: 59.51% | Final Test Accuracy: 62.83%
+Model saved: data/trained_models/5s9014e9_20261029_181107_relu_adagrad_lr-0.001_bs-64_epochs-30_acc-train-59.51_acc-test-62.83.pth
+
+
+Run history:
+
+epoch	▁▁▁▂▂▂▂▃▃▃▃▄▄▄▄▅▅▅▅▆▆▆▆▇▇▇▇███
+train_acc	▁▃▃▃▅▅▄▅▆▆▆▅▆▆▇▆▇▇▇▇▇██▇▇██▇██
+train_loss	█▆▅▄▄▄▃▃▃▃▃▂▂▂▂▂▂▂▂▂▂▂▁▁▁▁▁▁▁▁
+val_acc	▁▃▄▃▅▄▅▆▆▅▆▆▇▇▇▇▇▇▇▇▇▇██▇██▇██
+val_loss	█▆▅▆▄▅▄▃▃▄▃▃▂▂▂▂▂▂▂▂▂▂▂▁▂▁▁▂▁▁
+
+Run summary:
+
+epoch	30
+final_test_acc	62.83
+final_train_acc	59.512
+final_train_loss	1.18796
+final_val_loss	1.05846
+model_checkpoint	5s9014e9_20261029_18...
+train_acc	59.356
+train_loss	1.18796
+val_acc	62.83
+val_loss	1.05846
+
+View run act_relu_opt_adagrad_lr_0.001_bs_64_ep_30 at: https://wandb.ai/cs25m524-indian-institute-of-technology-madras/CS6886W-VGG6-Manual-final/runs/5s9014e9
+View project at: https://wandb.ai/cs25m524-indian-institute-of-technology-madras/CS6886W-VGG6-Manual-final
+Synced 5 W&B file(s), 0 media file(s), 0 artifact file(s) and 0 other file(s)
+Find logs at: ./wandb/run-20261029_174604-5s9014e9/logs
+
+######################################################################
+▶ EXECUTING RUN 5/20: rmsprop | relu | lr=0.001 | bs=64 | epochs=30
+######################################################################
+
+Using device: cuda
+Tracking run with wandb version 0.28.1
+Run data is saved locally in /kaggle/working/wandb/run-20261029_181110-cdrc8p3a
+Syncing run act_relu_opt_rmsprop_lr_0.001_bs_64_ep_30 to Weights & Biases (docs)
+View project at https://wandb.ai/cs25m524-indian-institute-of-technology-madras/CS6886W-VGG6-Manual-final
+View run at https://wandb.ai/cs25m524-indian-institute-of-technology-madras/CS6886W-VGG6-Manual-final/runs/cdrc8p3a
+
+============================================================
+Starting Run Configuration:
+  • Activation   : relu
+  • Optimizer    : rmsprop
+  • Momentum     : 0.0 (Nesterov: False)
+  • Learning Rate: 0.001
+  • Batch Size   : 64
+  • Epochs       : 30
+  • W&B Project  : CS6886W-VGG6-Manual-final
+============================================================
+
+Epoch [1/30]  Loss: 1.5465  Val Loss: 2.3747  Train Acc: 27.84%  Test Acc: 35.38%
+Epoch [2/30]  Loss: 1.2691  Val Loss: 1.5611  Train Acc: 46.80%  Test Acc: 48.87%
+Epoch [3/30]  Loss: 1.1594  Val Loss: 1.4014  Train Acc: 51.73%  Test Acc: 53.52%
+Epoch [4/30]  Loss: 1.0800  Val Loss: 1.5689  Train Acc: 47.25%  Test Acc: 52.26%
+Epoch [5/30]  Loss: 1.0186  Val Loss: 1.5680  Train Acc: 47.44%  Test Acc: 54.28%
+Epoch [6/30]  Loss: 0.9747  Val Loss: 1.1774  Train Acc: 56.39%  Test Acc: 63.17%
+Epoch [7/30]  Loss: 0.9315  Val Loss: 1.1594  Train Acc: 56.50%  Test Acc: 63.29%
+Epoch [8/30]  Loss: 0.8973  Val Loss: 1.2086  Train Acc: 58.24%  Test Acc: 63.42%
+Epoch [9/30]  Loss: 0.8699  Val Loss: 1.7219  Train Acc: 50.24%  Test Acc: 54.84%
+Epoch [10/30]  Loss: 0.8462  Val Loss: 0.9210  Train Acc: 66.43%  Test Acc: 71.10%
+Epoch [11/30]  Loss: 0.8226  Val Loss: 1.2614  Train Acc: 56.35%  Test Acc: 63.64%
+Epoch [12/30]  Loss: 0.8029  Val Loss: 1.6205  Train Acc: 53.60%  Test Acc: 58.74%
+Epoch [13/30]  Loss: 0.7832  Val Loss: 1.2519  Train Acc: 58.73%  Test Acc: 66.40%
+Epoch [14/30]  Loss: 0.7722  Val Loss: 1.9611  Train Acc: 52.96%  Test Acc: 56.92%
+Epoch [15/30]  Loss: 0.7507  Val Loss: 1.3440  Train Acc: 55.87%  Test Acc: 61.44%
+Epoch [16/30]  Loss: 0.7406  Val Loss: 0.8683  Train Acc: 68.12%  Test Acc: 72.79%
+Epoch [17/30]  Loss: 0.7223  Val Loss: 0.9493  Train Acc: 65.97%  Test Acc: 70.80%
+Epoch [18/30]  Loss: 0.7128  Val Loss: 0.9529  Train Acc: 66.02%  Test Acc: 70.91%
+Epoch [19/30]  Loss: 0.7056  Val Loss: 0.7525  Train Acc: 70.52%  Test Acc: 75.84%
+Epoch [20/30]  Loss: 0.7010  Val Loss: 0.7057  Train Acc: 69.77%  Test Acc: 76.19%
+Epoch [21/30]  Loss: 0.6849  Val Loss: 0.9541  Train Acc: 67.90%  Test Acc: 70.58%
+Epoch [22/30]  Loss: 0.6749  Val Loss: 1.0085  Train Acc: 68.13%  Test Acc: 70.94%
+Epoch [23/30]  Loss: 0.6689  Val Loss: 0.8624  Train Acc: 71.80%  Test Acc: 74.62%
+Epoch [24/30]  Loss: 0.6574  Val Loss: 1.0360  Train Acc: 67.36%  Test Acc: 71.48%
+Epoch [25/30]  Loss: 0.6522  Val Loss: 0.8645  Train Acc: 70.48%  Test Acc: 73.37%
+Epoch [26/30]  Loss: 0.6429  Val Loss: 0.6496  Train Acc: 74.98%  Test Acc: 79.59%
+Epoch [27/30]  Loss: 0.6322  Val Loss: 0.6837  Train Acc: 76.13%  Test Acc: 77.75%
+Epoch [28/30]  Loss: 0.6324  Val Loss: 1.0112  Train Acc: 66.08%  Test Acc: 70.85%
+Epoch [29/30]  Loss: 0.6225  Val Loss: 0.7106  Train Acc: 73.73%  Test Acc: 77.23%
+Epoch [30/30]  Loss: 0.6185  Val Loss: 0.7891  Train Acc: 73.45%  Test Acc: 75.94%
+
+Final Train Accuracy: 73.48% | Final Test Accuracy: 75.94%
+Model saved: data/trained_models/cdrc8p3a_20261029_183546_relu_rmsprop_lr-0.001_bs-64_epochs-30_acc-train-73.48_acc-test-75.94.pth
+
+
+Run history:
+
+epoch	▁▁▁▂▂▂▂▃▃▃▃▄▄▄▄▅▅▅▅▆▆▆▆▇▇▇▇███
+train_acc	▁▄▄▄▄▅▅▅▄▇▅▅▅▅▅▇▇▇▇▇▇▇▇▇▇██▇██
+train_loss	█▆▅▄▄▄▃▃▃▃▃▂▂▂▂▂▂▂▂▂▂▁▁▁▁▁▁▁▁▁
+val_acc	▁▃▄▄▄▅▅▅▄▇▅▅▆▄▅▇▇▇▇▇▇▇▇▇▇██▇█▇
+val_loss	█▅▄▅▅▃▃▃▅▂▃▅▃▆▄▂▂▂▁▁▂▂▂▃▂▁▁▂▁▂
+
+Run summary:
+
+epoch	30
+final_test_acc	75.94
+final_train_acc	73.484
+final_train_loss	0.61854
+final_val_loss	0.78908
+model_checkpoint	cdrc8p3a_20261029_18...
+train_acc	73.454
+train_loss	0.61854
+val_acc	75.94
+val_loss	0.78908
+
+View run act_relu_opt_rmsprop_lr_0.001_bs_64_ep_30 at: https://wandb.ai/cs25m524-indian-institute-of-technology-madras/CS6886W-VGG6-Manual-final/runs/cdrc8p3a
+View project at: https://wandb.ai/cs25m524-indian-institute-of-technology-madras/CS6886W-VGG6-Manual-final
+Synced 5 W&B file(s), 0 media file(s), 0 artifact file(s) and 0 other file(s)
+Find logs at: ./wandb/run-20261029_181110-cdrc8p3a/logs
+
+######################################################################
+▶ EXECUTING RUN 6/20: nadam | relu | lr=0.001 | bs=64 | epochs=30
+######################################################################
+
+Using device: cuda
+Tracking run with wandb version 0.28.1
+Run data is saved locally in /kaggle/working/wandb/run-20261029_183549-6c0nxwi1
+Syncing run act_relu_opt_nadam_lr_0.001_bs_64_ep_30 to Weights & Biases (docs)
+View project at https://wandb.ai/cs25m524-indian-institute-of-technology-madras/CS6886W-VGG6-Manual-final
+View run at https://wandb.ai/cs25m524-indian-institute-of-technology-madras/CS6886W-VGG6-Manual-final/runs/6c0nxwi1
+
+============================================================
+Starting Run Configuration:
+  • Activation   : relu
+  • Optimizer    : nadam
+  • Momentum     : 0.9 (Nesterov: True)
+  • Learning Rate: 0.001
+  • Batch Size   : 64
+  • Epochs       : 30
+  • W&B Project  : CS6886W-VGG6-Manual-final
+============================================================
+
+Epoch [1/30]  Loss: 1.5046  Val Loss: 2.5833  Train Acc: 22.18%  Test Acc: 32.98%
+Epoch [2/30]  Loss: 1.2138  Val Loss: 1.1551  Train Acc: 56.57%  Test Acc: 60.04%
+Epoch [3/30]  Loss: 1.0926  Val Loss: 1.1173  Train Acc: 59.35%  Test Acc: 61.57%
+Epoch [4/30]  Loss: 1.0086  Val Loss: 1.0464  Train Acc: 59.66%  Test Acc: 64.40%
+Epoch [5/30]  Loss: 0.9520  Val Loss: 1.1933  Train Acc: 57.66%  Test Acc: 63.24%
+Epoch [6/30]  Loss: 0.9151  Val Loss: 0.9802  Train Acc: 62.54%  Test Acc: 68.05%
+Epoch [7/30]  Loss: 0.8769  Val Loss: 0.8735  Train Acc: 66.45%  Test Acc: 71.23%
+Epoch [8/30]  Loss: 0.8486  Val Loss: 0.8512  Train Acc: 68.20%  Test Acc: 72.00%
+Epoch [9/30]  Loss: 0.8240  Val Loss: 0.8582  Train Acc: 67.15%  Test Acc: 71.91%
+Epoch [10/30]  Loss: 0.8019  Val Loss: 0.8093  Train Acc: 69.84%  Test Acc: 74.19%
+Epoch [11/30]  Loss: 0.7845  Val Loss: 0.7155  Train Acc: 70.78%  Test Acc: 76.19%
+Epoch [12/30]  Loss: 0.7650  Val Loss: 0.7295  Train Acc: 71.70%  Test Acc: 76.05%
+Epoch [13/30]  Loss: 0.7509  Val Loss: 0.8755  Train Acc: 70.15%  Test Acc: 73.34%
+Epoch [14/30]  Loss: 0.7409  Val Loss: 0.7621  Train Acc: 72.39%  Test Acc: 75.84%
+Epoch [15/30]  Loss: 0.7232  Val Loss: 0.6582  Train Acc: 73.37%  Test Acc: 78.22%
+Epoch [16/30]  Loss: 0.7138  Val Loss: 0.5979  Train Acc: 75.63%  Test Acc: 80.20%
+Epoch [17/30]  Loss: 0.7001  Val Loss: 0.6637  Train Acc: 73.53%  Test Acc: 78.30%
+Epoch [18/30]  Loss: 0.6898  Val Loss: 0.6449  Train Acc: 75.69%  Test Acc: 78.83%
+Epoch [19/30]  Loss: 0.6840  Val Loss: 0.5887  Train Acc: 76.41%  Test Acc: 80.05%
+Epoch [20/30]  Loss: 0.6798  Val Loss: 0.6013  Train Acc: 76.46%  Test Acc: 79.75%
+Epoch [21/30]  Loss: 0.6654  Val Loss: 0.6062  Train Acc: 75.61%  Test Acc: 80.00%
+Epoch [22/30]  Loss: 0.6565  Val Loss: 0.6997  Train Acc: 76.02%  Test Acc: 77.71%
+Epoch [23/30]  Loss: 0.6455  Val Loss: 0.6298  Train Acc: 77.55%  Test Acc: 79.73%
+Epoch [24/30]  Loss: 0.6396  Val Loss: 0.6531  Train Acc: 76.80%  Test Acc: 79.21%
+Epoch [25/30]  Loss: 0.6358  Val Loss: 0.6016  Train Acc: 77.77%  Test Acc: 80.02%
+Epoch [26/30]  Loss: 0.6273  Val Loss: 0.5699  Train Acc: 78.58%  Test Acc: 81.32%
+Epoch [27/30]  Loss: 0.6145  Val Loss: 0.5638  Train Acc: 79.29%  Test Acc: 81.65%
+Epoch [28/30]  Loss: 0.6236  Val Loss: 0.5656  Train Acc: 78.26%  Test Acc: 81.35%
+Epoch [29/30]  Loss: 0.6091  Val Loss: 0.5674  Train Acc: 78.43%  Test Acc: 81.22%
+Epoch [30/30]  Loss: 0.6055  Val Loss: 0.6817  Train Acc: 76.80%  Test Acc: 78.27%
+
+Final Train Accuracy: 77.06% | Final Test Accuracy: 78.27%
+Model saved: data/trained_models/6c0nxwi1_20261029_190044_relu_nadam_lr-0.001_bs-64_epochs-30_acc-train-77.06_acc-test-78.27.pth
+
+
+Run history:
+
+epoch	▁▁▁▂▂▂▂▃▃▃▃▄▄▄▄▅▅▅▅▆▆▆▆▇▇▇▇███
+train_acc	▁▅▆▆▅▆▆▇▇▇▇▇▇▇▇█▇█████████████
+train_loss	█▆▅▄▄▃▃▃▃▃▂▂▂▂▂▂▂▂▂▂▁▁▁▁▁▁▁▁▁▁
+val_acc	▁▅▅▆▅▆▇▇▇▇▇▇▇▇███████▇████████
+val_loss	█▃▃▃▃▂▂▂▂▂▂▂▂▂▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁
+
+Run summary:
+
+epoch	30
+final_test_acc	78.27
+final_train_acc	77.064
+final_train_loss	0.60554
+final_val_loss	0.68166
+model_checkpoint	6c0nxwi1_20261029_19...
+train_acc	76.8
+train_loss	0.60554
+val_acc	78.27
+val_loss	0.68166
+
+View run act_relu_opt_nadam_lr_0.001_bs_64_ep_30 at: https://wandb.ai/cs25m524-indian-institute-of-technology-madras/CS6886W-VGG6-Manual-final/runs/6c0nxwi1
+View project at: https://wandb.ai/cs25m524-indian-institute-of-technology-madras/CS6886W-VGG6-Manual-final
+Synced 5 W&B file(s), 0 media file(s), 0 artifact file(s) and 0 other file(s)
+Find logs at: ./wandb/run-20261029_183549-6c0nxwi1/logs
+
+######################################################################
+▶ EXECUTING RUN 7/20: adam | sigmoid | lr=0.001 | bs=64 | epochs=30
+######################################################################
+
+Using device: cuda
+Tracking run with wandb version 0.28.1
+Run data is saved locally in /kaggle/working/wandb/run-20261029_190046-3qz0nhqh
+Syncing run act_sigmoid_opt_adam_lr_0.001_bs_64_ep_30 to Weights & Biases (docs)
+View project at https://wandb.ai/cs25m524-indian-institute-of-technology-madras/CS6886W-VGG6-Manual-final
+View run at https://wandb.ai/cs25m524-indian-institute-of-technology-madras/CS6886W-VGG6-Manual-final/runs/3qz0nhqh
+
+============================================================
+Starting Run Configuration:
+  • Activation   : sigmoid
+  • Optimizer    : adam
+  • Momentum     : 0.9 (Nesterov: False)
+  • Learning Rate: 0.001
+  • Batch Size   : 64
+  • Epochs       : 30
+  • W&B Project  : CS6886W-VGG6-Manual-final
+============================================================
+
+Epoch [1/30]  Loss: 1.8696  Val Loss: 2.0500  Train Acc: 22.37%  Test Acc: 25.23%
+Epoch [2/30]  Loss: 1.6311  Val Loss: 2.6081  Train Acc: 20.17%  Test Acc: 25.25%
+Epoch [3/30]  Loss: 1.5228  Val Loss: 1.7186  Train Acc: 32.44%  Test Acc: 34.82%
+Epoch [4/30]  Loss: 1.4442  Val Loss: 1.6235  Train Acc: 33.67%  Test Acc: 44.22%
+Epoch [5/30]  Loss: 1.3804  Val Loss: 3.1504  Train Acc: 16.92%  Test Acc: 22.63%
+Epoch [6/30]  Loss: 1.3338  Val Loss: 1.8616  Train Acc: 31.26%  Test Acc: 41.50%
+Epoch [7/30]  Loss: 1.2819  Val Loss: 2.6336  Train Acc: 28.69%  Test Acc: 31.29%
+Epoch [8/30]  Loss: 1.2458  Val Loss: 2.2365  Train Acc: 27.96%  Test Acc: 37.44%
+Epoch [9/30]  Loss: 1.2101  Val Loss: 2.9682  Train Acc: 22.51%  Test Acc: 34.72%
+Epoch [10/30]  Loss: 1.1815  Val Loss: 2.0678  Train Acc: 35.92%  Test Acc: 39.75%
+Epoch [11/30]  Loss: 1.1521  Val Loss: 2.3233  Train Acc: 26.53%  Test Acc: 34.98%
+Epoch [12/30]  Loss: 1.1266  Val Loss: 1.9426  Train Acc: 32.79%  Test Acc: 42.61%
+Epoch [13/30]  Loss: 1.1026  Val Loss: 2.7614  Train Acc: 30.84%  Test Acc: 38.94%
+Epoch [14/30]  Loss: 1.0853  Val Loss: 2.8034  Train Acc: 20.05%  Test Acc: 32.01%
+Epoch [15/30]  Loss: 1.0610  Val Loss: 2.7385  Train Acc: 22.40%  Test Acc: 30.93%
+Epoch [16/30]  Loss: 1.0486  Val Loss: 1.5204  Train Acc: 40.43%  Test Acc: 50.27%
+Epoch [17/30]  Loss: 1.0294  Val Loss: 3.7111  Train Acc: 18.23%  Test Acc: 25.84%
+Epoch [18/30]  Loss: 1.0191  Val Loss: 2.2954  Train Acc: 35.03%  Test Acc: 41.34%
+Epoch [19/30]  Loss: 1.0004  Val Loss: 1.6290  Train Acc: 37.16%  Test Acc: 49.98%
+Epoch [20/30]  Loss: 0.9969  Val Loss: 1.8927  Train Acc: 34.77%  Test Acc: 44.77%
+Epoch [21/30]  Loss: 0.9748  Val Loss: 1.8138  Train Acc: 41.01%  Test Acc: 52.12%
+Epoch [22/30]  Loss: 0.9681  Val Loss: 2.7806  Train Acc: 33.80%  Test Acc: 35.54%
+Epoch [23/30]  Loss: 0.9505  Val Loss: 1.1986  Train Acc: 57.40%  Test Acc: 62.15%
+Epoch [24/30]  Loss: 0.9400  Val Loss: 1.5830  Train Acc: 43.57%  Test Acc: 51.44%
+Epoch [25/30]  Loss: 0.9337  Val Loss: 2.9758  Train Acc: 34.77%  Test Acc: 39.56%
+Epoch [26/30]  Loss: 0.9271  Val Loss: 1.7885  Train Acc: 42.01%  Test Acc: 54.73%
+Epoch [27/30]  Loss: 0.9149  Val Loss: 1.8189  Train Acc: 47.41%  Test Acc: 51.66%
+Epoch [28/30]  Loss: 0.9145  Val Loss: 1.7032  Train Acc: 48.24%  Test Acc: 55.33%
+Epoch [29/30]  Loss: 0.8949  Val Loss: 2.2187  Train Acc: 30.11%  Test Acc: 41.65%
+Epoch [30/30]  Loss: 0.8907  Val Loss: 1.7424  Train Acc: 39.81%  Test Acc: 49.61%
+
+Final Train Accuracy: 39.79% | Final Test Accuracy: 49.61%
+Model saved: data/trained_models/3qz0nhqh_20261029_192546_sigmoid_adam_lr-0.001_bs-64_epochs-30_acc-train-39.79_acc-test-49.61.pth
+
+
+Run history:
+
+epoch	▁▁▁▂▂▂▂▃▃▃▃▄▄▄▄▅▅▅▅▆▆▆▆▇▇▇▇███
+train_acc	▂▂▄▄▁▃▃▃▂▄▃▄▃▂▂▅▁▄▅▄▅▄█▆▄▅▆▆▃▅
+train_loss	█▆▆▅▅▄▄▄▃▃▃▃▃▂▂▂▂▂▂▂▂▂▁▁▁▁▁▁▁▁
+val_acc	▁▁▃▅▁▄▃▄▃▄▃▅▄▃▂▆▂▄▆▅▆▃█▆▄▇▆▇▄▆
+val_loss	▃▅▂▂▆▃▅▄▆▃▄▃▅▅▅▂█▄▂▃▃▅▁▂▆▃▃▂▄▃
+
+Run summary:
+
+epoch	30
+final_test_acc	49.61
+final_train_acc	39.792
+final_train_loss	0.89071
+final_val_loss	1.7424
+model_checkpoint	3qz0nhqh_20261029_19...
+train_acc	39.812
+train_loss	0.89071
+val_acc	49.61
+val_loss	1.7424
+
+View run act_sigmoid_opt_adam_lr_0.001_bs_64_ep_30 at: https://wandb.ai/cs25m524-indian-institute-of-technology-madras/CS6886W-VGG6-Manual-final/runs/3qz0nhqh
+View project at: https://wandb.ai/cs25m524-indian-institute-of-technology-madras/CS6886W-VGG6-Manual-final
+Synced 5 W&B file(s), 0 media file(s), 0 artifact file(s) and 0 other file(s)
+Find logs at: ./wandb/run-20261029_190046-3qz0nhqh/logs
+
+######################################################################
+▶ EXECUTING RUN 8/20: adam | tanh | lr=0.001 | bs=64 | epochs=30
+######################################################################
+
+Using device: cuda
+Tracking run with wandb version 0.28.1
+Run data is saved locally in /kaggle/working/wandb/run-20261029_192549-2bs1bso4
+Syncing run act_tanh_opt_adam_lr_0.001_bs_64_ep_30 to Weights & Biases (docs)
+View project at https://wandb.ai/cs25m524-indian-institute-of-technology-madras/CS6886W-VGG6-Manual-final
+View run at https://wandb.ai/cs25m524-indian-institute-of-technology-madras/CS6886W-VGG6-Manual-final/runs/2bs1bso4
+
+============================================================
+Starting Run Configuration:
+  • Activation   : tanh
+  • Optimizer    : adam
+  • Momentum     : 0.9 (Nesterov: False)
+  • Learning Rate: 0.001
+  • Batch Size   : 64
+  • Epochs       : 30
+  • W&B Project  : CS6886W-VGG6-Manual-final
+============================================================
+
+Epoch [1/30]  Loss: 1.7617  Val Loss: 1.5588  Train Acc: 38.04%  Test Acc: 42.49%
+Epoch [2/30]  Loss: 1.5000  Val Loss: 1.5275  Train Acc: 44.37%  Test Acc: 47.49%
+Epoch [3/30]  Loss: 1.3695  Val Loss: 1.3315  Train Acc: 47.97%  Test Acc: 52.29%
+Epoch [4/30]  Loss: 1.2725  Val Loss: 1.1440  Train Acc: 54.65%  Test Acc: 59.63%
+Epoch [5/30]  Loss: 1.2058  Val Loss: 1.1053  Train Acc: 58.66%  Test Acc: 60.95%
+Epoch [6/30]  Loss: 1.1582  Val Loss: 1.0266  Train Acc: 58.02%  Test Acc: 63.61%
+Epoch [7/30]  Loss: 1.1096  Val Loss: 1.0842  Train Acc: 59.78%  Test Acc: 62.28%
+Epoch [8/30]  Loss: 1.0746  Val Loss: 1.1699  Train Acc: 57.78%  Test Acc: 60.25%
+Epoch [9/30]  Loss: 1.0452  Val Loss: 1.0600  Train Acc: 57.97%  Test Acc: 65.24%
+Epoch [10/30]  Loss: 1.0189  Val Loss: 1.1206  Train Acc: 59.87%  Test Acc: 62.46%
+Epoch [11/30]  Loss: 0.9930  Val Loss: 1.1157  Train Acc: 58.79%  Test Acc: 62.77%
+Epoch [12/30]  Loss: 0.9700  Val Loss: 0.9748  Train Acc: 63.31%  Test Acc: 66.93%
+Epoch [13/30]  Loss: 0.9515  Val Loss: 1.0034  Train Acc: 63.35%  Test Acc: 67.76%
+Epoch [14/30]  Loss: 0.9377  Val Loss: 1.1004  Train Acc: 58.45%  Test Acc: 64.50%
+Epoch [15/30]  Loss: 0.9192  Val Loss: 0.9089  Train Acc: 62.49%  Test Acc: 69.65%
+Epoch [16/30]  Loss: 0.9086  Val Loss: 1.0408  Train Acc: 61.07%  Test Acc: 65.77%
+Epoch [17/30]  Loss: 0.8908  Val Loss: 1.1977  Train Acc: 58.58%  Test Acc: 62.75%
+Epoch [18/30]  Loss: 0.8768  Val Loss: 0.9147  Train Acc: 65.32%  Test Acc: 71.06%
+Epoch [19/30]  Loss: 0.8695  Val Loss: 0.8324  Train Acc: 66.55%  Test Acc: 71.34%
+Epoch [20/30]  Loss: 0.8653  Val Loss: 0.8141  Train Acc: 67.96%  Test Acc: 72.57%
+Epoch [21/30]  Loss: 0.8458  Val Loss: 0.9291  Train Acc: 63.53%  Test Acc: 69.40%
+Epoch [22/30]  Loss: 0.8410  Val Loss: 0.9872  Train Acc: 63.92%  Test Acc: 67.88%
+Epoch [23/30]  Loss: 0.8272  Val Loss: 0.9026  Train Acc: 66.82%  Test Acc: 70.34%
+Epoch [24/30]  Loss: 0.8209  Val Loss: 0.8400  Train Acc: 66.98%  Test Acc: 71.56%
+Epoch [25/30]  Loss: 0.8120  Val Loss: 0.8780  Train Acc: 68.94%  Test Acc: 71.80%
+Epoch [26/30]  Loss: 0.8024  Val Loss: 0.8190  Train Acc: 69.83%  Test Acc: 72.90%
+Epoch [27/30]  Loss: 0.7936  Val Loss: 0.9548  Train Acc: 69.78%  Test Acc: 70.89%
+Epoch [28/30]  Loss: 0.7949  Val Loss: 0.7546  Train Acc: 69.85%  Test Acc: 75.28%
+Epoch [29/30]  Loss: 0.7822  Val Loss: 0.7572  Train Acc: 70.20%  Test Acc: 74.62%
+Epoch [30/30]  Loss: 0.7788  Val Loss: 0.7141  Train Acc: 71.33%  Test Acc: 75.81%
+
+Final Train Accuracy: 71.37% | Final Test Accuracy: 75.81%
+Model saved: data/trained_models/2bs1bso4_20261029_195036_tanh_adam_lr-0.001_bs-64_epochs-30_acc-train-71.37_acc-test-75.81.pth
+
+
+Run history:
+
+epoch	▁▁▁▂▂▂▂▃▃▃▃▄▄▄▄▅▅▅▅▆▆▆▆▇▇▇▇███
+train_acc	▁▂▃▄▅▅▆▅▅▆▅▆▆▅▆▆▅▇▇▇▆▆▇▇▇█████
+train_loss	█▆▅▅▄▄▃▃▃▃▃▂▂▂▂▂▂▂▂▂▁▁▁▁▁▁▁▁▁▁
+val_acc	▁▂▃▅▅▅▅▅▆▅▅▆▆▆▇▆▅▇▇▇▇▆▇▇▇▇▇███
+val_loss	██▆▅▄▄▄▅▄▄▄▃▃▄▃▄▅▃▂▂▃▃▃▂▂▂▃▁▁▁
+
+Run summary:
+
+epoch	30
+final_test_acc	75.81
+final_train_acc	71.372
+final_train_loss	0.77879
+final_val_loss	0.7141
+model_checkpoint	2bs1bso4_20261029_19...
+train_acc	71.332
+train_loss	0.77879
+val_acc	75.81
+val_loss	0.7141
+
+View run act_tanh_opt_adam_lr_0.001_bs_64_ep_30 at: https://wandb.ai/cs25m524-indian-institute-of-technology-madras/CS6886W-VGG6-Manual-final/runs/2bs1bso4
+View project at: https://wandb.ai/cs25m524-indian-institute-of-technology-madras/CS6886W-VGG6-Manual-final
+Synced 5 W&B file(s), 0 media file(s), 0 artifact file(s) and 0 other file(s)
+Find logs at: ./wandb/run-20261029_192549-2bs1bso4/logs
+
+######################################################################
+▶ EXECUTING RUN 9/20: adam | silu | lr=0.001 | bs=64 | epochs=30
+######################################################################
+
+Using device: cuda
+Tracking run with wandb version 0.28.1
+Run data is saved locally in /kaggle/working/wandb/run-20261029_195039-295l6202
+Syncing run act_silu_opt_adam_lr_0.001_bs_64_ep_30 to Weights & Biases (docs)
+View project at https://wandb.ai/cs25m524-indian-institute-of-technology-madras/CS6886W-VGG6-Manual-final
+View run at https://wandb.ai/cs25m524-indian-institute-of-technology-madras/CS6886W-VGG6-Manual-final/runs/295l6202
+
+============================================================
+Starting Run Configuration:
+  • Activation   : silu
+  • Optimizer    : adam
+  • Momentum     : 0.9 (Nesterov: False)
+  • Learning Rate: 0.001
+  • Batch Size   : 64
+  • Epochs       : 30
+  • W&B Project  : CS6886W-VGG6-Manual-final
+============================================================
+
+Epoch [1/30]  Loss: 1.5649  Val Loss: 1.3751  Train Acc: 46.32%  Test Acc: 50.61%
+Epoch [2/30]  Loss: 1.2823  Val Loss: 1.2725  Train Acc: 49.17%  Test Acc: 56.16%
+Epoch [3/30]  Loss: 1.1544  Val Loss: 1.1535  Train Acc: 53.10%  Test Acc: 59.80%
+Epoch [4/30]  Loss: 1.0707  Val Loss: 0.9446  Train Acc: 61.75%  Test Acc: 67.37%
+Epoch [5/30]  Loss: 1.0118  Val Loss: 0.8958  Train Acc: 63.71%  Test Acc: 68.46%
+Epoch [6/30]  Loss: 0.9675  Val Loss: 0.8844  Train Acc: 65.63%  Test Acc: 69.98%
+Epoch [7/30]  Loss: 0.9278  Val Loss: 0.8763  Train Acc: 65.77%  Test Acc: 70.98%
+Epoch [8/30]  Loss: 0.8945  Val Loss: 0.8528  Train Acc: 66.89%  Test Acc: 72.59%
+Epoch [9/30]  Loss: 0.8657  Val Loss: 0.7606  Train Acc: 70.62%  Test Acc: 73.71%
+Epoch [10/30]  Loss: 0.8441  Val Loss: 0.7940  Train Acc: 69.11%  Test Acc: 73.17%
+Epoch [11/30]  Loss: 0.8169  Val Loss: 0.7284  Train Acc: 70.65%  Test Acc: 75.45%
+Epoch [12/30]  Loss: 0.8019  Val Loss: 0.7347  Train Acc: 72.21%  Test Acc: 76.10%
+Epoch [13/30]  Loss: 0.7796  Val Loss: 0.7460  Train Acc: 71.59%  Test Acc: 75.72%
+Epoch [14/30]  Loss: 0.7678  Val Loss: 0.6343  Train Acc: 74.03%  Test Acc: 78.24%
+Epoch [15/30]  Loss: 0.7486  Val Loss: 0.6568  Train Acc: 73.81%  Test Acc: 77.74%
+Epoch [16/30]  Loss: 0.7340  Val Loss: 0.6622  Train Acc: 73.92%  Test Acc: 78.30%
+Epoch [17/30]  Loss: 0.7214  Val Loss: 0.7202  Train Acc: 74.37%  Test Acc: 76.99%
+Epoch [18/30]  Loss: 0.7106  Val Loss: 0.6413  Train Acc: 75.89%  Test Acc: 78.77%
+Epoch [19/30]  Loss: 0.7005  Val Loss: 0.6151  Train Acc: 75.99%  Test Acc: 79.75%
+Epoch [20/30]  Loss: 0.6968  Val Loss: 0.6341  Train Acc: 74.99%  Test Acc: 79.12%
+Epoch [21/30]  Loss: 0.6844  Val Loss: 0.5657  Train Acc: 77.58%  Test Acc: 80.89%
+Epoch [22/30]  Loss: 0.6719  Val Loss: 0.6028  Train Acc: 77.22%  Test Acc: 80.24%
+Epoch [23/30]  Loss: 0.6598  Val Loss: 0.5735  Train Acc: 78.60%  Test Acc: 81.23%
+Epoch [24/30]  Loss: 0.6493  Val Loss: 0.5787  Train Acc: 78.59%  Test Acc: 80.67%
+Epoch [25/30]  Loss: 0.6455  Val Loss: 0.5478  Train Acc: 79.14%  Test Acc: 81.91%
+Epoch [26/30]  Loss: 0.6345  Val Loss: 0.5760  Train Acc: 78.60%  Test Acc: 80.99%
+Epoch [27/30]  Loss: 0.6237  Val Loss: 0.5416  Train Acc: 79.50%  Test Acc: 82.43%
+Epoch [28/30]  Loss: 0.6274  Val Loss: 0.5256  Train Acc: 79.05%  Test Acc: 82.24%
+Epoch [29/30]  Loss: 0.6144  Val Loss: 0.5347  Train Acc: 79.19%  Test Acc: 82.00%
+Epoch [30/30]  Loss: 0.6131  Val Loss: 0.5307  Train Acc: 79.61%  Test Acc: 82.55%
+
+Final Train Accuracy: 80.12% | Final Test Accuracy: 82.55%
+Model saved: data/trained_models/295l6202_20261029_201523_silu_adam_lr-0.001_bs-64_epochs-30_acc-train-80.12_acc-test-82.55.pth
+
+
+Run history:
+
+epoch	▁▁▁▂▂▂▂▃▃▃▃▄▄▄▄▅▅▅▅▆▆▆▆▇▇▇▇███
+train_acc	▁▂▂▄▅▅▅▅▆▆▆▆▆▇▇▇▇▇▇▇█▇████████
+train_loss	█▆▅▄▄▄▃▃▃▃▂▂▂▂▂▂▂▂▂▂▂▁▁▁▁▁▁▁▁▁
+val_acc	▁▂▃▅▅▅▅▆▆▆▆▇▇▇▇▇▇▇▇▇█▇████████
+val_loss	█▇▆▄▄▄▄▄▃▃▃▃▃▂▂▂▃▂▂▂▁▂▁▁▁▁▁▁▁▁
+
+Run summary:
+
+epoch	30
+final_test_acc	82.55
+final_train_acc	80.118
+final_train_loss	0.61308
+final_val_loss	0.53067
+model_checkpoint	295l6202_20261029_20...
+train_acc	79.61
+train_loss	0.61308
+val_acc	82.55
+val_loss	0.53067
+
+View run act_silu_opt_adam_lr_0.001_bs_64_ep_30 at: https://wandb.ai/cs25m524-indian-institute-of-technology-madras/CS6886W-VGG6-Manual-final/runs/295l6202
+View project at: https://wandb.ai/cs25m524-indian-institute-of-technology-madras/CS6886W-VGG6-Manual-final
+Synced 5 W&B file(s), 0 media file(s), 0 artifact file(s) and 0 other file(s)
+Find logs at: ./wandb/run-20261029_195039-295l6202/logs
+
+######################################################################
+▶ EXECUTING RUN 10/20: adam | gelu | lr=0.001 | bs=64 | epochs=30
+######################################################################
+
+Using device: cuda
+Tracking run with wandb version 0.28.1
+Run data is saved locally in /kaggle/working/wandb/run-20261029_201525-kh0ekers
+Syncing run act_gelu_opt_adam_lr_0.001_bs_64_ep_30 to Weights & Biases (docs)
+View project at https://wandb.ai/cs25m524-indian-institute-of-technology-madras/CS6886W-VGG6-Manual-final
+View run at https://wandb.ai/cs25m524-indian-institute-of-technology-madras/CS6886W-VGG6-Manual-final/runs/kh0ekers
+
+============================================================
+Starting Run Configuration:
+  • Activation   : gelu
+  • Optimizer    : adam
+  • Momentum     : 0.9 (Nesterov: False)
+  • Learning Rate: 0.001
+  • Batch Size   : 64
+  • Epochs       : 30
+  • W&B Project  : CS6886W-VGG6-Manual-final
+============================================================
+
+Epoch [1/30]  Loss: 1.5358  Val Loss: 1.3185  Train Acc: 49.59%  Test Acc: 52.64%
+Epoch [2/30]  Loss: 1.2423  Val Loss: 1.2780  Train Acc: 50.64%  Test Acc: 55.93%
+Epoch [3/30]  Loss: 1.1095  Val Loss: 0.9720  Train Acc: 61.52%  Test Acc: 65.97%
+Epoch [4/30]  Loss: 1.0259  Val Loss: 0.9139  Train Acc: 63.72%  Test Acc: 68.18%
+Epoch [5/30]  Loss: 0.9678  Val Loss: 0.9561  Train Acc: 63.19%  Test Acc: 68.09%
+Epoch [6/30]  Loss: 0.9244  Val Loss: 0.8471  Train Acc: 67.28%  Test Acc: 71.44%
+Epoch [7/30]  Loss: 0.8837  Val Loss: 0.8421  Train Acc: 66.87%  Test Acc: 72.24%
+Epoch [8/30]  Loss: 0.8527  Val Loss: 0.8436  Train Acc: 68.77%  Test Acc: 72.24%
+Epoch [9/30]  Loss: 0.8277  Val Loss: 0.7724  Train Acc: 70.37%  Test Acc: 74.43%
+Epoch [10/30]  Loss: 0.8007  Val Loss: 0.7023  Train Acc: 72.27%  Test Acc: 76.52%
+Epoch [11/30]  Loss: 0.7819  Val Loss: 0.6571  Train Acc: 73.37%  Test Acc: 77.52%
+Epoch [12/30]  Loss: 0.7630  Val Loss: 0.6883  Train Acc: 72.94%  Test Acc: 76.85%
+Epoch [13/30]  Loss: 0.7426  Val Loss: 0.7276  Train Acc: 73.20%  Test Acc: 76.49%
+Epoch [14/30]  Loss: 0.7337  Val Loss: 0.6393  Train Acc: 75.80%  Test Acc: 78.93%
+Epoch [15/30]  Loss: 0.7151  Val Loss: 0.6089  Train Acc: 75.97%  Test Acc: 79.56%
+Epoch [16/30]  Loss: 0.7016  Val Loss: 0.6075  Train Acc: 76.05%  Test Acc: 79.67%
+Epoch [17/30]  Loss: 0.6861  Val Loss: 0.6359  Train Acc: 76.27%  Test Acc: 78.73%
+Epoch [18/30]  Loss: 0.6765  Val Loss: 0.6310  Train Acc: 77.13%  Test Acc: 79.03%
+Epoch [19/30]  Loss: 0.6704  Val Loss: 0.5908  Train Acc: 77.24%  Test Acc: 80.22%
+Epoch [20/30]  Loss: 0.6642  Val Loss: 0.6405  Train Acc: 75.89%  Test Acc: 79.35%
+Epoch [21/30]  Loss: 0.6513  Val Loss: 0.5603  Train Acc: 78.31%  Test Acc: 81.40%
+Epoch [22/30]  Loss: 0.6416  Val Loss: 0.5521  Train Acc: 78.69%  Test Acc: 81.55%
+Epoch [23/30]  Loss: 0.6306  Val Loss: 0.5847  Train Acc: 78.71%  Test Acc: 81.09%
+Epoch [24/30]  Loss: 0.6222  Val Loss: 0.5628  Train Acc: 79.20%  Test Acc: 81.63%
+Epoch [25/30]  Loss: 0.6178  Val Loss: 0.5296  Train Acc: 80.06%  Test Acc: 82.69%
+Epoch [26/30]  Loss: 0.6062  Val Loss: 0.5610  Train Acc: 79.10%  Test Acc: 81.62%
+Epoch [27/30]  Loss: 0.5980  Val Loss: 0.5290  Train Acc: 80.42%  Test Acc: 82.92%
+Epoch [28/30]  Loss: 0.6007  Val Loss: 0.5373  Train Acc: 78.69%  Test Acc: 81.92%
+Epoch [29/30]  Loss: 0.5862  Val Loss: 0.5092  Train Acc: 80.74%  Test Acc: 83.02%
+Epoch [30/30]  Loss: 0.5845  Val Loss: 0.5172  Train Acc: 80.61%  Test Acc: 83.04%
+
+Final Train Accuracy: 80.80% | Final Test Accuracy: 83.04%
+Model saved: data/trained_models/kh0ekers_20261029_203959_gelu_adam_lr-0.001_bs-64_epochs-30_acc-train-80.80_acc-test-83.04.pth
+
+
+Run history:
+
+epoch	▁▁▁▂▂▂▂▃▃▃▃▄▄▄▄▅▅▅▅▆▆▆▆▇▇▇▇███
+train_acc	▁▁▄▄▄▅▅▅▆▆▆▆▆▇▇▇▇▇▇▇▇█████████
+train_loss	█▆▅▄▄▄▃▃▃▃▂▂▂▂▂▂▂▂▂▂▁▁▁▁▁▁▁▁▁▁
+val_acc	▁▂▄▅▅▅▆▆▆▆▇▇▆▇▇▇▇▇▇▇██████████
+val_loss	██▅▅▅▄▄▄▃▃▂▃▃▂▂▂▂▂▂▂▁▁▂▁▁▁▁▁▁▁
+
+Run summary:
+
+epoch	30
+final_test_acc	83.04
+final_train_acc	80.804
+final_train_loss	0.58452
+final_val_loss	0.51716
+model_checkpoint	kh0ekers_20261029_20...
+train_acc	80.612
+train_loss	0.58452
+val_acc	83.04
+val_loss	0.51716
+
+View run act_gelu_opt_adam_lr_0.001_bs_64_ep_30 at: https://wandb.ai/cs25m524-indian-institute-of-technology-madras/CS6886W-VGG6-Manual-final/runs/kh0ekers
+View project at: https://wandb.ai/cs25m524-indian-institute-of-technology-madras/CS6886W-VGG6-Manual-final
+Synced 5 W&B file(s), 0 media file(s), 0 artifact file(s) and 0 other file(s)
+Find logs at: ./wandb/run-20261029_201525-kh0ekers/logs
+
+######################################################################
+▶ EXECUTING RUN 11/20: adam | relu | lr=0.1 | bs=64 | epochs=30
+######################################################################
+
+Using device: cuda
+Tracking run with wandb version 0.28.1
+Run data is saved locally in /kaggle/working/wandb/run-20261029_204000-f54vwuzl
+Syncing run act_relu_opt_adam_lr_0.1_bs_64_ep_30 to Weights & Biases (docs)
+View project at https://wandb.ai/cs25m524-indian-institute-of-technology-madras/CS6886W-VGG6-Manual-final
+View run at https://wandb.ai/cs25m524-indian-institute-of-technology-madras/CS6886W-VGG6-Manual-final/runs/f54vwuzl
+
+============================================================
+Starting Run Configuration:
+  • Activation   : relu
+  • Optimizer    : adam
+  • Momentum     : 0.9 (Nesterov: False)
+  • Learning Rate: 0.1
+  • Batch Size   : 64
+  • Epochs       : 30
+  • W&B Project  : CS6886W-VGG6-Manual-final
+============================================================
+
+Epoch [1/30]  Loss: 2.0084  Val Loss: 1.9876  Train Acc: 20.56%  Test Acc: 22.76%
+Epoch [2/30]  Loss: 1.8254  Val Loss: 1.7466  Train Acc: 29.34%  Test Acc: 31.17%
+Epoch [3/30]  Loss: 1.7429  Val Loss: 1.7157  Train Acc: 25.71%  Test Acc: 31.32%
+Epoch [4/30]  Loss: 1.6841  Val Loss: 1.7723  Train Acc: 32.96%  Test Acc: 33.54%
+Epoch [5/30]  Loss: 1.6675  Val Loss: 1.8155  Train Acc: 32.03%  Test Acc: 30.76%
+Epoch [6/30]  Loss: 1.6343  Val Loss: 1.6627  Train Acc: 34.79%  Test Acc: 36.34%
+Epoch [7/30]  Loss: 1.6016  Val Loss: 1.6461  Train Acc: 38.02%  Test Acc: 38.30%
+Epoch [8/30]  Loss: 1.5793  Val Loss: 1.5557  Train Acc: 36.40%  Test Acc: 39.38%
+Epoch [9/30]  Loss: 1.5509  Val Loss: 1.8052  Train Acc: 38.28%  Test Acc: 34.59%
+Epoch [10/30]  Loss: 1.5467  Val Loss: 1.4878  Train Acc: 38.32%  Test Acc: 40.53%
+Epoch [11/30]  Loss: 1.5149  Val Loss: 1.4027  Train Acc: 41.13%  Test Acc: 44.78%
+Epoch [12/30]  Loss: 1.5018  Val Loss: 1.4937  Train Acc: 36.09%  Test Acc: 41.71%
+Epoch [13/30]  Loss: 1.4834  Val Loss: 1.3796  Train Acc: 43.57%  Test Acc: 45.20%
+Epoch [14/30]  Loss: 1.4788  Val Loss: 1.8492  Train Acc: 33.48%  Test Acc: 36.13%
+Epoch [15/30]  Loss: 1.4658  Val Loss: 1.5670  Train Acc: 40.86%  Test Acc: 42.17%
+Epoch [16/30]  Loss: 1.4521  Val Loss: 1.4328  Train Acc: 40.47%  Test Acc: 43.61%
+Epoch [17/30]  Loss: 1.4477  Val Loss: 1.4366  Train Acc: 42.62%  Test Acc: 44.90%
+Epoch [18/30]  Loss: 1.4337  Val Loss: 1.4641  Train Acc: 41.16%  Test Acc: 42.57%
+Epoch [19/30]  Loss: 1.4301  Val Loss: 1.4224  Train Acc: 44.15%  Test Acc: 45.87%
+Epoch [20/30]  Loss: 1.4372  Val Loss: 1.8375  Train Acc: 37.92%  Test Acc: 38.43%
+Epoch [21/30]  Loss: 1.4183  Val Loss: 1.3467  Train Acc: 44.02%  Test Acc: 48.18%
+Epoch [22/30]  Loss: 1.4200  Val Loss: 1.4132  Train Acc: 38.19%  Test Acc: 44.28%
+Epoch [23/30]  Loss: 1.4109  Val Loss: 1.2900  Train Acc: 44.97%  Test Acc: 47.81%
+Epoch [24/30]  Loss: 1.4050  Val Loss: 1.3045  Train Acc: 44.24%  Test Acc: 48.29%
+Epoch [25/30]  Loss: 1.3941  Val Loss: 1.2716  Train Acc: 45.51%  Test Acc: 48.74%
+Epoch [26/30]  Loss: 1.3955  Val Loss: 1.2888  Train Acc: 47.61%  Test Acc: 49.20%
+Epoch [27/30]  Loss: 1.3854  Val Loss: 1.3244  Train Acc: 46.64%  Test Acc: 49.67%
+Epoch [28/30]  Loss: 1.3880  Val Loss: 1.3680  Train Acc: 42.36%  Test Acc: 47.58%
+Epoch [29/30]  Loss: 1.3899  Val Loss: 1.3066  Train Acc: 46.94%  Test Acc: 48.44%
+Epoch [30/30]  Loss: 1.3796  Val Loss: 1.2811  Train Acc: 45.38%  Test Acc: 48.80%
+
+Final Train Accuracy: 45.18% | Final Test Accuracy: 48.80%
+Model saved: data/trained_models/f54vwuzl_20261029_210432_relu_adam_lr-0.1_bs-64_epochs-30_acc-train-45.18_acc-test-48.80.pth
+
+
+Run history:
+
+epoch	▁▁▁▂▂▂▂▃▃▃▃▄▄▄▄▅▅▅▅▆▆▆▆▇▇▇▇███
+train_acc	▁▃▂▄▄▅▆▅▆▆▆▅▇▄▆▆▇▆▇▅▇▆▇▇▇██▇█▇
+train_loss	█▆▅▄▄▄▃▃▃▃▃▂▂▂▂▂▂▂▂▂▁▁▁▁▁▁▁▁▁▁
+val_acc	▁▃▃▄▃▅▅▅▄▆▇▆▇▄▆▆▇▆▇▅█▇█████▇██
+val_loss	█▆▅▆▆▅▅▄▆▃▂▃▂▇▄▃▃▃▂▇▂▂▁▁▁▁▂▂▁▁
+
+Run summary:
+
+epoch	30
+final_test_acc	48.8
+final_train_acc	45.184
+final_train_loss	1.37955
+final_val_loss	1.28109
+model_checkpoint	f54vwuzl_20261029_21...
+train_acc	45.38
+train_loss	1.37955
+val_acc	48.8
+val_loss	1.28109
+
+View run act_relu_opt_adam_lr_0.1_bs_64_ep_30 at: https://wandb.ai/cs25m524-indian-institute-of-technology-madras/CS6886W-VGG6-Manual-final/runs/f54vwuzl
+View project at: https://wandb.ai/cs25m524-indian-institute-of-technology-madras/CS6886W-VGG6-Manual-final
+Synced 5 W&B file(s), 0 media file(s), 0 artifact file(s) and 0 other file(s)
+Find logs at: ./wandb/run-20261029_204000-f54vwuzl/logs
+
+######################################################################
+▶ EXECUTING RUN 12/20: adam | relu | lr=0.01 | bs=64 | epochs=30
+######################################################################
+
+Using device: cuda
+Tracking run with wandb version 0.28.1
+Run data is saved locally in /kaggle/working/wandb/run-20261029_210435-nargycpd
+Syncing run act_relu_opt_adam_lr_0.01_bs_64_ep_30 to Weights & Biases (docs)
+View project at https://wandb.ai/cs25m524-indian-institute-of-technology-madras/CS6886W-VGG6-Manual-final
+View run at https://wandb.ai/cs25m524-indian-institute-of-technology-madras/CS6886W-VGG6-Manual-final/runs/nargycpd
+
+============================================================
+Starting Run Configuration:
+  • Activation   : relu
+  • Optimizer    : adam
+  • Momentum     : 0.9 (Nesterov: False)
+  • Learning Rate: 0.01
+  • Batch Size   : 64
+  • Epochs       : 30
+  • W&B Project  : CS6886W-VGG6-Manual-final
+============================================================
+
+Epoch [1/30]  Loss: 1.6550  Val Loss: 1.4549  Train Acc: 48.99%  Test Acc: 49.55%
+Epoch [2/30]  Loss: 1.2795  Val Loss: 1.1598  Train Acc: 54.27%  Test Acc: 59.67%
+Epoch [3/30]  Loss: 1.1167  Val Loss: 1.3253  Train Acc: 56.24%  Test Acc: 57.89%
+Epoch [4/30]  Loss: 1.0089  Val Loss: 0.9735  Train Acc: 62.81%  Test Acc: 66.95%
+Epoch [5/30]  Loss: 0.9343  Val Loss: 0.9017  Train Acc: 65.20%  Test Acc: 70.14%
+Epoch [6/30]  Loss: 0.8806  Val Loss: 0.8512  Train Acc: 68.35%  Test Acc: 72.57%
+Epoch [7/30]  Loss: 0.8347  Val Loss: 0.8480  Train Acc: 68.17%  Test Acc: 72.31%
+Epoch [8/30]  Loss: 0.7961  Val Loss: 0.7928  Train Acc: 70.75%  Test Acc: 75.21%
+Epoch [9/30]  Loss: 0.7664  Val Loss: 0.7373  Train Acc: 72.76%  Test Acc: 75.99%
+Epoch [10/30]  Loss: 0.7468  Val Loss: 0.6409  Train Acc: 75.18%  Test Acc: 78.44%
+Epoch [11/30]  Loss: 0.7201  Val Loss: 0.6642  Train Acc: 73.92%  Test Acc: 77.57%
+Epoch [12/30]  Loss: 0.6998  Val Loss: 0.7085  Train Acc: 73.36%  Test Acc: 77.04%
+Epoch [13/30]  Loss: 0.6801  Val Loss: 0.7502  Train Acc: 72.87%  Test Acc: 77.26%
+Epoch [14/30]  Loss: 0.6665  Val Loss: 0.6193  Train Acc: 77.07%  Test Acc: 80.09%
+Epoch [15/30]  Loss: 0.6434  Val Loss: 0.6148  Train Acc: 77.04%  Test Acc: 80.15%
+Epoch [16/30]  Loss: 0.6356  Val Loss: 0.5963  Train Acc: 77.02%  Test Acc: 80.86%
+Epoch [17/30]  Loss: 0.6228  Val Loss: 0.6173  Train Acc: 77.02%  Test Acc: 80.31%
+Epoch [18/30]  Loss: 0.6170  Val Loss: 0.6404  Train Acc: 77.63%  Test Acc: 80.24%
+Epoch [19/30]  Loss: 0.6049  Val Loss: 0.5876  Train Acc: 78.59%  Test Acc: 81.86%
+Epoch [20/30]  Loss: 0.6033  Val Loss: 0.5617  Train Acc: 79.40%  Test Acc: 82.26%
+Epoch [21/30]  Loss: 0.5860  Val Loss: 0.5551  Train Acc: 79.43%  Test Acc: 82.46%
+Epoch [22/30]  Loss: 0.5774  Val Loss: 0.5553  Train Acc: 80.41%  Test Acc: 83.35%
+Epoch [23/30]  Loss: 0.5671  Val Loss: 0.5358  Train Acc: 80.50%  Test Acc: 82.86%
+Epoch [24/30]  Loss: 0.5643  Val Loss: 0.5896  Train Acc: 79.72%  Test Acc: 81.60%
+Epoch [25/30]  Loss: 0.5574  Val Loss: 0.5780  Train Acc: 79.34%  Test Acc: 82.42%
+Epoch [26/30]  Loss: 0.5469  Val Loss: 0.4980  Train Acc: 82.19%  Test Acc: 83.97%
+Epoch [27/30]  Loss: 0.5404  Val Loss: 0.5237  Train Acc: 81.11%  Test Acc: 83.74%
+Epoch [28/30]  Loss: 0.5452  Val Loss: 0.5834  Train Acc: 79.32%  Test Acc: 81.53%
+Epoch [29/30]  Loss: 0.5272  Val Loss: 0.5413  Train Acc: 79.81%  Test Acc: 83.24%
+Epoch [30/30]  Loss: 0.5254  Val Loss: 0.5397  Train Acc: 81.64%  Test Acc: 82.90%
+
+Final Train Accuracy: 81.65% | Final Test Accuracy: 82.90%
+Model saved: data/trained_models/nargycpd_20261029_212928_relu_adam_lr-0.01_bs-64_epochs-30_acc-train-81.65_acc-test-82.90.pth
+
+
+Run history:
+
+epoch	▁▁▁▂▂▂▂▃▃▃▃▄▄▄▄▅▅▅▅▆▆▆▆▇▇▇▇███
+train_acc	▁▂▃▄▄▅▅▆▆▇▆▆▆▇▇▇▇▇▇▇▇██▇▇██▇▇█
+train_loss	█▆▅▄▄▃▃▃▂▂▂▂▂▂▂▂▂▂▁▁▁▁▁▁▁▁▁▁▁▁
+val_acc	▁▃▃▅▅▆▆▆▆▇▇▇▇▇▇▇▇▇████████████
+val_loss	█▆▇▄▄▄▄▃▃▂▂▃▃▂▂▂▂▂▂▁▁▁▁▂▂▁▁▂▁▁
+
+Run summary:
+
+epoch	30
+final_test_acc	82.9
+final_train_acc	81.646
+final_train_loss	0.52538
+final_val_loss	0.53968
+model_checkpoint	nargycpd_20261029_21...
+train_acc	81.64
+train_loss	0.52538
+val_acc	82.9
+val_loss	0.53968
+
+View run act_relu_opt_adam_lr_0.01_bs_64_ep_30 at: https://wandb.ai/cs25m524-indian-institute-of-technology-madras/CS6886W-VGG6-Manual-final/runs/nargycpd
+View project at: https://wandb.ai/cs25m524-indian-institute-of-technology-madras/CS6886W-VGG6-Manual-final
+Synced 5 W&B file(s), 0 media file(s), 0 artifact file(s) and 0 other file(s)
+Find logs at: ./wandb/run-20261029_210435-nargycpd/logs
+
+######################################################################
+▶ EXECUTING RUN 13/20: adam | relu | lr=0.0001 | bs=64 | epochs=30
+######################################################################
+
+Using device: cuda
+Tracking run with wandb version 0.28.1
+Run data is saved locally in /kaggle/working/wandb/run-20261029_212930-80tgb9ty
+Syncing run act_relu_opt_adam_lr_0.0001_bs_64_ep_30 to Weights & Biases (docs)
+View project at https://wandb.ai/cs25m524-indian-institute-of-technology-madras/CS6886W-VGG6-Manual-final
+View run at https://wandb.ai/cs25m524-indian-institute-of-technology-madras/CS6886W-VGG6-Manual-final/runs/80tgb9ty
+
+============================================================
+Starting Run Configuration:
+  • Activation   : relu
+  • Optimizer    : adam
+  • Momentum     : 0.9 (Nesterov: False)
+  • Learning Rate: 0.0001
+  • Batch Size   : 64
+  • Epochs       : 30
+  • W&B Project  : CS6886W-VGG6-Manual-final
+============================================================
+
+Epoch [1/30]  Loss: 1.7331  Val Loss: 1.4928  Train Acc: 43.31%  Test Acc: 44.44%
+Epoch [2/30]  Loss: 1.4726  Val Loss: 1.3118  Train Acc: 49.34%  Test Acc: 52.44%
+Epoch [3/30]  Loss: 1.3654  Val Loss: 1.2537  Train Acc: 49.80%  Test Acc: 54.89%
+Epoch [4/30]  Loss: 1.2917  Val Loss: 1.1560  Train Acc: 54.63%  Test Acc: 58.58%
+Epoch [5/30]  Loss: 1.2409  Val Loss: 1.2837  Train Acc: 51.07%  Test Acc: 54.79%
+Epoch [6/30]  Loss: 1.1977  Val Loss: 1.1803  Train Acc: 56.27%  Test Acc: 58.06%
+Epoch [7/30]  Loss: 1.1595  Val Loss: 1.0613  Train Acc: 58.23%  Test Acc: 62.76%
+Epoch [8/30]  Loss: 1.1305  Val Loss: 1.1620  Train Acc: 55.21%  Test Acc: 59.54%
+Epoch [10/30]  Loss: 1.0743  Val Loss: 1.0329  Train Acc: 59.11%  Test Acc: 64.52%
+Epoch [11/30]  Loss: 1.0498  Val Loss: 0.9919  Train Acc: 61.39%  Test Acc: 65.50%
+Epoch [12/30]  Loss: 1.0288  Val Loss: 0.9925  Train Acc: 61.70%  Test Acc: 65.15%
+Epoch [13/30]  Loss: 1.0105  Val Loss: 1.0478  Train Acc: 57.83%  Test Acc: 64.56%
+Epoch [14/30]  Loss: 0.9978  Val Loss: 0.9375  Train Acc: 61.11%  Test Acc: 67.81%
+Epoch [15/30]  Loss: 0.9751  Val Loss: 0.9587  Train Acc: 62.03%  Test Acc: 67.08%
+Epoch [16/30]  Loss: 0.9593  Val Loss: 0.8830  Train Acc: 64.53%  Test Acc: 69.74%
+Epoch [17/30]  Loss: 0.9483  Val Loss: 0.8909  Train Acc: 64.05%  Test Acc: 68.83%
+Epoch [18/30]  Loss: 0.9353  Val Loss: 0.9076  Train Acc: 65.87%  Test Acc: 68.84%
+Epoch [19/30]  Loss: 0.9243  Val Loss: 0.8319  Train Acc: 67.24%  Test Acc: 71.07%
+Epoch [20/30]  Loss: 0.9194  Val Loss: 0.8606  Train Acc: 64.22%  Test Acc: 70.21%
+Epoch [21/30]  Loss: 0.9030  Val Loss: 0.8240  Train Acc: 66.83%  Test Acc: 71.28%
+Epoch [22/30]  Loss: 0.8946  Val Loss: 0.8845  Train Acc: 64.47%  Test Acc: 70.11%
+Epoch [23/30]  Loss: 0.8837  Val Loss: 0.8116  Train Acc: 66.55%  Test Acc: 71.94%
+Epoch [24/30]  Loss: 0.8736  Val Loss: 0.8310  Train Acc: 67.51%  Test Acc: 71.33%
+Epoch [25/30]  Loss: 0.8658  Val Loss: 0.9068  Train Acc: 65.32%  Test Acc: 69.02%
+Epoch [26/30]  Loss: 0.8575  Val Loss: 0.8039  Train Acc: 69.11%  Test Acc: 72.55%
+Epoch [27/30]  Loss: 0.8454  Val Loss: 0.7935  Train Acc: 68.33%  Test Acc: 73.29%
+Epoch [28/30]  Loss: 0.8470  Val Loss: 0.7645  Train Acc: 68.77%  Test Acc: 73.76%
+Epoch [29/30]  Loss: 0.8336  Val Loss: 0.8893  Train Acc: 64.46%  Test Acc: 70.31%
+Epoch [30/30]  Loss: 0.8294  Val Loss: 0.7860  Train Acc: 68.55%  Test Acc: 73.32%
+
+Final Train Accuracy: 68.64% | Final Test Accuracy: 73.32%
+Model saved: data/trained_models/80tgb9ty_20261029_215439_relu_adam_lr-0.0001_bs-64_epochs-30_acc-train-68.64_acc-test-73.32.pth
+
+
+Run history:
+
+epoch	▁▁▁▂▂▂▂▃▃▃▃▄▄▄▄▅▅▅▅▆▆▆▆▇▇▇▇███
+train_acc	▁▃▃▄▃▅▅▄▅▅▆▆▅▆▆▇▇▇▇▇▇▇▇█▇███▇█
+train_loss	█▆▅▅▄▄▄▃▃▃▃▃▂▂▂▂▂▂▂▂▂▂▁▁▁▁▁▁▁▁
+val_acc	▁▃▃▄▃▄▅▅▆▆▆▆▆▇▆▇▇▇▇▇▇▇█▇▇███▇█
+val_loss	█▆▆▅▆▅▄▅▄▄▃▃▄▃▃▂▂▂▂▂▂▂▁▂▂▁▁▁▂▁
+
+Run summary:
+
+epoch	30
+final_test_acc	73.32
+final_train_acc	68.64
+final_train_loss	0.82942
+final_val_loss	0.78602
+model_checkpoint	80tgb9ty_20261029_21...
+train_acc	68.548
+train_loss	0.82942
+val_acc	73.32
+val_loss	0.78602
+
+View run act_relu_opt_adam_lr_0.0001_bs_64_ep_30 at: https://wandb.ai/cs25m524-indian-institute-of-technology-madras/CS6886W-VGG6-Manual-final/runs/80tgb9ty
+View project at: https://wandb.ai/cs25m524-indian-institute-of-technology-madras/CS6886W-VGG6-Manual-final
+Synced 5 W&B file(s), 0 media file(s), 0 artifact file(s) and 0 other file(s)
+Find logs at: ./wandb/run-20261029_212930-80tgb9ty/logs
+
+######################################################################
+▶ EXECUTING RUN 14/20: adam | relu | lr=0.001 | bs=32 | epochs=30
+######################################################################
+
+Using device: cuda
+Tracking run with wandb version 0.28.1
+Run data is saved locally in /kaggle/working/wandb/run-20261029_215441-adzexb1q
+Syncing run act_relu_opt_adam_lr_0.001_bs_32_ep_30 to Weights & Biases (docs)
+View project at https://wandb.ai/cs25m524-indian-institute-of-technology-madras/CS6886W-VGG6-Manual-final
+View run at https://wandb.ai/cs25m524-indian-institute-of-technology-madras/CS6886W-VGG6-Manual-final/runs/adzexb1q
+
+============================================================
+Starting Run Configuration:
+  • Activation   : relu
+  • Optimizer    : adam
+  • Momentum     : 0.9 (Nesterov: False)
+  • Learning Rate: 0.001
+  • Batch Size   : 32
+  • Epochs       : 30
+  • W&B Project  : CS6886W-VGG6-Manual-final
+============================================================
+
+Epoch [1/30]  Loss: 1.5348  Val Loss: 1.4116  Train Acc: 50.18%  Test Acc: 51.32%
+Epoch [2/30]  Loss: 1.2550  Val Loss: 1.0966  Train Acc: 57.99%  Test Acc: 61.92%
+Epoch [3/30]  Loss: 1.1307  Val Loss: 1.0326  Train Acc: 60.78%  Test Acc: 64.47%
+Epoch [4/30]  Loss: 1.0479  Val Loss: 0.8919  Train Acc: 63.97%  Test Acc: 69.32%
+Epoch [5/30]  Loss: 0.9879  Val Loss: 0.8877  Train Acc: 65.43%  Test Acc: 70.22%
+Epoch [6/30]  Loss: 0.9410  Val Loss: 0.9446  Train Acc: 64.27%  Test Acc: 69.05%
+Epoch [7/30]  Loss: 0.9048  Val Loss: 0.8121  Train Acc: 69.00%  Test Acc: 72.81%
+Epoch [8/30]  Loss: 0.8743  Val Loss: 0.8189  Train Acc: 68.54%  Test Acc: 73.79%
+Epoch [9/30]  Loss: 0.8461  Val Loss: 0.7434  Train Acc: 71.52%  Test Acc: 75.56%
+Epoch [10/30]  Loss: 0.8260  Val Loss: 0.8061  Train Acc: 70.09%  Test Acc: 73.91%
+Epoch [11/30]  Loss: 0.8035  Val Loss: 0.6944  Train Acc: 72.60%  Test Acc: 76.45%
+Epoch [12/30]  Loss: 0.7863  Val Loss: 0.7152  Train Acc: 72.92%  Test Acc: 76.29%
+Epoch [13/30]  Loss: 0.7655  Val Loss: 0.7151  Train Acc: 72.73%  Test Acc: 76.95%
+Epoch [14/30]  Loss: 0.7599  Val Loss: 0.6569  Train Acc: 75.24%  Test Acc: 78.47%
+Epoch [15/30]  Loss: 0.7385  Val Loss: 0.6742  Train Acc: 73.67%  Test Acc: 77.64%
+Epoch [16/30]  Loss: 0.7268  Val Loss: 0.6327  Train Acc: 74.72%  Test Acc: 79.13%
+Epoch [17/30]  Loss: 0.7169  Val Loss: 0.6285  Train Acc: 75.28%  Test Acc: 78.98%
+Epoch [18/30]  Loss: 0.7010  Val Loss: 0.6872  Train Acc: 75.78%  Test Acc: 78.59%
+Epoch [19/30]  Loss: 0.6912  Val Loss: 0.6021  Train Acc: 77.50%  Test Acc: 80.26%
+Epoch [20/30]  Loss: 0.6866  Val Loss: 0.5737  Train Acc: 77.10%  Test Acc: 81.10%
+Epoch [21/30]  Loss: 0.6735  Val Loss: 0.6128  Train Acc: 76.51%  Test Acc: 79.74%
+Epoch [22/30]  Loss: 0.6653  Val Loss: 0.6480  Train Acc: 76.43%  Test Acc: 79.00%
+Epoch [23/30]  Loss: 0.6577  Val Loss: 0.5865  Train Acc: 78.12%  Test Acc: 80.74%
+Epoch [24/30]  Loss: 0.6480  Val Loss: 0.5750  Train Acc: 77.79%  Test Acc: 81.06%
+Epoch [25/30]  Loss: 0.6425  Val Loss: 0.6473  Train Acc: 77.05%  Test Acc: 79.96%
+Epoch [26/30]  Loss: 0.6340  Val Loss: 0.6158  Train Acc: 77.97%  Test Acc: 79.94%
+Epoch [27/30]  Loss: 0.6253  Val Loss: 0.5447  Train Acc: 79.01%  Test Acc: 81.93%
+Epoch [28/30]  Loss: 0.6256  Val Loss: 0.5401  Train Acc: 79.82%  Test Acc: 82.43%
+Epoch [29/30]  Loss: 0.6148  Val Loss: 0.5132  Train Acc: 80.41%  Test Acc: 83.22%
+Epoch [30/30]  Loss: 0.6097  Val Loss: 0.5530  Train Acc: 79.29%  Test Acc: 82.04%
+
+Final Train Accuracy: 79.31% | Final Test Accuracy: 82.04%
+Model saved: data/trained_models/adzexb1q_20261029_222156_relu_adam_lr-0.001_bs-32_epochs-30_acc-train-79.31_acc-test-82.04.pth
+
+
+Run history:
+
+epoch	▁▁▁▂▂▂▂▃▃▃▃▄▄▄▄▅▅▅▅▆▆▆▆▇▇▇▇███
+train_acc	▁▃▃▄▅▄▅▅▆▆▆▆▆▇▆▇▇▇▇▇▇▇▇▇▇▇████
+train_loss	█▆▅▄▄▄▃▃▃▃▂▂▂▂▂▂▂▂▂▂▁▁▁▁▁▁▁▁▁▁
+val_acc	▁▃▄▅▅▅▆▆▆▆▇▆▇▇▇▇▇▇▇█▇▇▇█▇▇████
+val_loss	█▆▅▄▄▄▃▃▃▃▂▃▃▂▂▂▂▂▂▁▂▂▂▁▂▂▁▁▁▁
+
+Run summary:
+
+epoch	30
+final_test_acc	82.04
+final_train_acc	79.312
+final_train_loss	0.6097
+final_val_loss	0.55299
+model_checkpoint	adzexb1q_20261029_22...
+train_acc	79.29
+train_loss	0.6097
+val_acc	82.04
+val_loss	0.55299
+
+View run act_relu_opt_adam_lr_0.001_bs_32_ep_30 at: https://wandb.ai/cs25m524-indian-institute-of-technology-madras/CS6886W-VGG6-Manual-final/runs/adzexb1q
+View project at: https://wandb.ai/cs25m524-indian-institute-of-technology-madras/CS6886W-VGG6-Manual-final
+Synced 5 W&B file(s), 0 media file(s), 0 artifact file(s) and 0 other file(s)
+Find logs at: ./wandb/run-20261029_215441-adzexb1q/logs
+
+######################################################################
+▶ EXECUTING RUN 15/20: adam | relu | lr=0.001 | bs=128 | epochs=30
+######################################################################
+
+Using device: cuda
+Tracking run with wandb version 0.28.1
+Run data is saved locally in /kaggle/working/wandb/run-20261029_222159-rafh7zjh
+Syncing run act_relu_opt_adam_lr_0.001_bs_128_ep_30 to Weights & Biases (docs)
+View project at https://wandb.ai/cs25m524-indian-institute-of-technology-madras/CS6886W-VGG6-Manual-final
+View run at https://wandb.ai/cs25m524-indian-institute-of-technology-madras/CS6886W-VGG6-Manual-final/runs/rafh7zjh
+
+============================================================
+Starting Run Configuration:
+  • Activation   : relu
+  • Optimizer    : adam
+  • Momentum     : 0.9 (Nesterov: False)
+  • Learning Rate: 0.001
+  • Batch Size   : 128
+  • Epochs       : 30
+  • W&B Project  : CS6886W-VGG6-Manual-final
+============================================================
+
+Epoch [1/30]  Loss: 1.5685  Val Loss: 1.7458  Train Acc: 37.92%  Test Acc: 41.97%
+Epoch [2/30]  Loss: 1.2786  Val Loss: 1.3048  Train Acc: 48.12%  Test Acc: 54.64%
+Epoch [3/30]  Loss: 1.1549  Val Loss: 1.3742  Train Acc: 50.78%  Test Acc: 57.65%
+Epoch [4/30]  Loss: 1.0720  Val Loss: 1.1505  Train Acc: 58.56%  Test Acc: 62.29%
+Epoch [5/30]  Loss: 1.0086  Val Loss: 1.7650  Train Acc: 46.04%  Test Acc: 51.14%
+Epoch [6/30]  Loss: 0.9658  Val Loss: 1.2211  Train Acc: 55.34%  Test Acc: 62.64%
+Epoch [7/30]  Loss: 0.9257  Val Loss: 0.9097  Train Acc: 64.83%  Test Acc: 69.51%
+Epoch [8/30]  Loss: 0.8928  Val Loss: 0.9078  Train Acc: 64.35%  Test Acc: 69.44%
+Epoch [9/30]  Loss: 0.8613  Val Loss: 1.1060  Train Acc: 58.65%  Test Acc: 64.80%
+Epoch [10/30]  Loss: 0.8397  Val Loss: 0.8439  Train Acc: 68.01%  Test Acc: 72.81%
+Epoch [11/30]  Loss: 0.8190  Val Loss: 0.8576  Train Acc: 66.02%  Test Acc: 71.83%
+Epoch [12/30]  Loss: 0.8009  Val Loss: 0.8794  Train Acc: 67.09%  Test Acc: 71.49%
+Epoch [13/30]  Loss: 0.7798  Val Loss: 0.8913  Train Acc: 66.67%  Test Acc: 71.28%
+Epoch [14/30]  Loss: 0.7703  Val Loss: 0.7135  Train Acc: 70.41%  Test Acc: 76.22%
+Epoch [15/30]  Loss: 0.7578  Val Loss: 0.7300  Train Acc: 71.25%  Test Acc: 75.62%
+Epoch [16/30]  Loss: 0.7373  Val Loss: 0.7050  Train Acc: 72.85%  Test Acc: 77.06%
+Epoch [17/30]  Loss: 0.7299  Val Loss: 0.6890  Train Acc: 73.68%  Test Acc: 76.68%
+Epoch [18/30]  Loss: 0.7142  Val Loss: 0.8090  Train Acc: 70.76%  Test Acc: 74.56%
+Epoch [19/30]  Loss: 0.7069  Val Loss: 0.6837  Train Acc: 73.04%  Test Acc: 77.47%
+Epoch [20/30]  Loss: 0.6991  Val Loss: 0.6931  Train Acc: 72.85%  Test Acc: 77.19%
+Epoch [21/30]  Loss: 0.6947  Val Loss: 0.7161  Train Acc: 72.15%  Test Acc: 76.37%
+Epoch [22/30]  Loss: 0.6829  Val Loss: 0.6463  Train Acc: 73.91%  Test Acc: 78.55%
+Epoch [23/30]  Loss: 0.6708  Val Loss: 0.6814  Train Acc: 73.79%  Test Acc: 77.59%
+Epoch [24/30]  Loss: 0.6595  Val Loss: 0.6410  Train Acc: 74.26%  Test Acc: 78.62%
+Epoch [25/30]  Loss: 0.6547  Val Loss: 0.6556  Train Acc: 75.90%  Test Acc: 78.56%
+Epoch [26/30]  Loss: 0.6515  Val Loss: 0.6944  Train Acc: 74.73%  Test Acc: 77.77%
+Epoch [27/30]  Loss: 0.6388  Val Loss: 0.6323  Train Acc: 76.77%  Test Acc: 79.74%
+Epoch [28/30]  Loss: 0.6382  Val Loss: 0.6323  Train Acc: 74.55%  Test Acc: 79.44%
+Epoch [29/30]  Loss: 0.6281  Val Loss: 0.6099  Train Acc: 76.82%  Test Acc: 79.74%
+Epoch [30/30]  Loss: 0.6258  Val Loss: 0.5495  Train Acc: 78.60%  Test Acc: 81.57%
+
+Final Train Accuracy: 78.69% | Final Test Accuracy: 81.57%
+Model saved: data/trained_models/rafh7zjh_20261029_224558_relu_adam_lr-0.001_bs-128_epochs-30_acc-train-78.69_acc-test-81.57.pth
+
+
+Run history:
+
+epoch	▁▁▁▂▂▂▂▃▃▃▃▄▄▄▄▅▅▅▅▆▆▆▆▇▇▇▇███
+train_acc	▁▃▃▅▂▄▆▆▅▆▆▆▆▇▇▇▇▇▇▇▇▇▇▇█▇█▇██
+train_loss	█▆▅▄▄▄▃▃▃▃▂▂▂▂▂▂▂▂▂▂▂▁▁▁▁▁▁▁▁▁
+val_acc	▁▃▄▅▃▅▆▆▅▆▆▆▆▇▇▇▇▇▇▇▇▇▇▇▇▇████
+val_loss	█▅▆▄█▅▃▃▄▃▃▃▃▂▂▂▂▂▂▂▂▂▂▂▂▂▁▁▁▁
+
+Run summary:
+
+epoch	30
+final_test_acc	81.57
+final_train_acc	78.692
+final_train_loss	0.62576
+final_val_loss	0.54948
+model_checkpoint	rafh7zjh_20261029_22...
+train_acc	78.596
+train_loss	0.62576
+val_acc	81.57
+val_loss	0.54948
+
+View run act_relu_opt_adam_lr_0.001_bs_128_ep_30 at: https://wandb.ai/cs25m524-indian-institute-of-technology-madras/CS6886W-VGG6-Manual-final/runs/rafh7zjh
+View project at: https://wandb.ai/cs25m524-indian-institute-of-technology-madras/CS6886W-VGG6-Manual-final
+Synced 5 W&B file(s), 0 media file(s), 0 artifact file(s) and 0 other file(s)
+Find logs at: ./wandb/run-20261029_222159-rafh7zjh/logs
+
+######################################################################
+▶ EXECUTING RUN 16/20: adam | relu | lr=0.001 | bs=256 | epochs=30
+######################################################################
+
+Using device: cuda
+Tracking run with wandb version 0.28.1
+Run data is saved locally in /kaggle/working/wandb/run-20261029_224601-bpdnsuzl
+Syncing run act_relu_opt_adam_lr_0.001_bs_256_ep_30 to Weights & Biases (docs)
+View project at https://wandb.ai/cs25m524-indian-institute-of-technology-madras/CS6886W-VGG6-Manual-final
+View run at https://wandb.ai/cs25m524-indian-institute-of-technology-madras/CS6886W-VGG6-Manual-final/runs/bpdnsuzl
+
+============================================================
+Starting Run Configuration:
+  • Activation   : relu
+  • Optimizer    : adam
+  • Momentum     : 0.9 (Nesterov: False)
+  • Learning Rate: 0.001
+  • Batch Size   : 256
+  • Epochs       : 30
+  • W&B Project  : CS6886W-VGG6-Manual-final
+============================================================
+
+Epoch [1/30]  Loss: 1.6069  Val Loss: 1.7234  Train Acc: 40.62%  Test Acc: 41.32%
+Epoch [2/30]  Loss: 1.3191  Val Loss: 1.2010  Train Acc: 53.40%  Test Acc: 57.60%
+Epoch [3/30]  Loss: 1.1977  Val Loss: 1.3300  Train Acc: 49.78%  Test Acc: 55.34%
+Epoch [4/30]  Loss: 1.1177  Val Loss: 1.1405  Train Acc: 57.89%  Test Acc: 60.96%
+Epoch [5/30]  Loss: 1.0569  Val Loss: 1.2917  Train Acc: 52.93%  Test Acc: 58.49%
+Epoch [6/30]  Loss: 1.0012  Val Loss: 1.1597  Train Acc: 52.95%  Test Acc: 61.06%
+Epoch [7/30]  Loss: 0.9623  Val Loss: 0.9415  Train Acc: 62.40%  Test Acc: 68.13%
+Epoch [8/30]  Loss: 0.9274  Val Loss: 1.2685  Train Acc: 55.18%  Test Acc: 61.12%
+Epoch [9/30]  Loss: 0.8963  Val Loss: 0.9725  Train Acc: 61.86%  Test Acc: 67.55%
+Epoch [10/30]  Loss: 0.8773  Val Loss: 1.0387  Train Acc: 60.62%  Test Acc: 66.72%
+Epoch [11/30]  Loss: 0.8503  Val Loss: 1.6563  Train Acc: 49.08%  Test Acc: 56.83%
+Epoch [12/30]  Loss: 0.8344  Val Loss: 0.9262  Train Acc: 64.63%  Test Acc: 69.75%
+Epoch [13/30]  Loss: 0.8118  Val Loss: 1.0342  Train Acc: 59.54%  Test Acc: 66.38%
+Epoch [14/30]  Loss: 0.7998  Val Loss: 1.1141  Train Acc: 59.78%  Test Acc: 67.86%
+Epoch [15/30]  Loss: 0.7871  Val Loss: 0.7822  Train Acc: 69.40%  Test Acc: 74.50%
+Epoch [16/30]  Loss: 0.7712  Val Loss: 0.9578  Train Acc: 62.86%  Test Acc: 69.98%
+Epoch [17/30]  Loss: 0.7602  Val Loss: 0.9199  Train Acc: 64.54%  Test Acc: 69.89%
+Epoch [18/30]  Loss: 0.7452  Val Loss: 0.7154  Train Acc: 72.85%  Test Acc: 76.24%
+Epoch [19/30]  Loss: 0.7370  Val Loss: 0.7187  Train Acc: 71.19%  Test Acc: 76.10%
+Epoch [20/30]  Loss: 0.7279  Val Loss: 0.6728  Train Acc: 72.68%  Test Acc: 77.44%
+Epoch [21/30]  Loss: 0.7191  Val Loss: 0.7180  Train Acc: 71.87%  Test Acc: 76.33%
+Epoch [22/30]  Loss: 0.7063  Val Loss: 0.8464  Train Acc: 69.68%  Test Acc: 71.82%
+Epoch [23/30]  Loss: 0.7021  Val Loss: 0.7872  Train Acc: 69.11%  Test Acc: 74.88%
+Epoch [24/30]  Loss: 0.6911  Val Loss: 0.6914  Train Acc: 72.23%  Test Acc: 77.11%
+Epoch [25/30]  Loss: 0.6807  Val Loss: 0.6783  Train Acc: 73.21%  Test Acc: 77.16%
+Epoch [26/30]  Loss: 0.6731  Val Loss: 0.7051  Train Acc: 72.46%  Test Acc: 76.92%
+Epoch [27/30]  Loss: 0.6678  Val Loss: 0.6992  Train Acc: 72.50%  Test Acc: 77.18%
+Epoch [28/30]  Loss: 0.6643  Val Loss: 0.7732  Train Acc: 72.04%  Test Acc: 75.38%
+Epoch [29/30]  Loss: 0.6512  Val Loss: 0.8942  Train Acc: 66.00%  Test Acc: 71.86%
+Epoch [30/30]  Loss: 0.6520  Val Loss: 0.6641  Train Acc: 75.04%  Test Acc: 78.58%
+
+Final Train Accuracy: 75.17% | Final Test Accuracy: 78.58%
+Model saved: data/trained_models/bpdnsuzl_20261029_230903_relu_adam_lr-0.001_bs-256_epochs-30_acc-train-75.17_acc-test-78.58.pth
+
+
+Run history:
+
+epoch	▁▁▁▂▂▂▂▃▃▃▃▄▄▄▄▅▅▅▅▆▆▆▆▇▇▇▇███
+train_acc	▁▄▃▅▄▄▅▄▅▅▃▆▅▅▇▆▆█▇█▇▇▇▇█▇▇▇▆█
+train_loss	█▆▅▄▄▄▃▃▃▃▂▂▂▂▂▂▂▂▂▂▁▁▁▁▁▁▁▁▁▁
+val_acc	▁▄▄▅▄▅▆▅▆▆▄▆▆▆▇▆▆████▇▇████▇▇█
+val_loss	█▅▅▄▅▄▃▅▃▃█▃▃▄▂▃▃▁▁▁▁▂▂▁▁▁▁▂▃▁
+
+Run summary:
+
+epoch	30
+final_test_acc	78.58
+final_train_acc	75.166
+final_train_loss	0.652
+final_val_loss	0.66406
+model_checkpoint	bpdnsuzl_20261029_23...
+train_acc	75.036
+train_loss	0.652
+val_acc	78.58
+val_loss	0.66406
+
+View run act_relu_opt_adam_lr_0.001_bs_256_ep_30 at: https://wandb.ai/cs25m524-indian-institute-of-technology-madras/CS6886W-VGG6-Manual-final/runs/bpdnsuzl
+View project at: https://wandb.ai/cs25m524-indian-institute-of-technology-madras/CS6886W-VGG6-Manual-final
+Synced 5 W&B file(s), 0 media file(s), 0 artifact file(s) and 0 other file(s)
+Find logs at: ./wandb/run-20261029_224601-bpdnsuzl/logs
+
+######################################################################
+▶ EXECUTING RUN 17/20: adam | relu | lr=0.001 | bs=64 | epochs=10
+######################################################################
+
+Using device: cuda
+Tracking run with wandb version 0.28.1
+Run data is saved locally in /kaggle/working/wandb/run-20261029_230905-1ldity70
+Syncing run act_relu_opt_adam_lr_0.001_bs_64_ep_10 to Weights & Biases (docs)
+View project at https://wandb.ai/cs25m524-indian-institute-of-technology-madras/CS6886W-VGG6-Manual-final
+View run at https://wandb.ai/cs25m524-indian-institute-of-technology-madras/CS6886W-VGG6-Manual-final/runs/1ldity70
+
+============================================================
+Starting Run Configuration:
+  • Activation   : relu
+  • Optimizer    : adam
+  • Momentum     : 0.9 (Nesterov: False)
+  • Learning Rate: 0.001
+  • Batch Size   : 64
+  • Epochs       : 10
+  • W&B Project  : CS6886W-VGG6-Manual-final
+============================================================
+
+Epoch [1/10]  Loss: 1.5445  Val Loss: 1.5128  Train Acc: 44.34%  Test Acc: 46.22%
+Epoch [2/10]  Loss: 1.2578  Val Loss: 1.3613  Train Acc: 48.30%  Test Acc: 53.41%
+Epoch [3/10]  Loss: 1.1350  Val Loss: 1.0413  Train Acc: 59.35%  Test Acc: 63.93%
+Epoch [4/10]  Loss: 1.0506  Val Loss: 0.9664  Train Acc: 62.15%  Test Acc: 66.83%
+Epoch [5/10]  Loss: 0.9929  Val Loss: 1.1962  Train Acc: 55.06%  Test Acc: 62.32%
+Epoch [6/10]  Loss: 0.9484  Val Loss: 1.0637  Train Acc: 61.32%  Test Acc: 65.62%
+Epoch [7/10]  Loss: 0.9097  Val Loss: 0.8479  Train Acc: 65.30%  Test Acc: 71.83%
+Epoch [8/10]  Loss: 0.8746  Val Loss: 0.9717  Train Acc: 65.20%  Test Acc: 69.13%
+Epoch [9/10]  Loss: 0.8505  Val Loss: 0.7811  Train Acc: 69.29%  Test Acc: 73.74%
+Epoch [10/10]  Loss: 0.8233  Val Loss: 0.7796  Train Acc: 69.66%  Test Acc: 73.67%
+
+Final Train Accuracy: 69.89% | Final Test Accuracy: 73.67%
+Model saved: data/trained_models/1ldity70_20261029_231749_relu_adam_lr-0.001_bs-64_epochs-10_acc-train-69.89_acc-test-73.67.pth
+
+
+Run history:
+
+epoch	▁▂▃▃▄▅▆▆▇█
+train_acc	▁▂▅▆▄▆▇▇██
+train_loss	█▅▄▃▃▂▂▁▁▁
+val_acc	▁▃▆▆▅▆█▇██
+val_loss	█▇▃▃▅▄▂▃▁▁
+
+Run summary:
+
+epoch	10
+final_test_acc	73.67
+final_train_acc	69.886
+final_train_loss	0.82333
+final_val_loss	0.77956
+model_checkpoint	1ldity70_20261029_23...
+train_acc	69.656
+train_loss	0.82333
+val_acc	73.67
+val_loss	0.77956
+
+View run act_relu_opt_adam_lr_0.001_bs_64_ep_10 at: https://wandb.ai/cs25m524-indian-institute-of-technology-madras/CS6886W-VGG6-Manual-final/runs/1ldity70
+View project at: https://wandb.ai/cs25m524-indian-institute-of-technology-madras/CS6886W-VGG6-Manual-final
+Synced 5 W&B file(s), 0 media file(s), 0 artifact file(s) and 0 other file(s)
+Find logs at: ./wandb/run-20261029_230905-1ldity70/logs
+
+######################################################################
+▶ EXECUTING RUN 18/20: adam | relu | lr=0.001 | bs=64 | epochs=40
+######################################################################
+
+Using device: cuda
+Tracking run with wandb version 0.28.1
+Run data is saved locally in /kaggle/working/wandb/run-20261029_231752-0u8svajq
+Syncing run act_relu_opt_adam_lr_0.001_bs_64_ep_40 to Weights & Biases (docs)
+View project at https://wandb.ai/cs25m524-indian-institute-of-technology-madras/CS6886W-VGG6-Manual-final
+View run at https://wandb.ai/cs25m524-indian-institute-of-technology-madras/CS6886W-VGG6-Manual-final/runs/0u8svajq
+
+============================================================
+Starting Run Configuration:
+  • Activation   : relu
+  • Optimizer    : adam
+  • Momentum     : 0.9 (Nesterov: False)
+  • Learning Rate: 0.001
+  • Batch Size   : 64
+  • Epochs       : 40
+  • W&B Project  : CS6886W-VGG6-Manual-final
+============================================================
+
+Epoch [1/40]  Loss: 1.5445  Val Loss: 1.5128  Train Acc: 44.34%  Test Acc: 46.22%
+Epoch [2/40]  Loss: 1.2578  Val Loss: 1.3613  Train Acc: 48.30%  Test Acc: 53.41%
+Epoch [3/40]  Loss: 1.1350  Val Loss: 1.0413  Train Acc: 59.35%  Test Acc: 63.93%
+Epoch [4/40]  Loss: 1.0506  Val Loss: 0.9664  Train Acc: 62.15%  Test Acc: 66.83%
+Epoch [5/40]  Loss: 0.9929  Val Loss: 1.1962  Train Acc: 55.06%  Test Acc: 62.32%
+Epoch [6/40]  Loss: 0.9484  Val Loss: 1.0637  Train Acc: 61.32%  Test Acc: 65.62%
+Epoch [7/40]  Loss: 0.9097  Val Loss: 0.8479  Train Acc: 65.30%  Test Acc: 71.83%
+Epoch [8/40]  Loss: 0.8746  Val Loss: 0.9717  Train Acc: 65.20%  Test Acc: 69.13%
+Epoch [9/40]  Loss: 0.8505  Val Loss: 0.7811  Train Acc: 69.29%  Test Acc: 73.74%
+Epoch [10/40]  Loss: 0.8233  Val Loss: 0.7796  Train Acc: 69.66%  Test Acc: 73.67%
+Epoch [11/40]  Loss: 0.8032  Val Loss: 0.7768  Train Acc: 68.90%  Test Acc: 74.71%
+Epoch [12/40]  Loss: 0.7855  Val Loss: 0.7587  Train Acc: 71.02%  Test Acc: 75.06%
+Epoch [13/40]  Loss: 0.7660  Val Loss: 0.8964  Train Acc: 67.84%  Test Acc: 71.87%
+Epoch [14/40]  Loss: 0.7555  Val Loss: 0.7227  Train Acc: 72.19%  Test Acc: 75.75%
+Epoch [15/40]  Loss: 0.7354  Val Loss: 0.6432  Train Acc: 74.03%  Test Acc: 78.44%
+Epoch [16/40]  Loss: 0.7257  Val Loss: 0.6730  Train Acc: 73.64%  Test Acc: 77.65%
+Epoch [17/40]  Loss: 0.7081  Val Loss: 0.6551  Train Acc: 74.56%  Test Acc: 78.78%
+Epoch [18/40]  Loss: 0.6990  Val Loss: 0.6310  Train Acc: 75.83%  Test Acc: 79.00%
+Epoch [19/40]  Loss: 0.6949  Val Loss: 0.6534  Train Acc: 75.46%  Test Acc: 78.37%
+Epoch [20/40]  Loss: 0.6882  Val Loss: 0.6531  Train Acc: 74.20%  Test Acc: 78.47%
+Epoch [21/40]  Loss: 0.6765  Val Loss: 0.6289  Train Acc: 75.56%  Test Acc: 79.70%
+Epoch [22/40]  Loss: 0.6642  Val Loss: 0.6264  Train Acc: 76.60%  Test Acc: 79.72%
+Epoch [23/40]  Loss: 0.6563  Val Loss: 0.6270  Train Acc: 76.47%  Test Acc: 79.43%
+Epoch [24/40]  Loss: 0.6454  Val Loss: 0.6178  Train Acc: 77.55%  Test Acc: 80.50%
+Epoch [25/40]  Loss: 0.6418  Val Loss: 0.5381  Train Acc: 79.04%  Test Acc: 82.10%
+Epoch [26/40]  Loss: 0.6350  Val Loss: 0.5926  Train Acc: 78.28%  Test Acc: 80.77%
+Epoch [27/40]  Loss: 0.6225  Val Loss: 0.5633  Train Acc: 78.84%  Test Acc: 81.84%
+Epoch [28/40]  Loss: 0.6284  Val Loss: 0.5797  Train Acc: 77.26%  Test Acc: 80.59%
+Epoch [29/40]  Loss: 0.6123  Val Loss: 0.5205  Train Acc: 79.80%  Test Acc: 82.39%
+Epoch [30/40]  Loss: 0.6099  Val Loss: 0.5709  Train Acc: 78.64%  Test Acc: 81.03%
+Epoch [31/40]  Loss: 0.6030  Val Loss: 0.5294  Train Acc: 79.29%  Test Acc: 83.09%
+Epoch [32/40]  Loss: 0.5942  Val Loss: 0.5940  Train Acc: 79.38%  Test Acc: 80.84%
+Epoch [33/40]  Loss: 0.5830  Val Loss: 0.5438  Train Acc: 78.60%  Test Acc: 82.19%
+Epoch [34/40]  Loss: 0.5833  Val Loss: 0.5154  Train Acc: 80.30%  Test Acc: 83.36%
+Epoch [35/40]  Loss: 0.5837  Val Loss: 0.5309  Train Acc: 80.01%  Test Acc: 82.69%
+Epoch [36/40]  Loss: 0.5764  Val Loss: 0.6737  Train Acc: 77.15%  Test Acc: 79.41%
+Epoch [37/40]  Loss: 0.5732  Val Loss: 0.5512  Train Acc: 79.50%  Test Acc: 81.81%
+Epoch [38/40]  Loss: 0.5644  Val Loss: 0.5600  Train Acc: 78.71%  Test Acc: 82.14%
+Epoch [39/40]  Loss: 0.5610  Val Loss: 0.5248  Train Acc: 80.59%  Test Acc: 83.09%
+Epoch [40/40]  Loss: 0.5544  Val Loss: 0.5238  Train Acc: 81.28%  Test Acc: 83.29%
+
+Final Train Accuracy: 81.13% | Final Test Accuracy: 83.29%
+Model saved: data/trained_models/0u8svajq_20261029_235131_relu_adam_lr-0.001_bs-64_epochs-40_acc-train-81.13_acc-test-83.29.pth
+
+
+Run history:
+
+epoch	▁▁▁▂▂▂▂▂▂▃▃▃▃▃▄▄▄▄▄▄▅▅▅▅▅▅▆▆▆▆▆▇▇▇▇▇▇███
+train_acc	▁▂▄▄▃▄▅▅▆▆▆▆▅▆▇▇▇▇▇▇▇▇▇▇█▇█▇████▇██▇████
+train_loss	█▆▅▅▄▄▄▃▃▃▃▃▂▂▂▂▂▂▂▂▂▂▂▂▂▂▁▂▁▁▁▁▁▁▁▁▁▁▁▁
+val_acc	▁▂▄▅▄▅▆▅▆▆▆▆▆▇▇▇▇▇▇▇▇▇▇▇███▇███████▇████
+val_loss	█▇▅▄▆▅▃▄▃▃▃▃▄▂▂▂▂▂▂▂▂▂▂▂▁▂▁▁▁▁▁▂▁▁▁▂▁▁▁▁
+
+Run summary:
+
+epoch	40
+final_test_acc	83.29
+final_train_acc	81.134
+final_train_loss	0.55443
+final_val_loss	0.52384
+model_checkpoint	0u8svajq_20261029_23...
+train_acc	81.278
+train_loss	0.55443
+val_acc	83.29
+val_loss	0.52384
+
+View run act_relu_opt_adam_lr_0.001_bs_64_ep_40 at: https://wandb.ai/cs25m524-indian-institute-of-technology-madras/CS6886W-VGG6-Manual-final/runs/0u8svajq
+View project at: https://wandb.ai/cs25m524-indian-institute-of-technology-madras/CS6886W-VGG6-Manual-final
+Synced 5 W&B file(s), 0 media file(s), 0 artifact file(s) and 0 other file(s)
+Find logs at: ./wandb/run-20261029_231752-0u8svajq/logs
+
+######################################################################
+▶ EXECUTING RUN 19/20: adam | gelu | lr=0.01 | bs=64 | epochs=30
+######################################################################
+
+Using device: cuda
+Tracking run with wandb version 0.28.1
+Run data is saved locally in /kaggle/working/wandb/run-20261029_235135-wdkdwv0s
+Syncing run act_gelu_opt_adam_lr_0.01_bs_64_ep_30 to Weights & Biases (docs)
+View project at https://wandb.ai/cs25m524-indian-institute-of-technology-madras/CS6886W-VGG6-Manual-final
+View run at https://wandb.ai/cs25m524-indian-institute-of-technology-madras/CS6886W-VGG6-Manual-final/runs/wdkdwv0s
+
+============================================================
+Starting Run Configuration:
+  • Activation   : gelu
+  • Optimizer    : adam
+  • Momentum     : 0.9 (Nesterov: False)
+  • Learning Rate: 0.01
+  • Batch Size   : 64
+  • Epochs       : 30
+  • W&B Project  : CS6886W-VGG6-Manual-final
+============================================================
+
+Epoch [1/30]  Loss: 1.6251  Val Loss: 1.4608  Train Acc: 47.92%  Test Acc: 50.52%
+Epoch [2/30]  Loss: 1.2417  Val Loss: 1.1456  Train Acc: 56.48%  Test Acc: 60.08%
+Epoch [3/30]  Loss: 1.0772  Val Loss: 0.9597  Train Acc: 62.06%  Test Acc: 66.61%
+Epoch [4/30]  Loss: 0.9693  Val Loss: 0.8997  Train Acc: 64.22%  Test Acc: 69.67%
+Epoch [5/30]  Loss: 0.8993  Val Loss: 0.8109  Train Acc: 68.29%  Test Acc: 72.92%
+Epoch [6/30]  Loss: 0.8478  Val Loss: 0.7683  Train Acc: 70.72%  Test Acc: 75.09%
+Epoch [7/30]  Loss: 0.8035  Val Loss: 0.6881  Train Acc: 73.02%  Test Acc: 77.02%
+Epoch [8/30]  Loss: 0.7636  Val Loss: 0.7572  Train Acc: 72.44%  Test Acc: 76.19%
+Epoch [9/30]  Loss: 0.7364  Val Loss: 0.6541  Train Acc: 75.31%  Test Acc: 78.84%
+Epoch [10/30]  Loss: 0.7109  Val Loss: 0.6432  Train Acc: 75.41%  Test Acc: 79.00%
+Epoch [11/30]  Loss: 0.6901  Val Loss: 0.6030  Train Acc: 76.01%  Test Acc: 80.27%
+Epoch [12/30]  Loss: 0.6666  Val Loss: 0.6076  Train Acc: 76.05%  Test Acc: 79.49%
+Epoch [13/30]  Loss: 0.6495  Val Loss: 0.6582  Train Acc: 76.74%  Test Acc: 80.12%
+Epoch [14/30]  Loss: 0.6370  Val Loss: 0.6241  Train Acc: 77.28%  Test Acc: 80.00%
+Epoch [15/30]  Loss: 0.6212  Val Loss: 0.5900  Train Acc: 78.44%  Test Acc: 81.45%
+Epoch [16/30]  Loss: 0.6114  Val Loss: 0.5404  Train Acc: 79.04%  Test Acc: 82.63%
+Epoch [17/30]  Loss: 0.5979  Val Loss: 0.5628  Train Acc: 78.88%  Test Acc: 82.16%
+Epoch [18/30]  Loss: 0.5865  Val Loss: 0.5453  Train Acc: 80.19%  Test Acc: 82.42%
+Epoch [19/30]  Loss: 0.5844  Val Loss: 0.6092  Train Acc: 79.29%  Test Acc: 81.05%
+Epoch [20/30]  Loss: 0.5750  Val Loss: 0.5365  Train Acc: 80.73%  Test Acc: 82.62%
+Epoch [21/30]  Loss: 0.5659  Val Loss: 0.5355  Train Acc: 80.03%  Test Acc: 83.16%
+Epoch [22/30]  Loss: 0.5554  Val Loss: 0.5049  Train Acc: 81.66%  Test Acc: 83.78%
+Epoch [23/30]  Loss: 0.5398  Val Loss: 0.5377  Train Acc: 80.85%  Test Acc: 83.38%
+Epoch [24/30]  Loss: 0.5460  Val Loss: 0.4801  Train Acc: 82.40%  Test Acc: 84.25%
+Epoch [25/30]  Loss: 0.5377  Val Loss: 0.4913  Train Acc: 82.23%  Test Acc: 84.41%
+Epoch [26/30]  Loss: 0.5288  Val Loss: 0.4655  Train Acc: 82.72%  Test Acc: 85.22%
+Epoch [27/30]  Loss: 0.5218  Val Loss: 0.5308  Train Acc: 81.67%  Test Acc: 83.45%
+Epoch [28/30]  Loss: 0.5251  Val Loss: 0.5197  Train Acc: 81.56%  Test Acc: 83.82%
+Epoch [29/30]  Loss: 0.5117  Val Loss: 0.5046  Train Acc: 81.65%  Test Acc: 84.26%
+Epoch [30/30]  Loss: 0.5075  Val Loss: 0.5019  Train Acc: 82.35%  Test Acc: 84.17%
+
+Final Train Accuracy: 82.49% | Final Test Accuracy: 84.17%
+Model saved: data/trained_models/wdkdwv0s_20261030_001716_gelu_adam_lr-0.01_bs-64_epochs-30_acc-train-82.49_acc-test-84.17.pth
+
+
+Run history:
+
+epoch	▁▁▁▂▂▂▂▃▃▃▃▄▄▄▄▅▅▅▅▆▆▆▆▇▇▇▇███
+train_acc	▁▃▄▄▅▆▆▆▇▇▇▇▇▇▇▇▇▇▇█▇█████████
+train_loss	█▆▅▄▃▃▃▃▂▂▂▂▂▂▂▂▂▁▁▁▁▁▁▁▁▁▁▁▁▁
+val_acc	▁▃▄▅▆▆▆▆▇▇▇▇▇▇▇▇▇▇▇▇██████████
+val_loss	█▆▄▄▃▃▃▃▂▂▂▂▂▂▂▂▂▂▂▁▁▁▂▁▁▁▁▁▁▁
+
+Run summary:
+
+epoch	30
+final_test_acc	84.17
+final_train_acc	82.486
+final_train_loss	0.50747
+final_val_loss	0.50186
+model_checkpoint	wdkdwv0s_20261030_00...
+train_acc	82.346
+train_loss	0.50747
+val_acc	84.17
+val_loss	0.50186
+
+View run act_gelu_opt_adam_lr_0.01_bs_64_ep_30 at: https://wandb.ai/cs25m524-indian-institute-of-technology-madras/CS6886W-VGG6-Manual-final/runs/wdkdwv0s
+View project at: https://wandb.ai/cs25m524-indian-institute-of-technology-madras/CS6886W-VGG6-Manual-final
+Synced 5 W&B file(s), 0 media file(s), 0 artifact file(s) and 0 other file(s)
+Find logs at: ./wandb/run-20261029_235135-wdkdwv0s/logs
+
+######################################################################
+▶ EXECUTING RUN 20/20: nesterov_sgd | relu | lr=0.01 | bs=64 | epochs=30
+######################################################################
+
+Using device: cuda
+Tracking run with wandb version 0.28.1
+Run data is saved locally in /kaggle/working/wandb/run-20261030_001718-31d8nskj
+Syncing run act_relu_opt_nesterov_sgd_lr_0.01_bs_64_ep_30 to Weights & Biases (docs)
+View project at https://wandb.ai/cs25m524-indian-institute-of-technology-madras/CS6886W-VGG6-Manual-final
+View run at https://wandb.ai/cs25m524-indian-institute-of-technology-madras/CS6886W-VGG6-Manual-final/runs/31d8nskj
+
+============================================================
+Starting Run Configuration:
+  • Activation   : relu
+  • Optimizer    : nesterov_sgd
+  • Momentum     : 0.9 (Nesterov: True)
+  • Learning Rate: 0.01
+  • Batch Size   : 64
+  • Epochs       : 30
+  • W&B Project  : CS6886W-VGG6-Manual-final
+============================================================
+
+Epoch [1/30]  Loss: 1.5769  Val Loss: 1.4911  Train Acc: 46.14%  Test Acc: 47.97%
+Epoch [2/30]  Loss: 1.3007  Val Loss: 1.2086  Train Acc: 52.87%  Test Acc: 57.47%
+Epoch [3/30]  Loss: 1.1838  Val Loss: 1.0415  Train Acc: 59.15%  Test Acc: 63.99%
+Epoch [4/30]  Loss: 1.0989  Val Loss: 0.9543  Train Acc: 61.82%  Test Acc: 66.79%
+Epoch [5/30]  Loss: 1.0368  Val Loss: 1.2011  Train Acc: 55.00%  Test Acc: 61.99%
+Epoch [6/30]  Loss: 0.9907  Val Loss: 1.1609  Train Acc: 59.99%  Test Acc: 63.33%
+Epoch [7/30]  Loss: 0.9427  Val Loss: 0.9363  Train Acc: 63.69%  Test Acc: 69.16%
+Epoch [8/30]  Loss: 0.9100  Val Loss: 0.9742  Train Acc: 62.46%  Test Acc: 68.75%
+Epoch [9/30]  Loss: 0.8805  Val Loss: 0.8553  Train Acc: 67.95%  Test Acc: 71.39%
+Epoch [10/30]  Loss: 0.8571  Val Loss: 0.8988  Train Acc: 67.41%  Test Acc: 71.37%
+Epoch [11/30]  Loss: 0.8299  Val Loss: 0.8226  Train Acc: 67.37%  Test Acc: 72.95%
+Epoch [12/30]  Loss: 0.8147  Val Loss: 0.9411  Train Acc: 66.35%  Test Acc: 70.66%
+Epoch [13/30]  Loss: 0.7942  Val Loss: 0.9076  Train Acc: 68.85%  Test Acc: 72.37%
+Epoch [14/30]  Loss: 0.7833  Val Loss: 0.7649  Train Acc: 71.21%  Test Acc: 75.15%
+Epoch [15/30]  Loss: 0.7615  Val Loss: 0.7552  Train Acc: 69.94%  Test Acc: 75.04%
+Epoch [16/30]  Loss: 0.7476  Val Loss: 0.6754  Train Acc: 72.57%  Test Acc: 77.64%
+Epoch [17/30]  Loss: 0.7309  Val Loss: 0.7694  Train Acc: 69.86%  Test Acc: 75.04%
+Epoch [18/30]  Loss: 0.7229  Val Loss: 0.7426  Train Acc: 72.17%  Test Acc: 76.40%
+Epoch [19/30]  Loss: 0.7141  Val Loss: 0.6749  Train Acc: 74.54%  Test Acc: 78.25%
+Epoch [20/30]  Loss: 0.7072  Val Loss: 0.6359  Train Acc: 74.64%  Test Acc: 78.94%
+Epoch [21/30]  Loss: 0.6946  Val Loss: 0.6682  Train Acc: 73.73%  Test Acc: 77.71%
+Epoch [22/30]  Loss: 0.6812  Val Loss: 0.6139  Train Acc: 75.93%  Test Acc: 80.33%
+Epoch [23/30]  Loss: 0.6693  Val Loss: 0.6116  Train Acc: 77.67%  Test Acc: 80.14%
+Epoch [24/30]  Loss: 0.6619  Val Loss: 0.6294  Train Acc: 76.21%  Test Acc: 79.58%
+Epoch [25/30]  Loss: 0.6539  Val Loss: 0.6026  Train Acc: 77.65%  Test Acc: 80.72%
+Epoch [26/30]  Loss: 0.6472  Val Loss: 0.5875  Train Acc: 77.66%  Test Acc: 80.83%
+Epoch [27/30]  Loss: 0.6360  Val Loss: 0.6013  Train Acc: 78.64%  Test Acc: 80.91%
+Epoch [28/30]  Loss: 0.6388  Val Loss: 0.6275  Train Acc: 76.22%  Test Acc: 79.79%
+Epoch [29/30]  Loss: 0.6215  Val Loss: 0.5668  Train Acc: 77.91%  Test Acc: 81.97%
+Epoch [30/30]  Loss: 0.6224  Val Loss: 0.6361  Train Acc: 76.45%  Test Acc: 79.41%
+
+Final Train Accuracy: 76.66% | Final Test Accuracy: 79.41%
+Model saved: data/trained_models/31d8nskj_20261030_004307_relu_nesterov_sgd_lr-0.01_bs-64_epochs-30_acc-train-76.66_acc-test-79.41.pth
+
+
+Run history:
+
+epoch	▁▁▁▂▂▂▂▃▃▃▃▄▄▄▄▅▅▅▅▆▆▆▆▇▇▇▇███
+train_acc	▁▂▄▄▃▄▅▅▆▆▆▅▆▆▆▇▆▇▇▇▇▇█▇███▇██
+train_loss	█▆▅▄▄▄▃▃▃▃▃▂▂▂▂▂▂▂▂▂▂▁▁▁▁▁▁▁▁▁
+val_acc	▁▃▄▅▄▄▅▅▆▆▆▆▆▇▇▇▇▇▇▇▇████████▇
+val_loss	█▆▅▄▆▅▄▄▃▄▃▄▄▂▂▂▃▂▂▂▂▁▁▁▁▁▁▁▁▂
+
+Run summary:
+
+epoch	30
+final_test_acc	79.41
+final_train_acc	76.664
+final_train_loss	0.62235
+final_val_loss	0.63614
+model_checkpoint	31d8nskj_20261030_00...
+train_acc	76.454
+train_loss	0.62235
+val_acc	79.41
+val_loss	0.63614
+
+View run act_relu_opt_nesterov_sgd_lr_0.01_bs_64_ep_30 at: https://wandb.ai/cs25m524-indian-institute-of-technology-madras/CS6886W-VGG6-Manual-final/runs/31d8nskj
+View project at: https://wandb.ai/cs25m524-indian-institute-of-technology-madras/CS6886W-VGG6-Manual-final
+Synced 5 W&B file(s), 0 media file(s), 0 artifact file(s) and 0 other file(s)
+Find logs at: ./wandb/run-20261030_001718-31d8nskj/logs
+
+
+Using device: cuda
+Tracking run with wandb version 0.28.1
+Run data is saved locally in /kaggle/working/wandb/run-20261101_122318-fi79yfgi
+Syncing run act_silu_opt_adam_lr_0.01_bs_64_ep_100 to Weights & Biases (docs)
+View project at https://wandb.ai/cs25m524-indian-institute-of-technology-madras/CS6886W-VGG6-Manual-final
+View run at https://wandb.ai/cs25m524-indian-institute-of-technology-madras/CS6886W-VGG6-Manual-final/runs/fi79yfgi
+
+============================================================
+Starting Run Configuration:
+  • Activation   : silu
+  • Optimizer    : adam
+  • Momentum     : 0.9 (Nesterov: False)
+  • Learning Rate: 0.01
+  • Batch Size   : 64
+  • Epochs       : 100
+  • W&B Project  : CS6886W-VGG6-Manual-final
+============================================================
+
+Epoch [1/100]  Loss: 1.6476  Val Loss: 1.4455  Train Acc: 49.11%  Test Acc: 50.69%
+Epoch [2/100]  Loss: 1.2787  Val Loss: 1.2604  Train Acc: 54.25%  Test Acc: 56.71%
+Epoch [3/100]  Loss: 1.1165  Val Loss: 0.9682  Train Acc: 60.77%  Test Acc: 66.05%
+Epoch [4/100]  Loss: 0.9983  Val Loss: 0.9294  Train Acc: 63.75%  Test Acc: 69.53%
+Epoch [5/100]  Loss: 0.9232  Val Loss: 0.7551  Train Acc: 69.52%  Test Acc: 73.94%
+Epoch [6/100]  Loss: 0.8694  Val Loss: 0.7656  Train Acc: 70.03%  Test Acc: 74.34%
+Epoch [7/100]  Loss: 0.8198  Val Loss: 0.7324  Train Acc: 71.76%  Test Acc: 75.95%
+Epoch [8/100]  Loss: 0.7817  Val Loss: 0.7354  Train Acc: 71.94%  Test Acc: 76.00%
+Epoch [9/100]  Loss: 0.7477  Val Loss: 0.6826  Train Acc: 73.78%  Test Acc: 78.03%
+Epoch [10/100]  Loss: 0.7240  Val Loss: 0.5926  Train Acc: 76.48%  Test Acc: 80.13%
+Epoch [11/100]  Loss: 0.7015  Val Loss: 0.6374  Train Acc: 75.28%  Test Acc: 78.99%
+Epoch [12/100]  Loss: 0.6776  Val Loss: 0.5964  Train Acc: 76.52%  Test Acc: 80.21%
+Epoch [13/100]  Loss: 0.6577  Val Loss: 0.6826  Train Acc: 76.46%  Test Acc: 79.12%
+Epoch [14/100]  Loss: 0.6449  Val Loss: 0.5720  Train Acc: 78.30%  Test Acc: 81.70%
+Epoch [15/100]  Loss: 0.6224  Val Loss: 0.5505  Train Acc: 79.16%  Test Acc: 82.37%
+Epoch [16/100]  Loss: 0.6155  Val Loss: 0.5160  Train Acc: 80.06%  Test Acc: 83.34%
+Epoch [17/100]  Loss: 0.6008  Val Loss: 0.5454  Train Acc: 79.49%  Test Acc: 81.76%
+Epoch [18/100]  Loss: 0.5914  Val Loss: 0.5597  Train Acc: 80.39%  Test Acc: 82.78%
+Epoch [19/100]  Loss: 0.5852  Val Loss: 0.5411  Train Acc: 80.76%  Test Acc: 83.22%
+Epoch [20/100]  Loss: 0.5782  Val Loss: 0.5274  Train Acc: 80.58%  Test Acc: 83.30%
+Epoch [21/100]  Loss: 0.5682  Val Loss: 0.5120  Train Acc: 81.29%  Test Acc: 83.73%
+Epoch [22/100]  Loss: 0.5588  Val Loss: 0.4806  Train Acc: 82.36%  Test Acc: 84.40%
+Epoch [23/100]  Loss: 0.5421  Val Loss: 0.5109  Train Acc: 81.69%  Test Acc: 83.67%
+Epoch [24/100]  Loss: 0.5438  Val Loss: 0.5237  Train Acc: 81.55%  Test Acc: 83.48%
+Epoch [25/100]  Loss: 0.5356  Val Loss: 0.4937  Train Acc: 81.86%  Test Acc: 84.26%
+Epoch [26/100]  Loss: 0.5279  Val Loss: 0.4678  Train Acc: 83.10%  Test Acc: 84.89%
+Epoch [27/100]  Loss: 0.5177  Val Loss: 0.4811  Train Acc: 82.80%  Test Acc: 85.11%
+Epoch [28/100]  Loss: 0.5239  Val Loss: 0.4904  Train Acc: 82.03%  Test Acc: 84.11%
+Epoch [29/100]  Loss: 0.5075  Val Loss: 0.5321  Train Acc: 81.66%  Test Acc: 84.11%
+Epoch [30/100]  Loss: 0.5069  Val Loss: 0.4489  Train Acc: 83.58%  Test Acc: 85.75%
+Epoch [31/100]  Loss: 0.4992  Val Loss: 0.4729  Train Acc: 83.81%  Test Acc: 85.46%
+Epoch [32/100]  Loss: 0.4918  Val Loss: 0.4662  Train Acc: 82.71%  Test Acc: 84.98%
+Epoch [33/100]  Loss: 0.4822  Val Loss: 0.5003  Train Acc: 83.02%  Test Acc: 84.51%
+Epoch [34/100]  Loss: 0.4858  Val Loss: 0.4835  Train Acc: 83.26%  Test Acc: 85.23%
+Epoch [35/100]  Loss: 0.4825  Val Loss: 0.4493  Train Acc: 84.32%  Test Acc: 85.70%
+Epoch [36/100]  Loss: 0.4772  Val Loss: 0.4787  Train Acc: 83.46%  Test Acc: 85.40%
+Epoch [37/100]  Loss: 0.4756  Val Loss: 0.4604  Train Acc: 84.20%  Test Acc: 85.27%
+Epoch [38/100]  Loss: 0.4687  Val Loss: 0.4623  Train Acc: 84.31%  Test Acc: 85.90%
+Epoch [39/100]  Loss: 0.4590  Val Loss: 0.4787  Train Acc: 83.91%  Test Acc: 85.61%
+Epoch [40/100]  Loss: 0.4571  Val Loss: 0.4765  Train Acc: 84.55%  Test Acc: 85.47%
+Epoch [41/100]  Loss: 0.4573  Val Loss: 0.4528  Train Acc: 85.00%  Test Acc: 86.03%
+Epoch [42/100]  Loss: 0.4562  Val Loss: 0.4680  Train Acc: 85.13%  Test Acc: 85.78%
+Epoch [43/100]  Loss: 0.4508  Val Loss: 0.4611  Train Acc: 85.16%  Test Acc: 86.17%
+Epoch [44/100]  Loss: 0.4434  Val Loss: 0.4578  Train Acc: 85.04%  Test Acc: 86.01%
+Epoch [45/100]  Loss: 0.4478  Val Loss: 0.4470  Train Acc: 85.67%  Test Acc: 86.66%
+Epoch [46/100]  Loss: 0.4399  Val Loss: 0.4671  Train Acc: 85.21%  Test Acc: 85.70%
+Epoch [47/100]  Loss: 0.4339  Val Loss: 0.4477  Train Acc: 85.32%  Test Acc: 86.26%
+Epoch [48/100]  Loss: 0.4275  Val Loss: 0.4962  Train Acc: 84.52%  Test Acc: 85.77%
+Epoch [49/100]  Loss: 0.4329  Val Loss: 0.4628  Train Acc: 84.96%  Test Acc: 86.14%
+Epoch [50/100]  Loss: 0.4329  Val Loss: 0.4644  Train Acc: 85.06%  Test Acc: 85.81%
+Epoch [51/100]  Loss: 0.4281  Val Loss: 0.4514  Train Acc: 85.61%  Test Acc: 86.72%
+Epoch [52/100]  Loss: 0.4314  Val Loss: 0.4656  Train Acc: 85.42%  Test Acc: 86.31%
+Epoch [53/100]  Loss: 0.4207  Val Loss: 0.4525  Train Acc: 85.75%  Test Acc: 86.68%
+Epoch [54/100]  Loss: 0.4214  Val Loss: 0.4283  Train Acc: 86.08%  Test Acc: 86.77%
+Epoch [55/100]  Loss: 0.4156  Val Loss: 0.4333  Train Acc: 86.40%  Test Acc: 86.84%
+Epoch [56/100]  Loss: 0.4155  Val Loss: 0.4780  Train Acc: 85.03%  Test Acc: 85.96%
+Epoch [57/100]  Loss: 0.4135  Val Loss: 0.4389  Train Acc: 85.71%  Test Acc: 86.91%
+Epoch [58/100]  Loss: 0.4146  Val Loss: 0.4717  Train Acc: 85.50%  Test Acc: 86.29%
+Epoch [59/100]  Loss: 0.4067  Val Loss: 0.4255  Train Acc: 86.40%  Test Acc: 87.46%
+Epoch [60/100]  Loss: 0.4054  Val Loss: 0.4324  Train Acc: 86.75%  Test Acc: 87.01%
+Epoch [61/100]  Loss: 0.4061  Val Loss: 0.4288  Train Acc: 86.57%  Test Acc: 86.89%
+Epoch [62/100]  Loss: 0.4056  Val Loss: 0.4530  Train Acc: 86.20%  Test Acc: 86.74%
+Epoch [63/100]  Loss: 0.4075  Val Loss: 0.4737  Train Acc: 85.97%  Test Acc: 86.07%
+Epoch [64/100]  Loss: 0.3974  Val Loss: 0.4620  Train Acc: 85.90%  Test Acc: 86.50%
+Epoch [65/100]  Loss: 0.4001  Val Loss: 0.4519  Train Acc: 87.22%  Test Acc: 86.72%
+Epoch [66/100]  Loss: 0.3917  Val Loss: 0.4859  Train Acc: 85.55%  Test Acc: 86.00%
+Epoch [67/100]  Loss: 0.3937  Val Loss: 0.4297  Train Acc: 87.00%  Test Acc: 87.43%
+Epoch [68/100]  Loss: 0.3929  Val Loss: 0.4287  Train Acc: 87.16%  Test Acc: 87.36%
+Epoch [69/100]  Loss: 0.3900  Val Loss: 0.4622  Train Acc: 86.25%  Test Acc: 86.76%
+Epoch [70/100]  Loss: 0.3853  Val Loss: 0.4201  Train Acc: 87.03%  Test Acc: 87.36%
+Epoch [71/100]  Loss: 0.3873  Val Loss: 0.4274  Train Acc: 87.55%  Test Acc: 87.45%
+Epoch [72/100]  Loss: 0.3875  Val Loss: 0.4442  Train Acc: 86.98%  Test Acc: 86.74%
+Epoch [73/100]  Loss: 0.3833  Val Loss: 0.4464  Train Acc: 87.00%  Test Acc: 86.83%
+Epoch [74/100]  Loss: 0.3831  Val Loss: 0.4418  Train Acc: 87.19%  Test Acc: 87.11%
+Epoch [75/100]  Loss: 0.3829  Val Loss: 0.4494  Train Acc: 86.86%  Test Acc: 86.65%
+Epoch [76/100]  Loss: 0.3768  Val Loss: 0.4669  Train Acc: 86.61%  Test Acc: 86.79%
+Epoch [77/100]  Loss: 0.3772  Val Loss: 0.4351  Train Acc: 87.46%  Test Acc: 87.35%
+Epoch [78/100]  Loss: 0.3729  Val Loss: 0.4250  Train Acc: 88.10%  Test Acc: 87.61%
+Epoch [79/100]  Loss: 0.3783  Val Loss: 0.4451  Train Acc: 87.03%  Test Acc: 87.19%
+Epoch [80/100]  Loss: 0.3721  Val Loss: 0.4516  Train Acc: 86.87%  Test Acc: 86.61%
+Epoch [81/100]  Loss: 0.3809  Val Loss: 0.4427  Train Acc: 87.77%  Test Acc: 87.14%
+Epoch [82/100]  Loss: 0.3711  Val Loss: 0.4299  Train Acc: 87.59%  Test Acc: 87.56%
+Epoch [83/100]  Loss: 0.3678  Val Loss: 0.4355  Train Acc: 87.45%  Test Acc: 87.47%
+Epoch [84/100]  Loss: 0.3679  Val Loss: 0.4542  Train Acc: 87.11%  Test Acc: 86.90%
+Epoch [85/100]  Loss: 0.3754  Val Loss: 0.4422  Train Acc: 86.94%  Test Acc: 87.08%
+Epoch [86/100]  Loss: 0.3658  Val Loss: 0.4822  Train Acc: 86.69%  Test Acc: 86.54%
+Epoch [87/100]  Loss: 0.3623  Val Loss: 0.4455  Train Acc: 87.49%  Test Acc: 87.52%
+Epoch [88/100]  Loss: 0.3628  Val Loss: 0.4969  Train Acc: 86.87%  Test Acc: 86.10%
+Epoch [89/100]  Loss: 0.3648  Val Loss: 0.4329  Train Acc: 88.21%  Test Acc: 87.50%
+Epoch [90/100]  Loss: 0.3623  Val Loss: 0.4334  Train Acc: 88.09%  Test Acc: 86.91%
+Epoch [91/100]  Loss: 0.3630  Val Loss: 0.4071  Train Acc: 88.85%  Test Acc: 88.08%
+Epoch [92/100]  Loss: 0.3559  Val Loss: 0.4528  Train Acc: 87.54%  Test Acc: 87.24%
+Epoch [93/100]  Loss: 0.3667  Val Loss: 0.4271  Train Acc: 87.90%  Test Acc: 87.62%
+Epoch [94/100]  Loss: 0.3538  Val Loss: 0.4467  Train Acc: 88.40%  Test Acc: 87.48%
+Epoch [95/100]  Loss: 0.3562  Val Loss: 0.4621  Train Acc: 87.13%  Test Acc: 87.05%
+Epoch [96/100]  Loss: 0.3582  Val Loss: 0.4545  Train Acc: 87.87%  Test Acc: 87.04%
+Epoch [97/100]  Loss: 0.3535  Val Loss: 0.4824  Train Acc: 87.51%  Test Acc: 86.31%
+Epoch [98/100]  Loss: 0.3541  Val Loss: 0.4362  Train Acc: 88.46%  Test Acc: 87.66%
+Epoch [99/100]  Loss: 0.3470  Val Loss: 0.4241  Train Acc: 88.50%  Test Acc: 87.52%
+Epoch [100/100]  Loss: 0.3511  Val Loss: 0.4312  Train Acc: 88.36%  Test Acc: 87.91%
+
+Final Train Accuracy: 88.29% | Final Test Accuracy: 87.91%
+✓ Model checkpoint saved: data/trained_models/fi79yfgi_20261101_135058_silu_adam_lr-0.01_bs-64_epochs-100_acc-train-88.29_acc-test-87.91.pth
+
+
+Run history:
+
+epoch	▁▁▁▂▂▂▂▂▂▃▃▃▃▃▃▃▃▄▄▄▄▄▄▅▅▅▅▆▆▆▆▇▇▇▇▇▇███
+train_acc	▁▄▅▅▆▆▆▆▆▇▇▇▇▇▇▇▇▇▇▇▇█▇▇█▇██████████████
+train_loss	█▆▅▄▄▃▃▃▂▂▂▂▂▂▂▂▂▂▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁
+val_acc	▁▄▄▆▆▇▇▇▇▇▇▇▇▇▇▇▇█▇█▇▇█▇▇███████████████
+val_loss	█▅▃▃▃▂▂▂▂▂▂▂▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▂▁▁▁▁
+
+Run summary:
+
+epoch	100
+final_test_acc	87.91
+final_train_acc	88.292
+final_train_loss	0.35105
+final_val_loss	0.43119
+model_checkpoint	fi79yfgi_20261101_13...
+train_acc	88.358
+train_loss	0.35105
+val_acc	87.91
+val_loss	0.43119
+
+View run act_silu_opt_adam_lr_0.01_bs_64_ep_100 at: https://wandb.ai/cs25m524-indian-institute-of-technology-madras/CS6886W-VGG6-Manual-final/runs/fi79yfgi
+View project at: https://wandb.ai/cs25m524-indian-institute-of-technology-madras/CS6886W-VGG6-Manual-final
+Synced 5 W&B file(s), 0 media file(s), 0 artifact file(s) and 0 other file(s)
+Find logs at: ./wandb/run-20261101_122318-fi79yfgi/logs
+
+
+
+Using device: cuda
+
+Tracking run with wandb version 0.28.1
+Run data is saved locally in /kaggle/working/wandb/run-20261101_121748-hn0otwny
+Syncing run nadam_silu_lr0.001_bs32_ep100 to Weights & Biases (docs)
+View project at https://wandb.ai/cs25m524-indian-institute-of-technology-madras/CS6886W-VGG6-Manual-final
+View run at https://wandb.ai/cs25m524-indian-institute-of-technology-madras/CS6886W-VGG6-Manual-final/runs/hn0otwny
+
+
+============================================================
+Starting Run Configuration:
+  • Activation   : silu
+  • Optimizer    : nadam
+  • Learning Rate: 0.001
+  • Batch Size   : 32
+  • Epochs       : 100
+  • W&B Project  : CS6886W-VGG6-Manual-final
+============================================================
+
+Epoch [  1/100]  Train Loss: 1.5173  Val Loss: 1.4059  Train Acc: 43.27%  Test Acc: 51.42%
+Epoch [  2/100]  Train Loss: 1.2449  Val Loss: 1.0725  Train Acc: 57.99%  Test Acc: 61.60%
+Epoch [  3/100]  Train Loss: 1.1235  Val Loss: 1.0350  Train Acc: 56.23%  Test Acc: 63.80%
+Epoch [  4/100]  Train Loss: 1.0444  Val Loss: 1.0094  Train Acc: 59.92%  Test Acc: 66.07%
+Epoch [  5/100]  Train Loss: 0.9879  Val Loss: 0.8884  Train Acc: 65.34%  Test Acc: 70.43%
+Epoch [  6/100]  Train Loss: 0.9452  Val Loss: 0.8456  Train Acc: 66.93%  Test Acc: 71.82%
+Epoch [  7/100]  Train Loss: 0.9064  Val Loss: 0.7889  Train Acc: 69.61%  Test Acc: 73.97%
+Epoch [  8/100]  Train Loss: 0.8754  Val Loss: 0.7426  Train Acc: 71.05%  Test Acc: 75.44%
+Epoch [  9/100]  Train Loss: 0.8489  Val Loss: 0.7143  Train Acc: 71.99%  Test Acc: 75.88%
+Epoch [ 10/100]  Train Loss: 0.8273  Val Loss: 0.8074  Train Acc: 70.93%  Test Acc: 73.77%
+Epoch [ 11/100]  Train Loss: 0.7962  Val Loss: 0.6581  Train Acc: 73.42%  Test Acc: 77.38%
+Epoch [ 12/100]  Train Loss: 0.7813  Val Loss: 0.6600  Train Acc: 73.76%  Test Acc: 77.95%
+Epoch [ 13/100]  Train Loss: 0.7561  Val Loss: 0.6360  Train Acc: 75.22%  Test Acc: 79.46%
+Epoch [ 14/100]  Train Loss: 0.7488  Val Loss: 0.6204  Train Acc: 75.85%  Test Acc: 79.48%
+Epoch [ 15/100]  Train Loss: 0.7304  Val Loss: 0.6403  Train Acc: 75.67%  Test Acc: 78.96%
+Epoch [ 16/100]  Train Loss: 0.7176  Val Loss: 0.5491  Train Acc: 77.23%  Test Acc: 81.46%
+Epoch [ 17/100]  Train Loss: 0.7011  Val Loss: 0.5883  Train Acc: 77.59%  Test Acc: 80.60%
+Epoch [ 18/100]  Train Loss: 0.6893  Val Loss: 0.6026  Train Acc: 78.26%  Test Acc: 80.76%
+Epoch [ 19/100]  Train Loss: 0.6790  Val Loss: 0.5935  Train Acc: 77.60%  Test Acc: 80.58%
+Epoch [ 20/100]  Train Loss: 0.6711  Val Loss: 0.5254  Train Acc: 79.06%  Test Acc: 82.55%
+Epoch [ 21/100]  Train Loss: 0.6577  Val Loss: 0.6248  Train Acc: 77.43%  Test Acc: 79.46%
+Epoch [ 22/100]  Train Loss: 0.6543  Val Loss: 0.5487  Train Acc: 79.02%  Test Acc: 82.10%
+Epoch [ 23/100]  Train Loss: 0.6388  Val Loss: 0.5376  Train Acc: 79.93%  Test Acc: 82.47%
+Epoch [ 24/100]  Train Loss: 0.6321  Val Loss: 0.5193  Train Acc: 79.69%  Test Acc: 82.76%
+Epoch [ 25/100]  Train Loss: 0.6277  Val Loss: 0.5195  Train Acc: 80.09%  Test Acc: 83.02%
+Epoch [ 26/100]  Train Loss: 0.6119  Val Loss: 0.4989  Train Acc: 80.31%  Test Acc: 83.52%
+Epoch [ 27/100]  Train Loss: 0.6045  Val Loss: 0.4915  Train Acc: 81.11%  Test Acc: 83.94%
+Epoch [ 28/100]  Train Loss: 0.6088  Val Loss: 0.5015  Train Acc: 80.38%  Test Acc: 83.20%
+Epoch [ 29/100]  Train Loss: 0.5945  Val Loss: 0.5103  Train Acc: 81.12%  Test Acc: 83.17%
+Epoch [ 30/100]  Train Loss: 0.5957  Val Loss: 0.4880  Train Acc: 81.51%  Test Acc: 84.39%
+Epoch [ 31/100]  Train Loss: 0.5820  Val Loss: 0.4880  Train Acc: 81.12%  Test Acc: 84.26%
+Epoch [ 32/100]  Train Loss: 0.5772  Val Loss: 0.4957  Train Acc: 81.92%  Test Acc: 83.61%
+Epoch [ 33/100]  Train Loss: 0.5680  Val Loss: 0.5146  Train Acc: 81.63%  Test Acc: 83.62%
+Epoch [ 34/100]  Train Loss: 0.5637  Val Loss: 0.4492  Train Acc: 82.24%  Test Acc: 85.37%
+Epoch [ 35/100]  Train Loss: 0.5603  Val Loss: 0.4727  Train Acc: 82.42%  Test Acc: 84.53%
+Epoch [ 36/100]  Train Loss: 0.5547  Val Loss: 0.4676  Train Acc: 82.67%  Test Acc: 84.95%
+Epoch [ 37/100]  Train Loss: 0.5510  Val Loss: 0.4776  Train Acc: 82.16%  Test Acc: 84.43%
+Epoch [ 38/100]  Train Loss: 0.5440  Val Loss: 0.4787  Train Acc: 81.85%  Test Acc: 84.59%
+Epoch [ 39/100]  Train Loss: 0.5408  Val Loss: 0.4684  Train Acc: 82.63%  Test Acc: 84.86%
+Epoch [ 40/100]  Train Loss: 0.5342  Val Loss: 0.4516  Train Acc: 83.04%  Test Acc: 85.24%
+Epoch [ 41/100]  Train Loss: 0.5381  Val Loss: 0.4571  Train Acc: 83.48%  Test Acc: 85.42%
+Epoch [ 42/100]  Train Loss: 0.5289  Val Loss: 0.4792  Train Acc: 82.96%  Test Acc: 84.95%
+Epoch [ 43/100]  Train Loss: 0.5219  Val Loss: 0.4630  Train Acc: 83.05%  Test Acc: 84.98%
+Epoch [ 44/100]  Train Loss: 0.5208  Val Loss: 0.4513  Train Acc: 83.65%  Test Acc: 85.48%
+Epoch [ 45/100]  Train Loss: 0.5172  Val Loss: 0.4393  Train Acc: 83.89%  Test Acc: 85.67%
+Epoch [ 46/100]  Train Loss: 0.5114  Val Loss: 0.4338  Train Acc: 83.63%  Test Acc: 86.14%
+Epoch [ 47/100]  Train Loss: 0.5079  Val Loss: 0.4564  Train Acc: 83.70%  Test Acc: 85.42%
+Epoch [ 48/100]  Train Loss: 0.5016  Val Loss: 0.4597  Train Acc: 84.02%  Test Acc: 85.91%
+Epoch [ 49/100]  Train Loss: 0.4986  Val Loss: 0.4529  Train Acc: 83.16%  Test Acc: 85.67%
+Epoch [ 50/100]  Train Loss: 0.5009  Val Loss: 0.4472  Train Acc: 84.08%  Test Acc: 85.61%
+Epoch [ 51/100]  Train Loss: 0.4931  Val Loss: 0.4616  Train Acc: 84.49%  Test Acc: 85.34%
+Epoch [ 52/100]  Train Loss: 0.4909  Val Loss: 0.4418  Train Acc: 84.42%  Test Acc: 85.69%
+Epoch [ 53/100]  Train Loss: 0.4846  Val Loss: 0.4369  Train Acc: 84.30%  Test Acc: 86.17%
+Epoch [ 54/100]  Train Loss: 0.4870  Val Loss: 0.4350  Train Acc: 84.57%  Test Acc: 86.45%
+Epoch [ 55/100]  Train Loss: 0.4807  Val Loss: 0.4471  Train Acc: 84.18%  Test Acc: 85.56%
+Epoch [ 56/100]  Train Loss: 0.4832  Val Loss: 0.4616  Train Acc: 84.69%  Test Acc: 85.88%
+Epoch [ 57/100]  Train Loss: 0.4781  Val Loss: 0.4475  Train Acc: 84.69%  Test Acc: 86.26%
+Epoch [ 58/100]  Train Loss: 0.4760  Val Loss: 0.4417  Train Acc: 84.93%  Test Acc: 86.00%
+Epoch [ 59/100]  Train Loss: 0.4716  Val Loss: 0.4271  Train Acc: 85.55%  Test Acc: 86.48%
+Epoch [ 60/100]  Train Loss: 0.4659  Val Loss: 0.4416  Train Acc: 84.78%  Test Acc: 86.01%
+Epoch [ 61/100]  Train Loss: 0.4657  Val Loss: 0.4348  Train Acc: 85.25%  Test Acc: 86.20%
+Epoch [ 62/100]  Train Loss: 0.4616  Val Loss: 0.4249  Train Acc: 85.80%  Test Acc: 87.11%
+Epoch [ 63/100]  Train Loss: 0.4594  Val Loss: 0.4337  Train Acc: 85.25%  Test Acc: 86.24%
+Epoch [ 64/100]  Train Loss: 0.4552  Val Loss: 0.4416  Train Acc: 85.06%  Test Acc: 86.40%
+Epoch [ 65/100]  Train Loss: 0.4559  Val Loss: 0.4396  Train Acc: 85.69%  Test Acc: 86.11%
+Epoch [ 66/100]  Train Loss: 0.4514  Val Loss: 0.4363  Train Acc: 85.41%  Test Acc: 86.19%
+Epoch [ 67/100]  Train Loss: 0.4485  Val Loss: 0.4261  Train Acc: 85.98%  Test Acc: 86.68%
+Epoch [ 68/100]  Train Loss: 0.4492  Val Loss: 0.4294  Train Acc: 85.85%  Test Acc: 86.42%
+Epoch [ 69/100]  Train Loss: 0.4497  Val Loss: 0.4125  Train Acc: 86.00%  Test Acc: 86.98%
+Epoch [ 70/100]  Train Loss: 0.4398  Val Loss: 0.4113  Train Acc: 85.83%  Test Acc: 87.09%
+Epoch [ 71/100]  Train Loss: 0.4404  Val Loss: 0.3999  Train Acc: 86.43%  Test Acc: 87.37%
+Epoch [ 72/100]  Train Loss: 0.4353  Val Loss: 0.4375  Train Acc: 85.82%  Test Acc: 86.23%
+Epoch [ 73/100]  Train Loss: 0.4314  Val Loss: 0.4236  Train Acc: 86.34%  Test Acc: 86.61%
+Epoch [ 74/100]  Train Loss: 0.4302  Val Loss: 0.4156  Train Acc: 86.32%  Test Acc: 86.57%
+Epoch [ 75/100]  Train Loss: 0.4315  Val Loss: 0.4107  Train Acc: 86.83%  Test Acc: 87.39%
+Epoch [ 76/100]  Train Loss: 0.4246  Val Loss: 0.4231  Train Acc: 85.75%  Test Acc: 86.96%
+Epoch [ 77/100]  Train Loss: 0.4275  Val Loss: 0.4294  Train Acc: 86.40%  Test Acc: 86.90%
+Epoch [ 78/100]  Train Loss: 0.4222  Val Loss: 0.4207  Train Acc: 86.31%  Test Acc: 87.15%
+Epoch [ 79/100]  Train Loss: 0.4290  Val Loss: 0.4003  Train Acc: 87.04%  Test Acc: 87.61%
+Epoch [ 80/100]  Train Loss: 0.4158  Val Loss: 0.4372  Train Acc: 86.48%  Test Acc: 86.81%
+Epoch [ 81/100]  Train Loss: 0.4228  Val Loss: 0.4301  Train Acc: 86.74%  Test Acc: 86.62%
+Epoch [ 82/100]  Train Loss: 0.4159  Val Loss: 0.4176  Train Acc: 86.56%  Test Acc: 86.99%
+Epoch [ 83/100]  Train Loss: 0.4156  Val Loss: 0.4114  Train Acc: 87.24%  Test Acc: 87.50%
+Epoch [ 84/100]  Train Loss: 0.4091  Val Loss: 0.4151  Train Acc: 87.00%  Test Acc: 86.94%
+Epoch [ 85/100]  Train Loss: 0.4162  Val Loss: 0.3988  Train Acc: 86.84%  Test Acc: 87.46%
+Epoch [ 86/100]  Train Loss: 0.4118  Val Loss: 0.4262  Train Acc: 86.76%  Test Acc: 87.03%
+Epoch [ 87/100]  Train Loss: 0.4074  Val Loss: 0.4244  Train Acc: 86.52%  Test Acc: 86.86%
+Epoch [ 88/100]  Train Loss: 0.4062  Val Loss: 0.4098  Train Acc: 87.05%  Test Acc: 87.05%
+Epoch [ 89/100]  Train Loss: 0.4076  Val Loss: 0.4081  Train Acc: 87.36%  Test Acc: 87.32%
+Epoch [ 90/100]  Train Loss: 0.4017  Val Loss: 0.4283  Train Acc: 87.16%  Test Acc: 86.74%
+Epoch [ 91/100]  Train Loss: 0.4086  Val Loss: 0.4039  Train Acc: 87.70%  Test Acc: 87.67%
+Epoch [ 92/100]  Train Loss: 0.4014  Val Loss: 0.4166  Train Acc: 87.54%  Test Acc: 87.39%
+Epoch [ 93/100]  Train Loss: 0.3987  Val Loss: 0.4267  Train Acc: 87.03%  Test Acc: 86.64%
+Epoch [ 94/100]  Train Loss: 0.3924  Val Loss: 0.4164  Train Acc: 87.90%  Test Acc: 87.14%
+Epoch [ 95/100]  Train Loss: 0.3956  Val Loss: 0.4294  Train Acc: 87.33%  Test Acc: 86.97%
+Epoch [ 96/100]  Train Loss: 0.4000  Val Loss: 0.4055  Train Acc: 87.52%  Test Acc: 87.30%
+Epoch [ 97/100]  Train Loss: 0.3913  Val Loss: 0.4162  Train Acc: 87.28%  Test Acc: 87.44%
+Epoch [ 98/100]  Train Loss: 0.3955  Val Loss: 0.4137  Train Acc: 87.80%  Test Acc: 87.46%
+Epoch [ 99/100]  Train Loss: 0.3894  Val Loss: 0.4149  Train Acc: 87.78%  Test Acc: 87.35%
+Epoch [100/100]  Train Loss: 0.3890  Val Loss: 0.4036  Train Acc: 87.96%  Test Acc: 87.44%
+
+Final Train Accuracy: 88.17% | Final Test Accuracy: 87.44%
+Model saved: data/trained_models/hn0otwny_20261101_134931_silu_nadam_lr-0.001_bs-32_epochs-100_acc-train-88.17_acc-test-87.44.pth
+
+
+
+Run history:
+
+epoch	▁▁▂▂▂▂▂▂▂▂▃▃▃▃▄▄▄▄▅▅▅▅▅▅▅▅▆▆▆▆▆▇▇▇▇▇▇▇██
+train_acc	▁▃▄▅▅▆▆▆▆▆▇▆▇▇▇▇▇▇▇▇▇▇▇▇████████████████
+train_loss	█▇▆▅▄▄▃▃▃▃▃▃▃▂▂▂▂▂▂▂▂▂▂▂▂▂▁▁▁▁▁▁▁▁▁▁▁▁▁▁
+val_acc	▁▂▃▄▅▅▅▆▆▆▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇███████████████
+val_loss	█▆▅▄▄▃▃▃▂▃▂▂▂▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁
+
+Run summary:
+
+epoch	100
+final_test_acc	87.44
+final_train_acc	88.172
+model_checkpoint	hn0otwny_20261101_13...
+train_acc	87.956
+train_loss	0.38905
+val_acc	87.44
+val_loss	0.40362
+
+View run nadam_silu_lr0.001_bs32_ep100 at: https://wandb.ai/cs25m524-indian-institute-of-technology-madras/CS6886W-VGG6-Manual-final/runs/hn0otwny
+View project at: https://wandb.ai/cs25m524-indian-institute-of-technology-madras/CS6886W-VGG6-Manual-final
+Synced 5 W&B file(s), 0 media file(s), 0 artifact file(s) and 0 other file(s)
+Find logs at: ./wandb/run-20261101_121748-hn0otwny/logs
