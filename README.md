@@ -104,6 +104,9 @@ In this set of experiments, the activation function (`relu`), batch size (`64`),
 | 5 | `rmsprop` | relu | 0.001 | 64 | 30 | 73.48% | 75.94% | This has good accurecy but I noticed loss curve is not smooth as compared to Adam |
 | 6 | `nadam` | relu | 0.001 | 64 | 30 | 77.06% | 78.27% |  This gave gave steady progress, but in comparison to Adam this is having low accurecy |
 
+> **Note on SGD & Learning Rate Sensitivity:**  
+> Since standard SGD struggled at `lr=0.001`, we also tested `nesterov_sgd` with a higher learning rate of `0.01` (`relu`, bs 64, 30 epochs). Accuracy jumped from 70.07% to **79.41%** (Train Acc: 76.66%). This confirms that SGD is heavily dependent on a larger learning rate, though it still fell short of Adam's 81.03%.
+
 ---
 
 ### 4.2 Varying Activation Functions
@@ -119,33 +122,37 @@ In this set of experiments, the optimizer (`adam`), learning rate (`0.001`), bat
 
 ---
 
-### 4.3 Varying Learning Rate, batch size and Epochs (combined 3 as there were less entries)
-In this set of experiments, kept the baseline config and varied learning rate values, batch sizes, and no of epochs on the baseline.
+### 4.3 Varying Learning Rate, Batch Size, and Epochs
+In this set of experiments, we kept the baseline configuration (Adam + ReLU) and evaluated how varying the learning rate, mini-batch size, and training epochs affects convergence.
 
+#### A. Learning Rate Exploration (Fixed: BS=64, Epochs=30)
 | Run # | Learning Rate | Batch Size | Epochs | Optimizer | Activation | Train Acc (%) | Test Acc (%) | Comments / Observations |
 | :---: | :---: | :---: | :---: | :--- | :--- | :---: | :---: | :--- |
-| 1 | 0.001 (Baseline) | 64 | 30 | adam | relu | 78.79% | 81.03% | This is default baseline and this one is very stable |
-| 2 | 0.1 | 64 | 30 | adam | relu | 45.18% | 48.80% | I think this is too high value, I see loss kept fluctuating so much |
-| 3 | 0.01 | 64 | 30 | adam | relu | 81.65% | 82.90% | This one is better than baseline |
-| 4 | 0.0001 | 64 | 30 | adam | relu | 68.64% | 73.32% | I think its too small value and convergence is too slow |
+| 1 | 0.001 (Baseline) | 64 | 30 | adam | relu | 78.79% | 81.03% | Standard baseline reference; very stable convergence |
+| 2 | 0.1 | 64 | 30 | adam | relu | 45.18% | 48.80% | Learning rate is way too high; loss oscillated wildly and failed to settle |
+| 3 | 0.01 | 64 | 30 | adam | relu | 81.65% | 82.90% | Surprising winner! Beat the baseline comfortably |
+| 4 | 0.0001 | 64 | 30 | adam | relu | 68.64% | 73.32% | Too small step size; convergence was too sluggish within 30 epochs |
 
+#### B. Batch Size Exploration (Fixed: LR=0.001, Epochs=30)
 | Run # | Learning Rate | Batch Size | Epochs | Optimizer | Activation | Train Acc (%) | Test Acc (%) | Comments / Observations |
 | :---: | :---: | :---: | :---: | :--- | :--- | :---: | :---: | :--- |
-| 1 | 0.001 (Baseline) | 64 | 30 | adam | relu | 78.79% | 81.03% | This is default baseline and this one is very stable |
-| 5 | 0.001 | 32 | 30 | adam | relu | 79.31% | 82.04% | Got Good accuracy and this is the best in this section, but too slow traiining |
-| 6 | 0.001 | 128 | 30 | adam | relu | 78.69% | 81.57% | Ran faster, accuracy is similar to batch size 64 |
-| 7 | 0.001 | 256 | 30 | adam | relu | 75.17% | 78.58% | Fastest but accurecy dropped |
+| 1 | 0.001 (Baseline) | 64 | 30 | adam | relu | 78.79% | 81.03% | Standard baseline reference; very stable convergence |
+| 5 | 0.001 | 32 | 30 | adam | relu | 79.31% | 82.04% | Best accuracy in batch variations, but took longer to train per epoch |
+| 6 | 0.001 | 128 | 30 | adam | relu | 78.69% | 81.57% | Trained faster on GPU; accuracy stayed close to batch size 64 |
+| 7 | 0.001 | 256 | 30 | adam | relu | 75.17% | 78.58% | Fastest execution, but fewer gradient updates caused accuracy to drop |
 
+#### C. Epoch Duration Exploration (Fixed: LR=0.001, BS=64)
 | Run # | Learning Rate | Batch Size | Epochs | Optimizer | Activation | Train Acc (%) | Test Acc (%) | Comments / Observations |
 | :---: | :---: | :---: | :---: | :--- | :--- | :---: | :---: | :--- |
-| 8 | 0.001 (Baseline)| 64 | 10 | adam | relu | 69.89% | 73.67% | This is default baseline and this one is very stable |
-| 9 | 0.001 | 64 | 40 | adam | relu | 81.13% | 83.29% | More training time helped to get 2-3% good accurecy |
+| 1 | 0.001 (Baseline) | 64 | 30 | adam | relu | 78.79% | 81.03% | Standard baseline reference; 30 epochs reached good convergence |
+| 8 | 0.001 | 64 | 10 | adam | relu | 69.89% | 73.67% | Stopped too early while loss curve was still actively descending |
+| 9 | 0.001 | 64 | 40 | adam | relu | 81.13% | 83.29% | Extra 10 epochs pushed past 83% without any signs of overfitting |
 
 
 ---
 
-### 4.5 Cross-Configuration Explorations & Promising Candidates
-Looking at the individual parameter benchmarks from Sections 4.1 to 4.4, clear patterns emerged:
+### 4.4 Cross-Configuration Explorations & Promising Candidates
+Looking at the individual parameter benchmarks from Sections 4.1 to 4.3, clear patterns emerged:
 - **Activations:** `gelu` (83.04%) and `silu` (82.55%) easily outperformed standard `relu` (81.03%) by preventing dying neurons.
 - **Optimizers:** `adam` (81.03%) and `nadam` (78.27%) were the undisputed top-tier adaptive optimizers.
 - **Learning Rate & Batch Size:** `0.01` gave fast early convergence, while `0.001` was rock solid. Smaller batches (`32` and `64`) provided useful regularizing noise compared to `256`.
@@ -161,7 +168,7 @@ Based on these promising candidates, we cross-tested combinations to see how the
 
 ---
 
-### 4.6 Optimal Model Selection (30 Epochs)
+### 4.5 Optimal Model Selection (30 Epochs)
 Comparing all combinations within the standard 30-epoch constraint, the single best configuration is:
 
 | Run # | Configuration (Activation + Optimizer + LR + BS) | Epochs | Train Acc (%) | Test Acc (%) | Comments / Key Findings |
@@ -170,7 +177,7 @@ Comparing all combinations within the standard 30-epoch constraint, the single b
 
 ---
 
-### 4.7 Extended Training (200 Epochs)
+### 4.6 Extended Training (200 Epochs)
 To see how far the top architectures can go when given full convergence time, we ran extended 200-epoch training across 7 systematic configurations:
 
 | Run # | Configuration (Activation + Optimizer + LR + BS) | Epochs | Train Acc (%) | Test Acc (%) | Train Loss | Val Loss | Comments / Key Findings |
