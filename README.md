@@ -1,55 +1,52 @@
-# **CS6886W: Systems Engineering for Deep Learning** — Assignment 1
+# **CS6886W: Systems Engineering for Deep Learning** - Assignment 1
 
 **Department of Computer Science and Engineering, IIT Madras**  
 **Semester**: Fall 2026 (July – November 2026)  
-**Student Name**: Prasanna JS  
+**Name**: Prasanna JS  
 **Roll Number**: CS25M524  
 
 ---
 
-## Section 1: Setup and Project Details
+## Section 1: Setup and Analysis Details
 
-### 1.1 Project Overview
-This project explores the performance of the **VGG-6** convolutional neural network architecture on the **CIFAR-10** image classification dataset. The project is organized in a clean, modular fashion to systematically evaluate how different architectural and hyperparameter choices impact model convergence and accuracy, using **Weights & Biases (W&B)** for experiment tracking and automated hyperparameter sweeps.
+### 1.1 Analysis overview
+In this Assignment I explored the performance of the **VGG-6** CNN architecture with **CIFAR-10** dataset. I have evaluated how different configuration impact model convergence and accuracy, Used **Weights & Biases (W&B)** for visualization of experiments.
 
-### 1.2 Directory Structure
+### 1.2 Code Tree Structure
 ```text
 VGG6_Analysis/
-├── dataset.py            # Data loading, normalization, and full data augmentation pipeline
-├── model.py              # VGG-6 network architecture with configurable activation functions
-├── train.py              # Training loop, optimizer factory, and live W&B logging
-├── evaluate.py           # Evaluation logic for top-1 classification accuracy
-├── main.py               # Unified execution script (supports single runs, CLI overrides, and W&B sweep)
-└── README.md             # Project documentation and execution instructions
+├── data/trained_models   # Trained PyTorch models files for diffrent iteration
+├── data/screenshots      # Screenshots of graphs (Yet to upload)
+├── dataset.py            # Data loading, normalization, and full data augmentation related code
+├── model.py              # VGG-6 CNN with option to config activation function
+├── train.py              # Training loop with W&B logging related implementation
+├── evaluate.py           # Accuracy calculation (Just added placeholder for future)
+├── main.py               # Main function where accept diffrent command from the user or to set default values
+└── README.md             # Project Doc, ofcourse this doc :p
 ```
-*(Note: At runtime, a `data/` directory is automatically created to store the CIFAR-10 dataset, and `data/trained_models/` stores saved model checkpoints).*
+*(Note: At runtime, in `data/` directory CIFAR-10 dataset is automatically downloaded, and inside `data/trained_models/` we store model files).*
 
-### 1.3 Environment & Dependencies
-- **Python**: 3.10+ recommended
-- **Hardware**: NVIDIA GPU with CUDA support recommended (e.g., Google Colab T4) or CPU
+### 1.3 Environment Setup & Dependencies
+- **Python**: 3.10+ 
+- **Hardware**: NVIDIA GPU with CUDA support (For This Assignment i have used Google colab and Kaggle)
 
 Required packages:
 ```bash
 pip install torch torchvision wandb
 ```
 
-#### W&B Setup & Auto-Login
-To allow automated metric logging without interactive terminal prompts, `main.py` supports silent auto-login. You can either:
+#### W&B Setup & Auto-Login & Seed related user configs
+To allow automated logging and log visualization `main.py` supports silent auto-login. You can either:
 1. Set the environment variable:
    ```bash
    export WANDB_API_KEY="YOUR_WANDB_API_KEY_HERE"
    ```
    *(Inside Google Colab: `os.environ["WANDB_API_KEY"] = "YOUR_WANDB_API_KEY_HERE"`)*
-2. Or configure `api_key` in `main.py` directly.
+2. Or configure `api_key` in `main.py` directly by hardcoding.
 
-### 1.4 Seed Configuration (Reproducibility)
-To guarantee full determinism and exact reproducibility across runs, the random seed is fixed via `set_seed(42)` at the beginning of `main.py`:
-- `random.seed(42)`: Seeds Python's built-in random module.
-- `np.random.seed(42)`: Seeds NumPy random generator (used in Cutout augmentation).
-- `torch.manual_seed(42)` & `torch.cuda.manual_seed_all(42)`: Seeds PyTorch CPU and GPU RNGs.
-- `torch.backends.cudnn.deterministic = True`: Enforces deterministic cuDNN convolution algorithms.
-
-You can also pass a custom seed via CLI: `--seed <int>` (default: `42`).
+### 1.4 Seed Configuration (To reproduce identical result)
+To guarantee exact reproducibility across runs, the seed value (which ideally should be random) is fixed via `set_seed(42)`:
+We can also pass a custom seed via CLI: `--seed <int>` (And default val is: `42`).
 
 ### 1.5 How to Run
 
@@ -59,8 +56,8 @@ Runs the baseline model (Adam, ReLU, batch size 64, lr 0.001, epochs 30, seed 42
 python3 main.py
 ```
 
-#### Option B: Manual Training with Custom Parameters
-You can override any parameter directly via command-line arguments without editing code:
+#### Option B: Manual Training with Custom user provided parameters via cmd line arguments
+You can override any parameter directly via cmd line arguments without editing code:
 ```bash
 python3 main.py --activation gelu --optimizer nesterov_sgd --lr 0.01 --batch_size 128 --epochs 30 --seed 42 --project CS6886W-VGG6
 ```
@@ -71,107 +68,109 @@ Available CLI options:
 - `--batch_size`: batch size (default: `64`)
 - `--epochs`: number of epochs (default: `30`)
 - `--seed`: random seed (default: `42`)
-- `--project`: W&B project name to group and superimpose runs (default: `CS6886W-VGG6`)
+- `--project`: W&B project name to redirect logs (default: `CS6886W-VGG6`)
 
-#### Option C: Automated Hyperparameter Sweep
-Launches an automated Bayesian optimization sweep using W&B across 5 activations, 6 optimizers, 4 learning rates, and 4 batch sizes:
+#### Option C: Automated Sweep run
+This is an automated optimization sweep using W&B across 5 activations, 6 optimizers, 4 learning rates, and 4 batch sizes:
 ```bash
 python3 main.py --sweep --count 20 --project CS6886W-VGG6
 ```
 Sweep CLI options:
 - `--sweep`: flag to enable automated sweep agent mode
 - `--count`: maximum number of trials/runs to execute (default: `20`)
-- `--project`: target W&B project for the sweep (default: `CS6886W-VGG6`)
+- `--project`: W&B project name to redirect logs (default: `CS6886W-VGG6`)
 
-### 1.6 Model Checkpoints & W&B Mapping
+### 1.6 Trained Model Saving & W&B log Mapping
 After each training trial, the trained model weights (`.pth`) are automatically saved into `data/trained_models/` with the filename structured as:
 ```text
 {run_id}_{timestamp}_{activation}_{optimizer}_lr-{lr}_bs-{bs}_epochs-{epochs}_acc-train-{train_acc}_acc-test-{test_acc}.pth
 ```
-- When using W&B, `{run_id}` matches the unique 8-character W&B run ID (e.g., `98uat2wj`).
+- When using W&B, `{run_id}` matches the unique 8-character W&B run ID.
 - If running without W&B, `{run_id}` is set to `NA`.
-- The exact filename is logged to the W&B dashboard summary table under the `model_checkpoint` column, providing an instant 1-to-1 link between any curve or plot and its saved weights on disk.
-
-### 1.7 Modular Component Responsibilities
-- `dataset.py`: Loads CIFAR-10 (50k train, 10k test), applies data augmentations (Random Crop padding 4, Random Horizontal Flip, Random Rotation 5°, Color Jitter, Normalization, Cutout), and provides DataLoaders.
-- `model.py`: Constructs the VGG-6 network (`[64, 64, 'M', 128, 128, 'M']`) with a `get_activation` factory supporting **ReLU**, **Sigmoid**, **Tanh**, **SiLU**, and **GELU**.
-- `train.py`: Provides `get_optimizer` factory supporting **SGD**, **Nesterov-SGD**, **Adam**, **Adagrad**, **RMSprop**, and **Nadam**, executes forward/backward passes, and logs live metrics (`train_loss`, `train_acc`, `val_acc`) to W&B.
-- `evaluate.py`: Calculates classification top-1 accuracy over any DataLoader in inference mode (`torch.no_grad()`).
-- `main.py`: Unified entry point with seed configuration, CLI argument parser, and automated W&B login. Detects compute device (CUDA/CPU), runs manual experiments, and orchestrates automated W&B sweeps via `--sweep`.
-
----
-
-## Section 2: Introduction & SOP
-
-> **[TODO]**: To be added.
-
----
-
-## Section 3: Analysis
-
-> **[TODO]**: To be added.
-
----
 
 ## Section 4: Experimental Results & Benchmarks
 
-This section tracks the systematic benchmarking of VGG-6 on CIFAR-10 across different architectural components and hyperparameter settings. All runs are logged via Weights & Biases with saved model checkpoints in `data/trained_models/`.
+This section I tabulated the benchmark of VGG-6 with CIFAR-10 across different configurations.
 
 ### 4.1 Varying Optimizers
-In this set of experiments, the activation function (`relu`), batch size (`64`), learning rate (`0.001`), and training duration (`30` epochs) are kept constant while evaluating different optimization algorithms.
+In this set of experiments, the activation function (`relu`), batch size (`64`), learning rate (`0.001`), and training duration (`30` epochs) are kept same to evaluate the effect of optimization algorithms.
 
 | Run # | Optimizer | Activation | Learning Rate | Batch Size | Epochs | Train Acc (%) | Test Acc (%) | Comments / Observations |
 | :---: | :--- | :--- | :---: | :---: | :---: | :---: | :---: | :--- |
-| 1 | `adam` (Baseline) | relu | 0.001 | 64 | 30 | 78.79% | 81.03% | Best optimizer overall, learned fast and stayed stable |
-| 2 | `sgd` | relu | 0.001 | 64 | 30 | 53.80% | 56.90% | Pretty bad at this low LR, converged way too slow without momentum |
-| 3 | `nesterov_sgd` | relu | 0.001 | 64 | 30 | 66.18% | 70.07% | Adding momentum helped a lot, gave ~13% jump over basic SGD |
-| 4 | `adagrad` | relu | 0.001 | 64 | 30 | 59.51% | 62.83% | Learning flattened early because step size decayed too quickly |
-| 5 | `rmsprop` | relu | 0.001 | 64 | 30 | 73.48% | 75.94% | Decent score, but loss curve was noticeably more bumpy than Adam |
-| 6 | `nadam` | relu | 0.001 | 64 | 30 | 77.06% | 78.27% | Solid second place, momentum lookahead gave steady progress |
+| 1 | `adam` (Baseline) | relu | 0.001 | 64 | 30 | 78.79% | 81.03% | Overall this is Best optimizer, I see it converged fast and stayed stable |
+| 2 | `sgd` | relu | 0.001 | 64 | 30 | 53.80% | 56.90% | This one is pretty bad at low learning rate this converged way too slow |
+| 3 | `nesterov_sgd` | relu | 0.001 | 64 | 30 | 66.18% | 70.07% | Here Adding momentum helped a lot, gave good improvement over basic SGD |
+| 4 | `adagrad` | relu | 0.001 | 64 | 30 | 59.51% | 62.83% | Learning got flattened so fast (Need to understand why) |
+| 5 | `rmsprop` | relu | 0.001 | 64 | 30 | 73.48% | 75.94% | This has good accurecy but I noticed loss curve is not smooth as compared to Adam |
+| 6 | `nadam` | relu | 0.001 | 64 | 30 | 77.06% | 78.27% |  This gave gave steady progress, but in comparison to Adam this is having low accurecy |
 
 ---
 
 ### 4.2 Varying Activation Functions
-In this set of experiments, the optimizer (`adam`), learning rate (`0.001`), batch size (`64`), and training duration (`30` epochs) are held constant while evaluating different non-linear activation functions across all convolutional and linear layers.
+In this set of experiments, the optimizer (`adam`), learning rate (`0.001`), batch size (`64`), and training duration (`30` epochs) are kept same to evaluate the effect of different activation functions.
 
 | Run # | Activation | Optimizer | Learning Rate | Batch Size | Epochs | Train Acc (%) | Test Acc (%) | Comments / Observations |
 | :---: | :--- | :--- | :---: | :---: | :---: | :---: | :---: | :--- |
-| 1 | `relu` (Baseline) | adam | 0.001 | 64 | 30 | 78.79% | 81.03% | Solid standard baseline, fast and easy to train |
-| 2 | `sigmoid` | adam | 0.001 | 64 | 30 | 39.79% | 49.61% | Failed badly due to vanishing gradients, didn't even cross 50% |
-| 3 | `tanh` | adam | 0.001 | 64 | 30 | 71.37% | 75.81% | Better than sigmoid, but still saturated and fell behind ReLU |
-| 4 | `silu` (Swish) | adam | 0.001 | 64 | 30 | 80.12% | 82.55% | Worked really well, smooth curve helped beat normal ReLU |
+| 1 | `relu` (Baseline) | adam | 0.001 | 64 | 30 | 78.79% | 81.03% | Solid and fast one and easy to train but its has a issue that relu only outputs non-negative numbers |
+| 2 | `sigmoid` | adam | 0.001 | 64 | 30 | 39.79% | 49.61% | This one is very bad may be due to vanishing gradients, didn't even cross 50% |
+| 3 | `tanh` | adam | 0.001 | 64 | 30 | 71.37% | 75.81% | Better than sigmoid, but still not good as relu |
+| 4 | `silu` | adam | 0.001 | 64 | 30 | 80.12% | 82.55% | Worked really well, smooth curve and beat the relu |
 | 5 | `gelu` | adam | 0.001 | 64 | 30 | 80.80% | 83.04% | Best activation tested, gave the highest accuracy at 83% |
 
 ---
 
-### 4.3 Varying Learning Rate and Epochs
-In this set of experiments, we test sensitivity to learning rate values, mini-batch sizes, and training duration on the baseline architecture.
+### 4.3 Varying Learning Rate, batch size and Epochs (combined 3 as there were less entries)
+In this set of experiments, kept the baseline config and varied learning rate values, batch sizes, and no of epochs on the baseline.
 
 | Run # | Learning Rate | Batch Size | Epochs | Optimizer | Activation | Train Acc (%) | Test Acc (%) | Comments / Observations |
 | :---: | :---: | :---: | :---: | :--- | :--- | :---: | :---: | :--- |
-| 1 | 0.1 | 64 | 30 | adam | relu | 45.18% | 48.80% | Way too high, loss kept jumping and barely learned |
-| 2 | 0.01 | 64 | 30 | adam | relu | 81.65% | 82.90% | Surprising winner here, Adam handled 0.01 really well |
-| 3 | 0.001 (Baseline) | 64 | 30 | adam | relu | 78.79% | 81.03% | Default baseline, safe and stable |
-| 4 | 0.0001 | 64 | 30 | adam | relu | 68.64% | 73.32% | Too small, needed way more epochs to catch up |
-| 5 | 0.001 | 32 | 30 | adam | relu | 79.31% | 82.04% | Good accuracy, noisy updates helped prevent overfitting |
-| 6 | 0.001 | 128 | 30 | adam | relu | 78.69% | 81.57% | Ran faster, accuracy stayed pretty close to 64 |
-| 7 | 0.001 | 256 | 30 | adam | relu | 75.17% | 78.58% | Fastest per epoch, but fewer updates made it lose ~2.5% |
-| 8 | 0.001 | 64 | 10 | adam | relu | 69.89% | 73.67% | Stopped too early while still actively learning |
-| 9 | 0.001 | 64 | 40 | adam | relu | 81.13% | 83.29% | More training time helped push past 83% |
+| 1 | 0.001 (Baseline) | 64 | 30 | adam | relu | 78.79% | 81.03% | This is default baseline and this one is very stable |
+| 2 | 0.1 | 64 | 30 | adam | relu | 45.18% | 48.80% | I think this is too high value, I see loss kept fluctuating so much |
+| 3 | 0.01 | 64 | 30 | adam | relu | 81.65% | 82.90% | This one is better than baseline |
+| 4 | 0.0001 | 64 | 30 | adam | relu | 68.64% | 73.32% | I think its too small value and convergence is too slow |
+
+| Run # | Learning Rate | Batch Size | Epochs | Optimizer | Activation | Train Acc (%) | Test Acc (%) | Comments / Observations |
+| :---: | :---: | :---: | :---: | :--- | :--- | :---: | :---: | :--- |
+| 1 | 0.001 (Baseline) | 64 | 30 | adam | relu | 78.79% | 81.03% | This is default baseline and this one is very stable |
+| 5 | 0.001 | 32 | 30 | adam | relu | 79.31% | 82.04% | Got Good accuracy and this is the best in this section, but too slow traiining |
+| 6 | 0.001 | 128 | 30 | adam | relu | 78.69% | 81.57% | Ran faster, accuracy is similar to batch size 64 |
+| 7 | 0.001 | 256 | 30 | adam | relu | 75.17% | 78.58% | Fastest but accurecy dropped |
+
+| Run # | Learning Rate | Batch Size | Epochs | Optimizer | Activation | Train Acc (%) | Test Acc (%) | Comments / Observations |
+| :---: | :---: | :---: | :---: | :--- | :--- | :---: | :---: | :--- |
+| 8 | 0.001 (Baseline)| 64 | 10 | adam | relu | 69.89% | 73.67% | This is default baseline and this one is very stable |
+| 9 | 0.001 | 64 | 40 | adam | relu | 81.13% | 83.29% | More training time helped to get 2-3% good accurecy |
+
 
 ---
 
-### 4.4 Optimal Model Runs (30 Epochs)
-Based on the observations from Sections 4.1 to 4.3, we tested two optimal combination runs at 30 epochs:
+### 4.5 Cross-Configuration Explorations & Promising Candidates
+Looking at the individual parameter benchmarks from Sections 4.1 to 4.4, clear patterns emerged:
+- **Activations:** `gelu` (83.04%) and `silu` (82.55%) easily outperformed standard `relu` (81.03%) by preventing dying neurons.
+- **Optimizers:** `adam` (81.03%) and `nadam` (78.27%) were the undisputed top-tier adaptive optimizers.
+- **Learning Rate & Batch Size:** `0.01` gave fast early convergence, while `0.001` was rock solid. Smaller batches (`32` and `64`) provided useful regularizing noise compared to `256`.
+
+Based on these promising candidates, we cross-tested combinations to see how these top components interact together:
 
 | Run # | Configuration (Activation + Optimizer + LR + BS) | Epochs | Train Acc (%) | Test Acc (%) | Comments / Key Findings |
 | :---: | :--- | :---: | :---: | :---: | :--- |
-| 1 | `gelu` + `adam` (lr=0.01, bs=64) | 30 | 82.49% | 84.17% | Highest accuracy across all 30-epoch tests by combining best activation and best LR |
-| 2 | `relu` + `nesterov_sgd` (lr=0.01, bs=64) | 30 | 76.66% | 79.41% | Giving SGD a higher LR (0.01) brought it up from 70% to almost 80% |
+| 1 | `gelu` + `adam` (lr=0.01, bs=64) | 30 | 82.49% | 84.17% | Combining top activation with higher LR gave a solid +3.14% jump over baseline |
+| 2 | `gelu` + `nadam` (lr=0.01, bs=64) | 30 | 83.18% | 85.17% | Pairing GELU with Nadam at lr=0.01 produced our highest 30-epoch score (+4.14% over baseline) |
+| 3 | `silu` + `adam` (lr=0.01, bs=64) | 100 | 88.29% | 87.91% | SiLU performed impressively at lr=0.01, reaching nearly 88% by epoch 100 |
+| 4 | `silu` + `nadam` (lr=0.001, bs=32) | 100 | 88.17% | 87.44% | Stable, smooth convergence, staying within half a percent of GELU |
 
 ---
 
-### 4.5 Extended Training (200 Epochs)
+### 4.6 Optimal Model Selection (30 Epochs)
+Comparing all combinations within the standard 30-epoch constraint, the single best configuration is:
+
+| Run # | Configuration (Activation + Optimizer + LR + BS) | Epochs | Train Acc (%) | Test Acc (%) | Comments / Key Findings |
+| :---: | :--- | :---: | :---: | :---: | :--- |
+| 1 | `gelu` + `nadam` (lr=0.01, bs=64) | 30 | 83.18% | 85.17% | **Clear Winner.** Reached 85.17% test accuracy (+4.14% over baseline) by combining smooth non-linear gradients with Nesterov momentum lookahead and 0.01 step size. |
+
+---
+
+### 4.7 Extended Training (200 Epochs)
 To see how far the top architectures can go when given full convergence time, we ran extended 200-epoch training across 7 systematic configurations:
 
 | Run # | Configuration (Activation + Optimizer + LR + BS) | Epochs | Train Acc (%) | Test Acc (%) | Train Loss | Val Loss | Comments / Key Findings |
