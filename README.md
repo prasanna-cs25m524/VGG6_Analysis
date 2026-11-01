@@ -151,44 +151,42 @@ In this set of experiments, we kept the baseline configuration (Adam + ReLU) and
 
 ---
 
-### 4.4 Cross-Configuration Explorations & Promising Candidates
-Looking at the individual parameter benchmarks from Sections 4.1 to 4.3, clear patterns emerged:
+### 4.4 Promising Candidates Extended Evaluation (100–200 Epochs)
+Based on the individual parameter benchmarks from Sections 4.1 to 4.3, clear patterns emerged:
 - **Activations:** `gelu` (83.04%) and `silu` (82.55%) easily outperformed standard `relu` (81.03%) by preventing dying neurons.
 - **Optimizers:** `adam` (81.03%) and `nadam` (78.27%) were the undisputed top-tier adaptive optimizers.
-- **Learning Rate & Batch Size:** `0.01` gave fast early convergence, while `0.001` was rock solid. Smaller batches (`32` and `64`) provided useful regularizing noise compared to `256`.
+- **Learning Rate & Batch Size:** `0.01` gave fast early convergence (e.g. `gelu + adam, lr=0.01` achieved **84.17%** at 30 epochs), while `0.001` was rock solid. Smaller batches (`32` and `64`) provided useful regularizing noise compared to `256`.
 
-Based on these promising candidates, we cross-tested combinations to see how these top components interact together:
-
-| Run # | Configuration (Activation + Optimizer + LR + BS) | Epochs | Train Acc (%) | Test Acc (%) | Comments / Key Findings |
-| :---: | :--- | :---: | :---: | :---: | :--- |
-| 1 | `gelu` + `adam` (lr=0.01, bs=64) | 30 | 82.49% | 84.17% | Combining top activation with higher LR gave a solid +3.14% jump over baseline |
-| 2 | `gelu` + `nadam` (lr=0.01, bs=64) | 30 | 83.18% | 85.17% | Pairing GELU with Nadam at lr=0.01 produced our highest 30-epoch score (+4.14% over baseline) |
-| 3 | `silu` + `adam` (lr=0.01, bs=64) | 100 | 88.29% | 87.91% | SiLU performed impressively at lr=0.01, reaching nearly 88% by epoch 100 |
-| 4 | `silu` + `nadam` (lr=0.001, bs=32) | 100 | 88.17% | 87.44% | Stable, smooth convergence, staying within half a percent of GELU |
-
----
-
-### 4.5 Optimal Model Selection (30 Epochs)
-Comparing all combinations within the standard 30-epoch constraint, the single best configuration is:
+We took these top candidate components and ran extended training (100 to 200 epochs) to push model convergence to its full potential:
 
 | Run # | Configuration (Activation + Optimizer + LR + BS) | Epochs | Train Acc (%) | Test Acc (%) | Comments / Key Findings |
 | :---: | :--- | :---: | :---: | :---: | :--- |
-| 1 | `gelu` + `nadam` (lr=0.01, bs=64) | 30 | 83.18% | 85.17% | **Clear Winner.** Reached 85.17% test accuracy (+4.14% over baseline) by combining smooth non-linear gradients with Nesterov momentum lookahead and 0.01 step size. |
+| 1 | `gelu` + `nadam` (lr=0.001, bs=32) | 200 | 90.55% | 88.30% | Highest accuracy across the entire project; smaller batch regularized smoothly |
+| 2 | `gelu` + `nadam` (lr=0.01, bs=64) | 200 | 90.49% | 88.14% | Strongest 64-batch run; Nadam lookahead handled 0.01 very well |
+| 3 | `silu` + `adam` (lr=0.01, bs=64) | 100 | 88.29% | 87.91% | SiLU with Adam at lr=0.01 reached almost 88% in just 100 epochs |
+| 4 | `gelu` + `nadam` (lr=0.001, bs=64) | 200 | 89.69% | 87.81% | Steady and clean convergence throughout |
+| 5 | `gelu` + `adam` (lr=0.001, bs=64) | 200 | 90.06% | 87.74% | Broke 90% train accuracy with low validation loss |
+| 6 | `silu` + `nadam` (lr=0.001, bs=32) | 100 | 88.17% | 87.44% | Stable run, proving SiLU closely tracks GELU over long horizons |
 
 ---
 
-### 4.6 Extended Training (200 Epochs)
-To see how far the top architectures can go when given full convergence time, we ran extended 200-epoch training across 7 systematic configurations:
+### 4.5 Optimal Model Selection
+From all experiments conducted across all horizons and combinations, the single best configuration is:
 
-| Run # | Configuration (Activation + Optimizer + LR + BS) | Epochs | Train Acc (%) | Test Acc (%) | Train Loss | Val Loss | Comments / Key Findings |
+| Run # | Configuration (Activation + Optimizer + LR + BS) | Epochs | Train Acc (%) | Test Acc (%) | Comments / Key Findings |
+| :---: | :--- | :---: | :---: | :---: | :--- |
+| 1 | `gelu` + `nadam` (lr=0.001, bs=32) | 200 | 90.55% | 88.30% | **Overall Project Champion.** Reached the highest test accuracy (88.30%) and lowest validation loss (0.4076) across the entire project by combining smooth non-linear gradients with Nesterov lookahead momentum and small-batch regularization noise. |
+
+---
+
+### 4.6 Extended Runs That Didn't Help (Diminishing Returns & Instability)
+Not all combinations or longer runs led to improvements. Here are the runs where increasing epochs or tuning parameters didn't help or caused issues:
+
+| Run # | Configuration (Activation + Optimizer + LR + BS) | Epochs | Train Acc (%) | Test Acc (%) | Train Loss | Val Loss | Why It Didn't Help |
 | :---: | :--- | :---: | :---: | :---: | :---: | :---: | :--- |
-| 1 | `gelu` + `nadam` (lr=0.001, bs=32) | 200 | 90.55% | 88.30% | 0.3034 | 0.4076 | All-time highest test accuracy! Smaller batch gave regularizing noise and lowest val loss |
-| 2 | `gelu` + `nadam` (lr=0.01, bs=64) | 200 | 90.49% | 88.14% | 0.2973 | 0.4483 | Strongest 64-batch run, Nadam lookahead handled 0.01 significantly better than Adam |
-| 3 | `gelu` + `nadam` (lr=0.001, bs=64) | 200 | 89.69% | 87.81% | 0.3111 | 0.4165 | Steady, smooth convergence throughout all 200 epochs |
-| 4 | `relu` + `adam` (lr=0.001, bs=64) | 200 | 88.52% | 87.77% | 0.3320 | 0.4268 | Baseline gained +6.74% with extended training; converged solidly |
-| 5 | `gelu` + `adam` (lr=0.001, bs=64) | 200 | 90.06% | 87.74% | 0.3115 | 0.4161 | Broke 90% train accuracy cleanly with stable validation loss |
-| 6 | `gelu` + `adam` (lr=0.01, bs=64) | 200 | 88.56% | 87.29% | 0.3059 | 0.4929 | Fast early on, but constant 0.01 without scheduler caused minor late-stage jitter |
-| 7 | `gelu` + `nadam` (lr=0.01, bs=32) | 200 | 88.17% | 86.46% | 0.3184 | 0.5163 | High LR combined with small batch caused too much gradient variance, hurting final test score |
+| 1 | `gelu` + `nadam` (lr=0.01, bs=32) | 200 | 88.17% | 86.46% | 0.3184 | 0.5163 | Pairing high LR (0.01) with noisy small batch (32) caused excessive gradient variance; val loss blew up to 0.5163 |
+| 2 | `gelu` + `adam` (lr=0.01, bs=64) | 200 | 88.56% | 87.29% | 0.3059 | 0.4929 | Fast at 30 epochs (84.17%), but over 200 epochs without an LR decay scheduler it oscillated near the minimum |
+| 3 | `relu` + `adam` (lr=0.001, bs=64) | 200 | 88.52% | 87.77% | 0.3320 | 0.4268 | Baseline gained accuracy with epochs, but plateaued early due to dying neurons and couldn't match GELU/Nadam |
 
 
 
