@@ -15,13 +15,13 @@ In this Assignment I explored the performance of the **VGG-6** CNN architecture 
 ### 1.2 Code Tree Structure
 ```text
 VGG6_Analysis/
-├── data/trained_models   # Trained PyTorch models files for diffrent iteration
+├── data/trained_models   # Trained PyTorch models files for different iteration
 ├── data/screenshots      # Screenshots of graphs (Yet to upload)
 ├── dataset.py            # Data loading, normalization, and full data augmentation related code
 ├── model.py              # VGG-6 CNN with option to config activation function
 ├── train.py              # Training loop with W&B logging related implementation
 ├── evaluate.py           # Accuracy calculation (Just added placeholder for future)
-├── main.py               # Main function where accept diffrent command from the user or to set default values
+├── main.py               # Main function where accept different command from the user or to set default values
 └── README.md             # Project Doc, ofcourse this doc :p
 ```
 *(Note: At runtime, in `data/` directory CIFAR-10 dataset is automatically downloaded, and inside `data/trained_models/` we store model files).*
@@ -88,12 +88,33 @@ After each training trial, the trained model weights (`.pth`) are automatically 
 - When using W&B, `{run_id}` matches the unique 8-character W&B run ID.
 - If running without W&B, `{run_id}` is set to `NA`.
 
-## Section 4: Experimental Results & Benchmarks
+## Section 4: Experimental Analysis of performance
 
 This section I tabulated the benchmark of VGG-6 with CIFAR-10 across different configurations.
 
+### 4.0 Baseline Model Configuration & Result
+Before varying much of the parameters, I took a standard baseline configuration for reference benchmark:
+- **Architecture:** VGG-6 (`[64, 64, 'M', 128, 128, 'M']` with AdaptiveAvgPool2d to Linear(128, 10))
+- **Activation Function:** `ReLU`
+- **Batch Norm:** Added after every conv layer
+- **Optimizer:** `Adam`
+- **Learning Rate:** `0.001`
+- **Batch Size:** `64`
+- **Training Duration:** `30` epochs
+- **Random Seed:** `42`
+- **Data Augmentation:** Random Crop (32, padding=4), Random Horizontal Flip (p=0.5), Random Rotation (±5°), Color Jitter, and Cutout (1 hole, 16x16)
+
+| Configuration | Epochs | Final Train Loss | Final Val Loss | Final Train Acc (%) | Final Test Acc (%) | Key Findings |
+| :--- | :---: | :---: | :---: | :---: | :---: | :--- |
+| **Baseline Model** | 30 | 0.6099 | 0.5709 | 78.79% | **81.03%** | Gave good reference point;|
+| **Baseline (Extended)** | 40 | 0.5544 | 0.5238 | 81.13% | **83.29%** | Extra 10 epochs pushed accuracy past 83% with smoothly|
+
+All further experiments in Sections 4.1 to 4.3 vary one parameter at a time against this baseline.
+
+---
+
 ### 4.1 Varying Optimizers
-In this set of experiments, the activation function (`relu`), batch size (`64`), learning rate (`0.001`), and training duration (`30` epochs) are kept same to evaluate the effect of optimization algorithms.
+In this set of experiments, the activation function (`relu`), batch size (`64`), learning rate (`0.001`), and training duration (`30` epochs) are kept same to evaluate the effect different optimization algorithms.
 
 | Run # | Optimizer | Activation | Learning Rate | Batch Size | Epochs | Train Acc (%) | Test Acc (%) | Comments / Observations |
 | :---: | :--- | :--- | :---: | :---: | :---: | :---: | :---: | :--- |
@@ -101,16 +122,16 @@ In this set of experiments, the activation function (`relu`), batch size (`64`),
 | 2 | `sgd` | relu | 0.001 | 64 | 30 | 53.80% | 56.90% | This one is pretty bad at low learning rate this converged way too slow |
 | 3 | `nesterov_sgd` | relu | 0.001 | 64 | 30 | 66.18% | 70.07% | Here Adding momentum helped a lot, gave good improvement over basic SGD |
 | 4 | `adagrad` | relu | 0.001 | 64 | 30 | 59.51% | 62.83% | Learning got flattened so fast (Need to understand why) |
-| 5 | `rmsprop` | relu | 0.001 | 64 | 30 | 73.48% | 75.94% | This has good accurecy but I noticed loss curve is not smooth as compared to Adam |
-| 6 | `nadam` | relu | 0.001 | 64 | 30 | 77.06% | 78.27% |  This gave gave steady progress, but in comparison to Adam this is having low accurecy |
+| 5 | `rmsprop` | relu | 0.001 | 64 | 30 | 73.48% | 75.94% | This has good accuracy but I noticed loss curve is not smooth as compared to Adam |
+| 6 | `nadam` | relu | 0.001 | 64 | 30 | 77.06% | 78.27% |  This gave steady progress, but in comparison to Adam this is having low accuracy |
 
-> **Note on SGD & Learning Rate Sensitivity:**  
-> Since standard SGD struggled at `lr=0.001`, we also tested `nesterov_sgd` with a higher learning rate of `0.01` (`relu`, bs 64, 30 epochs). Accuracy jumped from 70.07% to **79.41%** (Train Acc: 76.66%). This confirms that SGD is heavily dependent on a larger learning rate, though it still fell short of Adam's 81.03%.
+> **Note on SGD:**  
+> Normal SGD struggled at `lr=0.001`, so I also tested `nesterov_sgd` with a higher learning rate of `0.01` (`relu`, bs 64, 30 epochs). Accuracy improved from 70.07% to **79.41%** (Train Acc: 76.66%). This shows that for SGD larger learning rate we need to configure, though it still fell short of Adam's 81.03%.
 
 ---
 
 ### 4.2 Varying Activation Functions
-In this set of experiments, the optimizer (`adam`), learning rate (`0.001`), batch size (`64`), and training duration (`30` epochs) are kept same to evaluate the effect of different activation functions.
+In these experiments, the optimizer (`adam`), learning rate (`0.001`), batch size (`64`), and duration (`30` epochs) are kept same to understand the effect of different activation functions.
 
 | Run # | Activation | Optimizer | Learning Rate | Batch Size | Epochs | Train Acc (%) | Test Acc (%) | Comments / Observations |
 | :---: | :--- | :--- | :---: | :---: | :---: | :---: | :---: | :--- |
@@ -123,70 +144,72 @@ In this set of experiments, the optimizer (`adam`), learning rate (`0.001`), bat
 ---
 
 ### 4.3 Varying Learning Rate, Batch Size, and Epochs
-In this set of experiments, we kept the baseline configuration (Adam + ReLU) and evaluated how varying the learning rate, mini-batch size, and training epochs affects convergence.
+In these experiments, I kept the baseline configuration (Adam + ReLU) and tried how varying the learning rate, batch size, and training epochs affects convergence.
 
-#### A. Learning Rate Exploration (Fixed: BS=64, Epochs=30)
+#### A. Varying Learning Rate (Fixed: BS=64, Epochs=30)
 | Run # | Learning Rate | Batch Size | Epochs | Optimizer | Activation | Train Acc (%) | Test Acc (%) | Comments / Observations |
 | :---: | :---: | :---: | :---: | :--- | :--- | :---: | :---: | :--- |
-| 1 | 0.001 (Baseline) | 64 | 30 | adam | relu | 78.79% | 81.03% | Standard baseline reference; very stable convergence |
-| 2 | 0.1 | 64 | 30 | adam | relu | 45.18% | 48.80% | Learning rate is way too high; loss oscillated wildly and failed to settle |
-| 3 | 0.01 | 64 | 30 | adam | relu | 81.65% | 82.90% | Surprising winner! Beat the baseline comfortably |
-| 4 | 0.0001 | 64 | 30 | adam | relu | 68.64% | 73.32% | Too small step size; convergence was too sluggish within 30 epochs |
+| 1 | 0.001 (Baseline) | 64 | 30 | adam | relu | 78.79% | 81.03% | Baseline reference and its very stable |
+| 2 | 0.1 | 64 | 30 | adam | relu | 45.18% | 48.80% | Learning rate is too much high; loss fluctuated wildly and failed to settle |
+| 3 | 0.01 | 64 | 30 | adam | relu | 81.65% | 82.90% | Surprising result, and better than the baseline |
+| 4 | 0.0001 | 64 | 30 | adam | relu | 68.64% | 73.32% | Its too small step size; convergence took so much time |
 
-#### B. Batch Size Exploration (Fixed: LR=0.001, Epochs=30)
+#### B. Varying Batch Size (Fixed: LR=0.001, Epochs=30)
 | Run # | Learning Rate | Batch Size | Epochs | Optimizer | Activation | Train Acc (%) | Test Acc (%) | Comments / Observations |
 | :---: | :---: | :---: | :---: | :--- | :--- | :---: | :---: | :--- |
-| 1 | 0.001 (Baseline) | 64 | 30 | adam | relu | 78.79% | 81.03% | Standard baseline reference; very stable convergence |
-| 5 | 0.001 | 32 | 30 | adam | relu | 79.31% | 82.04% | Best accuracy in batch variations, but took longer to train per epoch |
-| 6 | 0.001 | 128 | 30 | adam | relu | 78.69% | 81.57% | Trained faster on GPU; accuracy stayed close to batch size 64 |
+| 1 | 0.001 (Baseline) | 64 | 30 | adam | relu | 78.79% | 81.03% | Standard baseline reference; very stable |
+| 5 | 0.001 | 32 | 30 | adam | relu | 79.31% | 82.04% | Best accuracy in batch variations |
+| 6 | 0.001 | 128 | 30 | adam | relu | 78.69% | 81.57% | Accuracy similar as in case of batch size 64 |
 | 7 | 0.001 | 256 | 30 | adam | relu | 75.17% | 78.58% | Fastest execution, but fewer gradient updates caused accuracy to drop |
 
-#### C. Epoch Duration Exploration (Fixed: LR=0.001, BS=64)
+#### C. Varying Epoch Duration (Fixed: LR=0.001, BS=64)
 | Run # | Learning Rate | Batch Size | Epochs | Optimizer | Activation | Train Acc (%) | Test Acc (%) | Comments / Observations |
 | :---: | :---: | :---: | :---: | :--- | :--- | :---: | :---: | :--- |
-| 1 | 0.001 (Baseline) | 64 | 30 | adam | relu | 78.79% | 81.03% | Standard baseline reference; 30 epochs reached good convergence |
-| 8 | 0.001 | 64 | 10 | adam | relu | 69.89% | 73.67% | Stopped too early while loss curve was still actively descending |
-| 9 | 0.001 | 64 | 40 | adam | relu | 81.13% | 83.29% | Extra 10 epochs pushed past 83% without any signs of overfitting |
+| 1 | 0.001 (Baseline) | 64 | 30 | adam | relu | 78.79% | 81.03% | Standard baseline reference;|
+| 8 | 0.001 | 64 | 10 | adam | relu | 69.89% | 73.67% | Too short i.e stopped too early while loss curve was still actively descending |
+| 9 | 0.001 | 64 | 40 | adam | relu | 81.13% | 83.29% | Extra 10 epochs pushed accuracy to 83% |
 
 
 ---
 
-### 4.4 Promising Candidates Extended Evaluation (100–200 Epochs)
-Based on the individual parameter benchmarks from Sections 4.1 to 4.3, clear patterns emerged:
-- **Activations:** `gelu` (83.04%) and `silu` (82.55%) easily outperformed standard `relu` (81.03%) by preventing dying neurons.
-- **Optimizers:** `adam` (81.03%) and `nadam` (78.27%) were the undisputed top-tier adaptive optimizers.
-- **Learning Rate & Batch Size:** `0.01` gave fast early convergence (e.g. `gelu + adam, lr=0.01` achieved **84.17%** at 30 epochs), while `0.001` was rock solid. Smaller batches (`32` and `64`) provided useful regularizing noise compared to `256`.
+### 4.4 Promising Candidates - Extended Evaluation (100–200 Epochs)
+Based on the individual parameter tweaking in sections 4.1 to 4.3, I see below patterns:
+- **Activations:** `gelu` (83.04%) and `silu` (82.55%) outperformed than standard `relu` (81.03%) (may be by preventing dying neurons).
+- **Optimizers:** `adam` (81.03%) and `nadam` (78.27%) still the best optimizers.
+- **Learning Rate & Batch Size:** `0.01` gave fast early convergence, while `0.001` was better for longer epochs. Smaller batches (`32` and `64`) is almost similar in accuracy but slight time diffrence is there but `256` has too much noise.
 
-We took these top candidate components and ran extended training (100 to 200 epochs) to push model convergence to its full potential:
+I took these top candidate configs and ran extended training like (100 to 200 epochs) to push the convergence to its full potential:
 
 | Run # | Configuration (Activation + Optimizer + LR + BS) | Epochs | Train Acc (%) | Test Acc (%) | Comments / Key Findings |
 | :---: | :--- | :---: | :---: | :---: | :--- |
-| 1 | `gelu` + `nadam` (lr=0.001, bs=32) | 200 | 90.55% | 88.30% | Highest accuracy across the entire project; smaller batch regularized smoothly |
-| 2 | `gelu` + `nadam` (lr=0.01, bs=64) | 200 | 90.49% | 88.14% | Strongest 64-batch run; Nadam lookahead handled 0.01 very well |
+| 1 | `gelu` + `nadam` (lr=0.001, bs=32) | 200 | 90.55% | 88.30% | Highest accuracy across the entire analysis; |
+| 2 | `gelu` + `nadam` (lr=0.01, bs=64) | 200 | 90.49% | 88.14% | Strongest 64-batch run |
 | 3 | `silu` + `adam` (lr=0.01, bs=64) | 100 | 88.29% | 87.91% | SiLU with Adam at lr=0.01 reached almost 88% in just 100 epochs |
 | 4 | `gelu` + `nadam` (lr=0.001, bs=64) | 200 | 89.69% | 87.81% | Steady and clean convergence throughout |
-| 5 | `gelu` + `adam` (lr=0.001, bs=64) | 200 | 90.06% | 87.74% | Broke 90% train accuracy with low validation loss |
-| 6 | `silu` + `nadam` (lr=0.001, bs=32) | 100 | 88.17% | 87.44% | Stable run, proving SiLU closely tracks GELU over long horizons |
+| 5 | `gelu` + `adam` (lr=0.001, bs=64) | 200 | 90.06% | 87.74% | Crossed 90% train accuracy with low validation loss |
+| 6 | `silu` + `nadam` (lr=0.001, bs=32) | 100 | 88.17% | 87.44% | Stable run, close to gelu |
 
 ---
 
-### 4.5 Optimal Model Selection
-From all experiments conducted across all horizons and combinations, the single best configuration is:
+### 4.5 Final Model Performance
+From all experiments conducted across all combinations, the best configuration is:
 
 | Run # | Configuration (Activation + Optimizer + LR + BS) | Epochs | Train Acc (%) | Test Acc (%) | Comments / Key Findings |
 | :---: | :--- | :---: | :---: | :---: | :--- |
-| 1 | `gelu` + `nadam` (lr=0.001, bs=32) | 200 | 90.55% | 88.30% | **Overall Project Champion.** Reached the highest test accuracy (88.30%) and lowest validation loss (0.4076) across the entire project by combining smooth non-linear gradients with Nesterov lookahead momentum and small-batch regularization noise. |
+| 1 | `gelu` + `nadam` (lr=0.001, bs=32) | 200 | 90.55% | 88.30% | **Overall Project Champion.** Reached the highest test accuracy (88.30%) and lowest validation loss (0.4076) across the entire analysis. |
+
+- **Best Model Path:** [`data/trained_models/200-Epoch/78dazfhy_20261030_211215_gelu_nadam_lr-0.001_bs-32_epochs-200_acc-train-90.55_acc-test-88.30.pth`](https://github.com/prasanna-cs25m524/VGG6_Analysis/raw/main/data/trained_models/200-Epoch/78dazfhy_20261030_211215_gelu_nadam_lr-0.001_bs-32_epochs-200_acc-train-90.55_acc-test-88.30.pth)
 
 ---
 
-### 4.6 Extended Runs That Didn't Help (Diminishing Returns & Instability)
-Not all combinations or longer runs led to improvements. Here are the runs where increasing epochs or tuning parameters didn't help or caused issues:
+### 4.6 Extended Runs That Didn't Help
+Not all combinations or longer runs gives improvements. Here are the examples where increasing epochs or tuning parameters didn't help:
 
 | Run # | Configuration (Activation + Optimizer + LR + BS) | Epochs | Train Acc (%) | Test Acc (%) | Train Loss | Val Loss | Why It Didn't Help |
 | :---: | :--- | :---: | :---: | :---: | :---: | :---: | :--- |
-| 1 | `gelu` + `nadam` (lr=0.01, bs=32) | 200 | 88.17% | 86.46% | 0.3184 | 0.5163 | Pairing high LR (0.01) with noisy small batch (32) caused excessive gradient variance; val loss blew up to 0.5163 |
-| 2 | `gelu` + `adam` (lr=0.01, bs=64) | 200 | 88.56% | 87.29% | 0.3059 | 0.4929 | Fast at 30 epochs (84.17%), but over 200 epochs without an LR decay scheduler it oscillated near the minimum |
-| 3 | `relu` + `adam` (lr=0.001, bs=64) | 200 | 88.52% | 87.77% | 0.3320 | 0.4268 | Baseline gained accuracy with epochs, but plateaued early due to dying neurons and couldn't match GELU/Nadam |
+| 1 | `gelu` + `nadam` (lr=0.01, bs=32) | 200 | 88.17% | 86.46% | 0.3184 | 0.5163 | High LR (0.01) with noisy small batch (32) caused gradient variation;|
+| 2 | `gelu` + `adam` (lr=0.01, bs=64) | 200 | 88.56% | 87.29% | 0.3059 | 0.4929 | Initially it was fast i.e at 30 epochs (84.17%), but after that its slowed down|
+| 3 | `relu` + `adam` (lr=0.001, bs=64) | 200 | 88.52% | 87.77% | 0.3320 | 0.4268 | This is Baseline it got accuracy with epochs increased, but become stagnant (may be due to dying neurons) and couldn't match GELU/Nadam |
 
 
 
