@@ -80,6 +80,21 @@ Sweep CLI options:
 - `--count`: maximum number of trials/runs to execute (default: `20`)
 - `--project`: W&B project name to redirect logs (default: `CS6886W-VGG6`)
 
+#### Option D: Running on Google Colab (Notebook Environment)
+If running directly on Google Colab, you can mount Google Drive and run the experiment using IPython magic commands:
+```python
+import os
+from google.colab import drive
+drive.mount('/content/drive')
+
+# Change path to where the repository is cloned
+project_path = '/content/drive/MyDrive/deep_learning/VGG6_Analysis'
+os.chdir(project_path)
+
+# Run the code with required configurations
+%run main.py --lr 0.001 --batch_size 64 --epochs 40 --optimizer adam --activation relu --project CS6886W-VGG6-Test
+```
+
 ### 1.6 Trained Model Saving & W&B log Mapping
 After each training trial, the trained model weights (`.pth`) are automatically saved into `data/trained_models/` with the filename structured as:
 ```text
